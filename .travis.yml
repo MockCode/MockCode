@@ -3,9 +3,9 @@ node_js:
   - node
 
 cache:
-  yarn
+  yarn: true
   directories:
-  - node_modules
+    - node_modules
 
 env:
   global:
