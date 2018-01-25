@@ -16,3 +16,6 @@ script:
 
 after_script:
   - echo "BUILD FINISHED"
+
+notifications:
+    slack: impossboss:wJO8UFqWJ07vghKSJBeSmXn0
