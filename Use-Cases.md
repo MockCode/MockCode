@@ -1,5 +1,4 @@
-
-|   |Use Case 1:|
+##<a name="use_case_1"/>Use Case 1</a>:
 |Use Case Name       |CreateAccount|
 |--------------------|----------------------------------|
 |Participating Actors|User|
