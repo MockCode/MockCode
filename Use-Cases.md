@@ -1,4 +1,4 @@
-##<a name="use_case_1"/>Use Case 1</a>:
+
 |   |Use Case 1:|
 |Use Case Name       |CreateAccount|
 |--------------------|----------------------------------|
