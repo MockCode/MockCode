@@ -4,6 +4,8 @@
 rate, O<sub>2</sub> saturation, CO<sub>2</sub> saturation, blood pressure,
 respiratory rate, and temperature via the control application.
 
+1. As an instructor I want to be able to control the specific heart rhythm (i.e. Tachycardia, Atrial fibrillation etc.)
+
 1. As an instructor I want to be able to change the face displayed on the
 face monitor via the control application.
 
