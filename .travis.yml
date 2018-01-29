@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - node
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+env:
+  global:
+    - NODE_VERSION=stable
+    
+script:
+  - yarn run test
+
+after_script:
+  - echo "BUILD FINISHED"
+
+notifications:
+    slack: impossboss:wJO8UFqWJ07vghKSJBeSmXn0
