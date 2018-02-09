@@ -20,6 +20,16 @@ export default class ButtonScreen extends Component {
           onPress={() => navigate('dest')}
           title="Go"
         />
+
+        <Button
+          onPress={() => navigate('Controller')}
+          title="Controller"
+        />
+
+        <Button
+          onPress={() => navigate('Monitor')}
+          title="Monitor"
+        />
       </View>
     );
   }
