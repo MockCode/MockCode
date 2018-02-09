@@ -22,6 +22,9 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+*.xcscheme
+*.pbxproj
+*.plist
 
 # Android/IntelliJ
 #
