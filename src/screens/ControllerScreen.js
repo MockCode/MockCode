@@ -19,9 +19,9 @@ export default class ControllerScreen extends Component {
       sliderValue: 50,
       message: ""
     };
+    console.log("this is a test");
     nearbyAPI.connect(API_KEY);
   }
-
   componentDidMount() {
     console.log("Mounting ", NearbyAPI);
     nearbyAPI.onConnected(message => {
@@ -94,6 +94,9 @@ export default class ControllerScreen extends Component {
   }
   static navigationOptions = {
     title: 'Controller'
+  }
+  componentWillUnmount() {
+    nearbyAPI.disconnect();
   }
 
   sliderUpdate(value) {
