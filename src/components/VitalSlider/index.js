@@ -1,0 +1,1 @@
+export { VitalSlider } from "./VitalSlider";
