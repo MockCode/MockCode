@@ -114,9 +114,8 @@ export default class ControllerScreen extends Component {
   render() {
     return (
       <View>
-        <Text>Controller Screen</Text>
-        <Text>Is Connected: {`${this.state.isConnected}`}</Text>
-
+        {/* <Text>Controller Screen</Text>
+        <Text>Is Connected: {`${this.state.isConnected}`}</Text> */}
         <VitalSlider min={0} max={100} sliderName="Heartbeat Slider" />
       </View>
     );

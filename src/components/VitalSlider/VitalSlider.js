@@ -1,34 +1,51 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import style from "./style";
-import { Text, View, Slider } from "react-native";
+import { Text, View, Slider, Switch } from "react-native";
 
 export class VitalSlider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 50
+      sliderValue: 50,
+      switchValue: true
     };
   }
 
-  onSliderChange = value => {
-    console.log(value);
-    this.setState({
-      value
-    });
+  onSliderChange = (value) => {
+    this.setState({sliderValue: value});
   };
+
+  onSwitchChange = (value) => {
+    this.setState({switchValue: value});
+  }
 
   render() {
     return (
-      <View>
-        <Text>{this.props.sliderName}</Text>
+      <View style={style.sliderView}>
+        <Text style={style.sliderTitle}>{this.props.sliderName}</Text>
+        <Switch
+          value = {this.state.switchValue}
+          onValueChange={this.onSwitchChange}
+        /> 
         <Slider
-          value={this.state.value}
-          onChange={this.onSliderChange}
-          onAfterChange={this.onAfterChange}
+          value={this.state.sliderValue}
+          onValueChange={this.onSliderChange}
           minimumValue={this.props.min}
           maximumValue={this.props.max}
         />
       </View>
     );
   }
+}
+
+VitalSlider.propTypes = { 
+  sliderName: PropTypes.string.isRequired,
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired
+}
+
+VitalSlider.defaultProps = {
+  min: 0,
+  max: 100
 }

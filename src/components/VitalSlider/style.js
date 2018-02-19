@@ -1,5 +1,13 @@
 import {StyleSheet} from "react-native";
 
 export default StyleSheet.create({
-    // Styles will go here for vital sliders
+    sliderView: {
+        flex: 1,
+        justifyContent: 'space-between'
+    },
+    sliderTitle: {
+        color: 'black',
+        fontWeight: 'bold',
+        fontSize: 25
+    }
 })
