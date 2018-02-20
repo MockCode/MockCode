@@ -6,7 +6,7 @@ import { NearbyAPI } from "react-native-nearby-api";
 
 
 
-const nearbyAPI = new NearbyAPI(true);
+// const nearbyAPI = new NearbyAPI(true);
 
 export default class MonitorScreen extends Component {
   static navigationOptions = {
@@ -15,28 +15,22 @@ export default class MonitorScreen extends Component {
   constructor() {
     super();
     this.state = {
-      isConnected: false,
-      nearbyMessage: null,
-      connectText: "CONNECT",
-      isPublishing: false,
-      isSubscribing: false,
-      sliderValue: 50,
       message: ""
     };
-    nearbyAPI.connect(API_KEYS.nearby);
+    // nearbyAPI.connect(API_KEYS.nearby);
     // console.log(API_KEYS.nearby);
     
   }
-  componentDidMount() {
-    nearbyAPI.onConnected(message => {
-      nearbyAPI.subscribe();
-    });
+  // componentDidMount() {
+  //   nearbyAPI.onConnected(message => {
+  //     nearbyAPI.subscribe();
+  //   });
       
 
-    nearbyAPI.onFound(message => {
-      this.setState({ message: message});
-    });
-    };
+  //   nearbyAPI.onFound(message => {
+  //     this.setState({ message: message});
+  //   });
+  //   };
 
   render() {
     return (
