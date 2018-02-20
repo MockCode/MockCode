@@ -24,7 +24,7 @@ DerivedData
 project.xcworkspace
 *.xcscheme
 *.pbxproj
-*.plist
+# *.plist
 
 # Android/IntelliJ
 #
