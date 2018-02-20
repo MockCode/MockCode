@@ -5,6 +5,7 @@
 # Xcode
 #
 build/
+Pods/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -21,6 +22,9 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+*.xcscheme
+*.pbxproj
+*.plist
 
 # Android/IntelliJ
 #
@@ -51,3 +55,7 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+
+
+# project
+src/api.js
