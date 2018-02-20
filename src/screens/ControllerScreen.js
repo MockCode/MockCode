@@ -3,6 +3,7 @@ import { Text, View, Slider } from 'react-native';
 
 import { NearbyAPI } from "react-native-nearby-api";
 import {API_KEYS} from '../api'
+import {Update_Slider} from '../redux/actions/nearbyActions'
 
 
 const API_KEY = API_KEYS.nearby;
@@ -24,6 +25,7 @@ export default class ControllerScreen extends Component {
 
   sliderUpdate(value) {
     this.state.sliderValue = value;
+    store.dispatch(Update_Slider(value.toString()))
     // TODO: implement redux action
   }
   render() {
