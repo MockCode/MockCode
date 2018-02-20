@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
+import {API_KEYS} from '../api'
 
 import { NearbyAPI } from "react-native-nearby-api";
 
 
-const API_KEY = "AIzaSyC0MKwcDwSE8y552xvQQglZlCfacytfuBA";
 
 const nearbyAPI = new NearbyAPI(true);
 
@@ -23,7 +23,8 @@ export default class MonitorScreen extends Component {
       sliderValue: 50,
       message: ""
     };
-    nearbyAPI.connect(API_KEY);
+    nearbyAPI.connect(API_KEYS.nearby);
+    // console.log(API_KEYS.nearby);
     
   }
   componentDidMount() {

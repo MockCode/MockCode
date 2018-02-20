@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Text, View, Slider } from 'react-native';
 
 import { NearbyAPI } from "react-native-nearby-api";
+import {API_KEYS} from '../api'
 
 
-const API_KEY = "AIzaSyC0MKwcDwSE8y552xvQQglZlCfacytfuBA";
+const API_KEY = API_KEYS.nearby;
 
 const nearbyAPI = new NearbyAPI(true);
 export default class ControllerScreen extends Component {

@@ -4,14 +4,15 @@ import { NearbyAPI } from "react-native-nearby-api";
 import {connect, Provider } from "react-redux";
 import { createStore, bindActionCreators} from 'redux';
 import MockApp from './redux/reducers/nearbyReducer'
+import {API_KEYS} from './api'
 // import * as Actions from './redux/actions/';
 
 import RootNavigator from './navigation'
 
 // const nearbyAPI = new NearbyAPI(true);
 
-const API_KEY = "AIzaSyC0MKwcDwSE8y552xvQQglZlCfacytfuBA";
-
+export const nearbyAPI_KEY = API_KEYS.nearby;
+// console.log(nearbyAPI_KEY)
 // function mapStateToProps(state) {
 //   return state;
 // }
