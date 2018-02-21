@@ -3,13 +3,18 @@ import ButtonScreen from './screens/ButtonScreen';
 import DestScreen from './screens/DestScreen';
 import MonitorScreen from './screens/MonitorScreen';
 import ControllerScreen from './screens/ControllerScreen';
-
+import SelectModeScreen from './screens/SelectModeScreen';
 
 const routes = {
   'button': { screen: ButtonScreen },
   'dest': { screen: DestScreen },
-  'Controller' : {screen: ControllerScreen},
-  'Monitor' : {screen: MonitorScreen}
+  'ControllerScreen' : {screen: ControllerScreen},
+  'MonitorScreen' : {screen: MonitorScreen},
+  'SelectModeScreen': {screen: SelectModeScreen}
 }
 
-export default RootNavigator = StackNavigator(routes);
+const config = {
+  'initialRouteName': 'SelectModeScreen'
+}
+
+export default RootNavigator = StackNavigator(routes, config);
