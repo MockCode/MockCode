@@ -1,6 +1,4 @@
 import { StackNavigator } from 'react-navigation';
-import ButtonScreen from './screens/ButtonScreen';
-import DestScreen from './screens/DestScreen';
 import MonitorScreen from './screens/MonitorScreen';
 import ControllerScreen from './screens/ControllerScreen';
 import SelectModeScreen from './screens/SelectModeScreen';
