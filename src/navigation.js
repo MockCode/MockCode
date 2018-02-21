@@ -6,8 +6,6 @@ import ControllerScreen from './screens/ControllerScreen';
 import SelectModeScreen from './screens/SelectModeScreen';
 
 const routes = {
-  'button': { screen: ButtonScreen },
-  'dest': { screen: DestScreen },
   'ControllerScreen' : {screen: ControllerScreen},
   'MonitorScreen' : {screen: MonitorScreen},
   'SelectModeScreen': {screen: SelectModeScreen}
