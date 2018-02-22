@@ -22,8 +22,8 @@ export default class MonitorScreen extends Component {
   componentDidMount(){
     Orientation.lockToLandscape();
     // StatusBar.setHidden(true);
-    Alert.alert('Title', );
   }
+  
   static navigationOptions = {  
     title: 'Monitor',
     header: null
@@ -55,7 +55,6 @@ export default class MonitorScreen extends Component {
   render() {
     const {navigate} = this.props.navigation;
     return (
-      // Try setting `flexDirection` to `column`.
       <View style={styles.column}>
         <View style={styles.row}>
           <View style={styles.filler} />
@@ -104,6 +103,6 @@ const styles = StyleSheet.create({
   statusNumber: {
     width: width*0.3,
     height: height*0.2,
-    fontSize: 60
+    fontSize: 55
   }
 });
