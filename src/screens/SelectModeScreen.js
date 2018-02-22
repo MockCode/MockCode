@@ -23,6 +23,7 @@ export default class SelectModeScreen extends Component {
   // }
   componentDidMount(){
     Orientation.lockToPortrait();
+    StatusBar.setHidden(false);
   }
   static navigationOptions = {
     title: 'Select Mode'
