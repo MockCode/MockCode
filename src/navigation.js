@@ -10,7 +10,8 @@ const routes = {
 }
 
 const config = {
-  'initialRouteName': 'SelectModeScreen'
+  'initialRouteName': 'SelectModeScreen',
+  headerMode: 'screen'
 }
 
 export default RootNavigator = StackNavigator(routes, config);
