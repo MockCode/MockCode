@@ -31,13 +31,13 @@ export class VitalSlider extends Component {
           value = {this.state.switchValue}
           onValueChange={this.onSwitchChange}
         /> 
-        <Slider
+        {this.state.switchValue && <Slider
           style={style.slider}
           value={this.state.sliderValue}
           onValueChange={this.onSliderChange}
           minimumValue={this.props.min}
           maximumValue={this.props.max}
-        />
+        />}
       </View>
     );
   }
