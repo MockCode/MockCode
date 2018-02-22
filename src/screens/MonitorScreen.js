@@ -23,7 +23,7 @@ export default class MonitorScreen extends Component {
     Orientation.lockToLandscape();
     // StatusBar.setHidden(true);
   }
-  
+
   static navigationOptions = {  
     title: 'Monitor',
     header: null
@@ -103,6 +103,6 @@ const styles = StyleSheet.create({
   statusNumber: {
     width: width*0.3,
     height: height*0.2,
-    fontSize: 55
+    fontSize: 60
   }
 });
