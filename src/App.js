@@ -1,23 +1,44 @@
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
 import { NearbyAPI } from "react-native-nearby-api";
+import {connect, Provider } from "react-redux";
+import { createStore, bindActionCreators} from 'redux';
+import MockApp from './redux/reducers/nearbyReducer'
+import {API_KEYS} from './api'
+// import * as Actions from './redux/actions/';
 
 import RootNavigator from './navigation'
 
 // const nearbyAPI = new NearbyAPI(true);
 
-const API_KEY = "AIzaSyC0MKwcDwSE8y552xvQQglZlCfacytfuBA";
+export const nearbyAPI_KEY = API_KEYS.nearby;
+// console.log(nearbyAPI_KEY)
+// function mapStateToProps(state) {
+//   return state;
+// }
 
-const nearbyAPI = new NearbyAPI(true);
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators(Actions, dispatch);
+// }
+// let Container = connect(mapStateToProps, mapDispatchToProps)(RootNavigator);
+store = createStore(MockApp)
 
-export default class App extends React.Component<{}> {
+// const nearbyAPI = new NearbyAPI(true);
+
+
+export default class App extends Component {
   constructor() {
     super();
-    nearbyAPI.connect(API_KEY);
+    // nearbyAPI.connect(API_KEY);
   }
   render() {
+    // return (
+    //     <RootNavigator />
+    // );
     return (
+      <Provider store={store}>
         <RootNavigator />
+      </Provider>
     );
   }
 }
