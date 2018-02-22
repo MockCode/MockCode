@@ -1,12 +1,15 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet, Dimensions } from "react-native";
 import { VitalSlider } from "../components/VitalSlider";
 
 import { NearbyAPI } from "react-native-nearby-api";
 
 const API_KEY = "AIzaSyC0MKwcDwSE8y552xvQQglZlCfacytfuBA";
-
 const nearbyAPI = new NearbyAPI(true);
+
+var {width, height} = Dimensions.get('window');
+var box_count = 3;
+var box_height = height / box_count;
 
 export default class ControllerScreen extends Component {
   constructor() {
@@ -113,11 +116,29 @@ export default class ControllerScreen extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         {/* <Text>Controller Screen</Text>
         <Text>Is Connected: {`${this.state.isConnected}`}</Text> */}
-        <VitalSlider min={0} max={100} sliderName="Heartbeat Slider" />
+        <VitalSlider min={0} max={100} sliderName="Slider 1" />
+        <VitalSlider min={0} max={100} sliderName="Slider 2" />
+        <VitalSlider min={0} max={100} sliderName="Slider 3" />
+        <View style={styles.patientFace}></View>
       </View>
     );
   }
 }
+
+// Define the layout for the controller screen
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
+  },
+  sliders: {
+    flex:0.6
+  },
+  patientFace: {
+    flex: 0.3
+  }
+})

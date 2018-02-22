@@ -6,6 +6,8 @@ import { Text, View, Slider, Switch } from "react-native";
 export class VitalSlider extends Component {
   constructor(props) {
     super(props);
+    this.onSliderChange = this.onSliderChange.bind(this);
+    this.onSwitchChange = this.onSwitchChange.bind(this);
     this.state = {
       sliderValue: 50,
       switchValue: true
@@ -25,10 +27,12 @@ export class VitalSlider extends Component {
       <View style={style.sliderView}>
         <Text style={style.sliderTitle}>{this.props.sliderName}</Text>
         <Switch
+          style = {style.enableSwitch}
           value = {this.state.switchValue}
           onValueChange={this.onSwitchChange}
         /> 
         <Slider
+          style={style.slider}
           value={this.state.sliderValue}
           onValueChange={this.onSliderChange}
           minimumValue={this.props.min}
