@@ -20,8 +20,8 @@ export default class MonitorScreen extends Component {
   //   }
   // }
   componentDidMount(){
-    Orientation.lockToLandscape();
     StatusBar.setHidden(true);
+    Orientation.lockToLandscape();
   }
 
   static navigationOptions = {  
@@ -96,13 +96,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   filler: {
-    width: width*0.75,
-    height: height*0.2,
+    // width: width*0.75,
+    // height: height*0.2,
+    width: '75%',
+    height: '70%',
     backgroundColor: 'powderblue'
   },
   statusNumber: {
-    width: width*0.25,
-    height: height*0.20,
+    // width: width*0.25,
+    // height: height*0.20,
+    width: '25%',
+    // height: '%',
     fontSize: 45
   }
 });
