@@ -35,11 +35,30 @@ export default class ControllerScreen extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.sliders}>
-          <VitalSlider min={0} max={100} sliderName="Slider 1" />
-          <VitalSlider min={0} max={100} sliderName="Slider 2" />
-          <VitalSlider min={0} max={100} sliderName="Slider 3" />
+          <VitalSlider
+            min={20} 
+            max={300} 
+            initialValue={70} 
+            sliderName="Heart Rate (HR)" />
+          <VitalSlider 
+            min={60} 
+            max={100}
+            initialValue={80} 
+            sliderName="O2 Sat." />
+          <VitalSlider 
+            min={0} 
+            max={100}
+            initialValue={50} 
+            sliderName="Blood Pressure (BP)" />
+          <VitalSlider 
+            min={0} 
+            max={50} 
+            initialValue={25} 
+            sliderName="EtCO2"
+            step = {1} />
         </View>
-        <View style={styles.patientFace}></View>
+        <View style={styles.patientFace}>
+        </View>
       </View>
     );
   }
@@ -53,9 +72,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start'
   },
   sliders: {
-    flex:0.6
+    flex:0.65
   },
   patientFace: {
-    flex: 0.3
+    flex: 0.5
   }
 })

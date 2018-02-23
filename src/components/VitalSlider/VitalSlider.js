@@ -9,7 +9,7 @@ export class VitalSlider extends Component {
     this.onSliderChange = this.onSliderChange.bind(this);
     this.onSwitchChange = this.onSwitchChange.bind(this);
     this.state = {
-      sliderValue: 50,
+      sliderValue: props.initialValue,
       switchValue: true
     };
   }
@@ -28,17 +28,20 @@ export class VitalSlider extends Component {
         <View style={style.sliderSwitch}>
           <Text style={style.sliderTitle}>{this.props.sliderName}</Text>
           <Switch
-            style = {style.enableSwitch}
             value = {this.state.switchValue}
             onValueChange={this.onSwitchChange}
           /> 
         </View>
+        <Text style={style.sliderValueText}>
+          {this.state.sliderValue}
+        </Text>
         <Slider
           disabled = {!this.state.switchValue}
           value={this.state.sliderValue}
           onValueChange={this.onSliderChange}
           minimumValue={this.props.min}
           maximumValue={this.props.max}
+          step = {this.props.step}
         />
       </View>
     );
@@ -48,7 +51,9 @@ export class VitalSlider extends Component {
 VitalSlider.propTypes = { 
   sliderName: PropTypes.string.isRequired,
   min: PropTypes.number.isRequired,
-  max: PropTypes.number.isRequired
+  max: PropTypes.number.isRequired,
+  initialValue: PropTypes.number.isRequired,
+  step: PropTypes.number
 }
 
 VitalSlider.defaultProps = {

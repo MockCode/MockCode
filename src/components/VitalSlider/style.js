@@ -13,5 +13,10 @@ export default StyleSheet.create({
         color: 'black',
         fontWeight: 'bold',
         fontSize: 25
+    },
+    sliderValueText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        alignSelf: 'center'
     }
 })
