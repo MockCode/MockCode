@@ -34,11 +34,11 @@ export default class ControllerScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <Text>Controller Screen</Text>
-        <Text>Is Connected: {`${this.state.isConnected}`}</Text> */}
-        <VitalSlider min={0} max={100} sliderName="Slider 1" />
-        <VitalSlider min={0} max={100} sliderName="Slider 2" />
-        <VitalSlider min={0} max={100} sliderName="Slider 3" />
+        <View style={styles.sliders}>
+          <VitalSlider min={0} max={100} sliderName="Slider 1" />
+          <VitalSlider min={0} max={100} sliderName="Slider 2" />
+          <VitalSlider min={0} max={100} sliderName="Slider 3" />
+        </View>
         <View style={styles.patientFace}></View>
       </View>
     );

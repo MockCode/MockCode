@@ -24,15 +24,16 @@ export class VitalSlider extends Component {
 
   render() {
     return (
-      <View style={style.sliderView}>
-        <Text style={style.sliderTitle}>{this.props.sliderName}</Text>
-        <Switch
-          style = {style.enableSwitch}
-          value = {this.state.switchValue}
-          onValueChange={this.onSwitchChange}
-        /> 
+      <View style={style.sliderContainer}>
+        <View style={style.sliderSwitch}>
+          <Text style={style.sliderTitle}>{this.props.sliderName}</Text>
+          <Switch
+            style = {style.enableSwitch}
+            value = {this.state.switchValue}
+            onValueChange={this.onSwitchChange}
+          /> 
+        </View>
         <Slider
-          style={style.slider}
           disabled = {!this.state.switchValue}
           value={this.state.sliderValue}
           onValueChange={this.onSliderChange}
