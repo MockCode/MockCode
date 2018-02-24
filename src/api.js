@@ -1,3 +1,3 @@
 export const API_KEYS = {
-    nearby:""
+    nearby:"AIzaSyCwOU9k7lloNkCQ5kdjzCSoyzyYWqtd-9I"
 }

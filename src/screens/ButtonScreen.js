@@ -4,6 +4,7 @@ import {
   View,
   Button
 } from 'react-native';
+import {NetworkComp} from '../components/network'
 
 export default class ButtonScreen extends Component {
   static navigationOptions = {
@@ -13,8 +14,9 @@ export default class ButtonScreen extends Component {
     const {navigate} = this.props.navigation;
     return (
       <View>
+        <NetworkComp />
         <Text>
-          This goes to the next page.
+          This goes to the next page. hey dad
         </Text>
         <Button
           onPress={() => navigate('dest')}

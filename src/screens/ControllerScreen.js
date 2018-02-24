@@ -9,6 +9,7 @@ import {Update_Slider} from '../redux/actions/nearbyActions'
 const API_KEY = API_KEYS.nearby;
 
 
+
 export default class ControllerScreen extends Component {
   constructor() {
     super();

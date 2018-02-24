@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
+import {View, Text} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { NearbyAPI } from "react-native-nearby-api";
 import {connect, Provider } from "react-redux";
@@ -8,6 +9,7 @@ import {API_KEYS} from './api'
 // import * as Actions from './redux/actions/';
 
 import RootNavigator from './navigation'
+import {NetworkComp} from './components/network'
 
 // const nearbyAPI = new NearbyAPI(true);
 
@@ -35,6 +37,7 @@ export default class App extends Component {
     // return (
     //     <RootNavigator />
     // );
+    // <network/>
     return (
       <Provider store={store}>
         <RootNavigator />
