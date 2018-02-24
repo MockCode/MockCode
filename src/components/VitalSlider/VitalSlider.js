@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import style from "./style";
-import { Text, View, Slider, Switch } from "react-native";
+import { Text, View, Switch } from "react-native";
+import Slider from "react-native-slider"
 
 export class VitalSlider extends Component {
   constructor(props) {
@@ -22,6 +23,23 @@ export class VitalSlider extends Component {
     this.setState({switchValue: value});
   }
 
+  renderSliderValue() {
+    if(this.props.sliderName.indexOf("BP") !== -1){
+      return(
+        <Text style={style.sliderValueText}>
+          {this.props.bpLevels[this.state.sliderValue]}
+        </Text>
+      )
+    } else {
+      return(
+        <Text style={style.sliderValueText}>
+        {this.state.sliderValue}
+        </Text>
+      )
+    }
+
+  }
+
   render() {
     return (
       <View style={style.sliderContainer}>
@@ -32,9 +50,7 @@ export class VitalSlider extends Component {
             onValueChange={this.onSwitchChange}
           /> 
         </View>
-        <Text style={style.sliderValueText}>
-          {this.state.sliderValue}
-        </Text>
+        {this.renderSliderValue()}
         <Slider
           disabled = {!this.state.switchValue}
           value={this.state.sliderValue}
@@ -53,7 +69,8 @@ VitalSlider.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   initialValue: PropTypes.number.isRequired,
-  step: PropTypes.number
+  step: PropTypes.number,
+  bpLevels: PropTypes.arrayOf(PropTypes.string)
 }
 
 VitalSlider.defaultProps = {
