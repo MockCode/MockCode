@@ -6,11 +6,12 @@ import {NearbyAPI} from 'react-native-nearby-api'
 import {API_KEYS} from '../api'
 import {On_Message_Found} from '../redux/actions/nearbyActions'
 
+
 export class NetworkComp extends Component {
   componentDidMount() {
     console.log("network was created");
     state = store.getState()
-    var nearbyApi = state.NearbyReducer.nearbyApi;
+    var nearbyApi = state.NearbyApi.nearbyApi;
     // console.log(state);
     console.log(nearbyApi);
     if (nearbyApi != undefined) {

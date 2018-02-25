@@ -14,22 +14,28 @@ const initialState = {
 }
 
 
-function NearbyReducer(state = initialState, action) {
+function NearbyApi(state = initialState, action) {
+  console.log("hit the reducer")
   switch (action.type) {
-
-  case ACTIONS.UPDATE_HEART_RATE:
-    console.log("reduced heart rate")
-    return { state }
-
   case ACTIONS.MESSAGE_FOUND:
-    console.log(value)
+    console.log(action.value)
   default:
     return state
   }
 }
 
+function HeartRate(state = 80, action) {
+  switch (action.type) {
+    case ACTIONS.UPDATE_HEART_RATE:
+      return action.value
+    default:
+      return state
+  }
+}
+
 const MockApp = combineReducers({
-    NearbyReducer
+    NearbyApi,
+    HeartRate
 });
 
 export default MockApp;

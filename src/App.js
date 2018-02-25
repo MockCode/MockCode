@@ -3,27 +3,30 @@ import {View, Text} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { NearbyAPI } from "react-native-nearby-api";
 import {connect, Provider } from "react-redux";
-import { createStore, bindActionCreators} from 'redux';
+import { createStore, bindActionCreators, applyMiddleware} from 'redux';
+import thunkMiddleware from 'redux-thunk'
 import MockApp from './redux/reducers/nearbyReducer'
 import {API_KEYS} from './api'
 // import * as Actions from './redux/actions/';
 
 import RootNavigator from './navigation'
+import MonitorScreen from './screens/MonitorScreen'
 import {NetworkComp} from './components/network'
 
 // const nearbyAPI = new NearbyAPI(true);
 
 export const nearbyAPI_KEY = API_KEYS.nearby;
 // console.log(nearbyAPI_KEY)
-// function mapStateToProps(state) {
-//   return state;
-// }
+function mapStateToProps(state) {
+  return state;
+}
 
 // function mapDispatchToProps(dispatch) {
 //   return bindActionCreators(Actions, dispatch);
 // }
-// let Container = connect(mapStateToProps, mapDispatchToProps)(RootNavigator);
-store = createStore(MockApp)
+// module.exports = connect(mapStateToProps)(RootNavigator);
+store = createStore(MockApp, applyMiddleware(thunkMiddleware))
+
 
 // const nearbyAPI = new NearbyAPI(true);
 

@@ -16,7 +16,7 @@ export default class ButtonScreen extends Component {
       <View>
         <NetworkComp />
         <Text>
-          This goes to the next page. hey dad
+          This goes to the next page.
         </Text>
         <Button
           onPress={() => navigate('dest')}
