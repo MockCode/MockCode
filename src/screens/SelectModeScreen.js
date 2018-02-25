@@ -6,10 +6,12 @@ import {
   FlatList,
   StyleSheet,
   StatusBar,
-  Alert
+  Alert,
+  Platform
 } from 'react-native';
 import Orientation from "react-native-orientation"
 import PeerList from '../components/PeerList'
+import { platform } from 'os';
 
 
 export default class SelectModeScreen extends Component {
@@ -22,7 +24,10 @@ export default class SelectModeScreen extends Component {
   //   }
   // }
   componentDidMount(){
-    Orientation.lockToPortrait();
+    if (Platform.OS != 'Jest') {
+      Orientation.lockToPortrait();
+
+    }
     StatusBar.setHidden(false);
   }
   static navigationOptions = {
