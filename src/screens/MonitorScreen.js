@@ -24,7 +24,7 @@ export default class MonitorScreen extends Component {
     Orientation.lockToLandscape();
   }
 
-  static navigationOptions = {  
+  static navigationOptions = {
     title: 'Monitor',
     header: null
   }
@@ -39,13 +39,13 @@ export default class MonitorScreen extends Component {
 
     // nearbyAPI.connect(API_KEYS.nearby);
     // console.log(API_KEYS.nearby);
-    
+
   }
   // componentDidMount() {
   //   nearbyAPI.onConnected(message => {
   //     nearbyAPI.subscribe();
   //   });
-      
+
 
   //   nearbyAPI.onFound(message => {
   //     this.setState({ message: message});
@@ -53,7 +53,7 @@ export default class MonitorScreen extends Component {
   //   };
 
   render() {
-    const {navigate} = this.props.navigation;
+    const {goBack} = this.props.navigation;
     return (
       <View style={styles.column}>
         <View style={styles.row}>
@@ -78,7 +78,7 @@ export default class MonitorScreen extends Component {
           <View style = {{flex: 1, marginRight:0}}/>
             <Button
               title='Exit'
-              onPress={()=>navigate("SelectModeScreen")}
+              onPress={()=>goBack()}
             />
         </View>
       </View>
