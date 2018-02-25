@@ -67,8 +67,8 @@ export default class MonitorScreen extends Component {
   render() {
     const {navigate} = this.props.navigation;
     return (
-      <NetworkComp/>
       <View style={styles.column}>
+        <NetworkComp/> // Does not render
         <View style={styles.row}>
           <View style={styles.filler} />
           <Text style = {styles.statusNumber}>
