@@ -1,18 +1,38 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import {API_KEYS} from '../api'
-import { connect, Provider } from "react-redux";
 
+import { Text, View, Dimensions, TextInput, StyleSheet, StatusBar, Alert, Button } from 'react-native';
+import { connect, Provider } from "react-redux";
+import Orientation from "react-native-orientation";
 import { NearbyAPI } from "react-native-nearby-api";
-import { NetworkComp } from '../components/network';
 
 import PropTypes from 'prop-types'
 
+import {API_KEYS} from '../api'
+import { NetworkComp } from '../components/network';
+import navigation from '../navigation';
+import SelectModeScreen from './SelectModeScreen';
+
 // const nearbyAPI = new NearbyAPI(true);
 
+var {height, width} = Dimensions.get('window');
+
 export default class MonitorScreen extends Component {
-  static navigationOptions = {
-    title: 'Monitor'
+  // componentWillMount(){
+  //   const initialOrientation = Orientation.getInitialOrientation();
+  //   if (initialOrientation == 'PORTRAIT'){
+  //     Orientation.lockToLandscape();
+  //   } else {
+  //     Orientation.lockToLandscape();
+  //   }
+  // }
+  componentDidMount(){
+    StatusBar.setHidden(true);
+    Orientation.lockToLandscape();
+  }
+
+  static navigationOptions = {  
+    title: 'Monitor',
+    header: null
   }
   static propTypes = {
     prop: PropTypes
@@ -20,8 +40,12 @@ export default class MonitorScreen extends Component {
   constructor() {
     super();
     this.state = {
-      message: ""
+      message: "",
+      heartRate: "98",
+      bloodPressure: "120/80",
+      O2Sat: "60"
     };
+
     // nearbyAPI.connect(API_KEYS.nearby);
     // console.log(API_KEYS.nearby);
     
@@ -41,51 +65,69 @@ export default class MonitorScreen extends Component {
   //   };
 
   render() {
+    const {navigate} = this.props.navigation;
     return (
-      <View>
-        <NetworkComp/>
-        <Text>
-          M:{this.props.heartRate}
-        </Text>
+      <NetworkComp/>
+      <View style={styles.column}>
+        <View style={styles.row}>
+          <View style={styles.filler} />
+          <Text style = {styles.statusNumber}>
+          <Text>{this.props.heartRate}</Text>
+          </Text>
+        </View>
+        <View style={styles.row}>
+          <View style={styles.filler} />
+          <Text style = {styles.statusNumber}>
+          <Text>{this.props.bloodPressure}</Text>
+          </Text>
+        </View>
+        <View style={styles.row}>
+          <View style={styles.filler} />
+          <Text style = {styles.statusNumber}>
+          <Text>{this.props.O2Sat}{'%'}</Text>
+          </Text>
+        </View>
+        <View style={{flex: 0, flexDirection: 'row'}}>
+          <View style = {{flex: 1, marginRight:0}}/>
+            <Button
+              title='Exit'
+              onPress={()=>navigate("SelectModeScreen")}
+            />
+        </View>
       </View>
-    )
+    );
   }
-}
+};
 
 const mapStateToProps = (state) => {
   return {
     heartRate: state.HeartRate
   }
-
 }
+
 module.exports = connect(mapStateToProps)(MonitorScreen);
 
-
-// import React, { Component } from 'react'
-
-// import { connect } from 'react-redux'
-
-// export class MonitorScreen extends Component {
-//   static propTypes = {
-//     prop: PropTypes
-//   }
-
-//   render() {
-//     return (
-//       <div>
-        
-//       </div>
-//     )
-//   }
-// }
-
-// const mapStateToProps = (state) => ({
-  
-// })
-
-// const mapDispatchToProps = {
-  
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(MonitorScreen)
-
+const styles = StyleSheet.create({
+  column: {
+    flex: 1,
+    flexDirection: 'column'
+  },
+  row: {
+    flex: 1,
+    flexDirection: 'row'
+  },
+  filler: {
+    // width: width*0.75,
+    // height: height*0.2,
+    width: '75%',
+    height: '70%',
+    backgroundColor: 'powderblue'
+  },
+  statusNumber: {
+    // width: width*0.25,
+    // height: height*0.20,
+    width: '25%',
+    // height: '%',
+    fontSize: 45
+  }
+});
