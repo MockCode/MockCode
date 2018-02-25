@@ -4,13 +4,32 @@ import {
   Button,
   View,
   FlatList,
-  StyleSheet
+  StyleSheet,
+  StatusBar,
+  Alert,
+  Platform
 } from 'react-native';
-
+import Orientation from "react-native-orientation"
 import PeerList from '../components/PeerList'
+import { platform } from 'os';
 
 
 export default class SelectModeScreen extends Component {
+  // componentWillMount(){
+  //   const initialOrientation = Orientation.getInitialOrientation();
+  //   if (initialOrientation == 'PORTRAIT'){
+  //     Orientation.lockToPortrait();
+  //   } else {
+  //     Orientation.lockToPortrait();
+  //   }
+  // }
+  componentDidMount(){
+    if (Platform.OS != 'Jest') {
+      Orientation.lockToPortrait();
+
+    }
+    StatusBar.setHidden(false);
+  }
   static navigationOptions = {
     title: 'Select Mode'
   }

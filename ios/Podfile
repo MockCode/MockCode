@@ -12,6 +12,9 @@ target 'MockCode' do
   # platform :ios, '9.0'
   pod 'NearbyMessages'
 
+
+  pod 'react-native-orientation', :path => '../node_modules/react-native-orientation'
+
   # target 'example' do
   
   # end
