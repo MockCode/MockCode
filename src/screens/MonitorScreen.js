@@ -78,7 +78,7 @@ export default class MonitorScreen extends Component {
           <View style = {{flex: 1, marginRight:0}}/>
             <Button
               title='Exit'
-              onPress={()=>goBack()}
+              onPress={()=>{goBack(), Orientation.lockToPortrait();}}
             />
         </View>
       </View>
