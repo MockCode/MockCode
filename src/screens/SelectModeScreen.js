@@ -11,8 +11,6 @@ import {
 } from 'react-native';
 import Orientation from "react-native-orientation"
 import PeerList from '../components/PeerList'
-import { platform } from 'os';
-
 
 export default class SelectModeScreen extends Component {
   // componentWillMount(){
