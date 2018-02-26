@@ -8,16 +8,11 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { connect, Provider } from "react-redux";
-import Orientation from "react-native-orientation";
 import { NearbyAPI } from "react-native-nearby-api";
 
 import PropTypes from 'prop-types'
 
 export default class PatientScreen extends Component {
-  componentDidMount(){
-    Orientation.lockToPortrait();
-  }
-
   static navigationOptions = {
     title: 'Patient',
     header: null
