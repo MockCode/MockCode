@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -379,6 +380,8 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		9B262F876771440081857CDA /* RNNearbyApi.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNNearbyApi.xcodeproj; path = "../node_modules/react-native-nearby-api/ios/RNNearbyApi.xcodeproj"; sourceTree = "<group>"; };
 		9B819ACC115343F297264D30 /* libAppCenterReactNativeAnalytics.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAppCenterReactNativeAnalytics.a; sourceTree = "<group>"; };
+		9CE7635D2043B85D00A1D260 /* libreact-native-orientation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-orientation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CE764882043BE9200A1D260 /* libreact-native-orientation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-orientation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B3CD1B4FA6404B2B287A3D31 /* Pods-MockCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-MockCode/Pods-MockCode.release.xcconfig"; sourceTree = "<group>"; };
 		D0689E460C174EF6A10DA53C /* libAppCenterReactNativeCrashes.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAppCenterReactNativeCrashes.a; sourceTree = "<group>"; };
@@ -564,6 +567,8 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CE764882043BE9200A1D260 /* libreact-native-orientation.a */,
+				9CE7635D2043B85D00A1D260 /* libreact-native-orientation.a */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 				71A1855E2CDC3EE340172709 /* libPods-MockCode.a */,
 			);
