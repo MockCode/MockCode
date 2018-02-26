@@ -5,7 +5,8 @@ import styles from "./styles/controllerScreenStyle"
 
 import { NearbyAPI } from "react-native-nearby-api";
 import {API_KEYS} from '../api'
-import {Update_Slider} from '../redux/actions/nearbyActions'
+import {Update_Slider, Update_Value, ACTIONS} from '../redux/actions/nearbyActions'
+import { NetworkComp } from '../components/network';
 
 const API_KEY = API_KEYS.nearby;
 
@@ -13,13 +14,10 @@ const bloodPressureLevels = ["62/40", "68/42", "76/46" , "88/50", "92/52", "98/5
                              "108/58", "112/60", "120/78", "134/82", "144/88", "164/96",
                              "192/98", "242/112", "284/122"];
 
+
 export default class ControllerScreen extends Component {
   constructor() {
     super();
-    this.state = {
-      sliderValue: 50,
-      message: ""
-    };
   }
 
   static navigationOptions = {
@@ -28,13 +26,15 @@ export default class ControllerScreen extends Component {
 
   sliderUpdate(value) {
     this.state.sliderValue = value;
-    store.dispatch(Update_Slider(value.toString()))
+    // store.dispatch(Update_Slider(value.toString()))
+    store.dispatch(Update_Value(ACTIONS.UPDATE_HEART_RATE, value));
     // TODO: implement redux action
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <NetworkComp/>        
         <View style={styles.sliders}>
           <VitalSlider
             min={20} 
