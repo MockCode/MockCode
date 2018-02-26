@@ -43,11 +43,11 @@ export default class SelectModeScreen extends Component {
           />
           <Button
             title='Vitals Monitor'
-            onPress={()=> navigate('MonitorScreen')}
+            onPress={() => navigate('MonitorScreen')}
           />
           <Button
             title='Patient Face'
-            onPress={()=>{}}
+            onPress={() => navigate('PatientScreen')}
           />
         </View>
         <View style={styles.peers}>
