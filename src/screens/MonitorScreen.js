@@ -67,8 +67,7 @@ export default class MonitorScreen extends Component {
   render() {
     const {goBack} = this.props.navigation;
     return (
-      <View style={styles.column}>
-        <NetworkComp/> // Does not render
+      <View style={styles.column}>        
         <View style={styles.row}>
           <View style={styles.filler} />
           <Text style = {styles.statusNumber}>
@@ -101,7 +100,9 @@ export default class MonitorScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    heartRate: state.HeartRate
+    heartRate: state.HeartRate,
+    bloodPressure: state.bloodPressure,
+    O2Sat: state.O2Sat
   }
 }
 

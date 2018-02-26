@@ -10,6 +10,12 @@ const initialState = {
     controllerValues : [{
         controllerValueType: ControllerValues.HEART_RATE,
         value: 0
+    },{
+      controllerValueType: ControllerValues.BLOOD_PRESSURE,
+      value: 0
+    },{
+      controllerValueType: ControllerValues.O2Sat,
+      value: 0
     }]
 }
 
@@ -33,9 +39,29 @@ function HeartRate(state = 80, action) {
   }
 }
 
+function bloodPressure(state = '130/86', action) {
+  switch (action.type) {
+    case ACTIONS.UPDATE_BLOOD_PRESSURE:
+      return action.value
+    default:
+      return state
+  }
+}
+
+function O2Sat(state = 50, action) {
+  switch (action.type) {
+    case ACTIONS.UPDATE_O2SAT:
+      return action.value
+    default:
+      return state
+  }
+}
+
 const MockApp = combineReducers({
     NearbyApi,
-    HeartRate
+    HeartRate,
+    bloodPressure,
+    O2Sat
 });
 
 export default MockApp;
