@@ -20,11 +20,18 @@ export class VitalSlider extends Component {
 
   onSliderChange = (value) => {
     this.setState({sliderValue: value});
-    store.dispatch(Update_Value(this.props.actionType, value));
   };
 
   onSwitchChange = (value) => {
     this.setState({switchValue: value});
+  }
+
+  onSlidingComplete = (value) => {
+    if(this.props.actionType === ACTIONS.UPDATE_BLOOD_PRESSURE){
+      store.dispatch(Update_Value(this.props.actionType, this.props.bpLevels[value]));      
+    } else{
+      store.dispatch(Update_Value(this.props.actionType, value));
+    }
   }
 
   renderSliderValue() {
@@ -61,6 +68,7 @@ export class VitalSlider extends Component {
           onValueChange={this.onSliderChange}
           minimumValue={this.props.min}
           maximumValue={this.props.max}
+          onSlidingComplete={this.onSlidingComplete}
           step = {this.props.step}
         />
       </View>
