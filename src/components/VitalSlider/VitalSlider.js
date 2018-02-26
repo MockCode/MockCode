@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import style from "./style";
-import { Text, View, Switch } from "react-native";
-import Slider from "react-native-slider"
+import { Text, View, Switch, Slider } from "react-native";
+
+// May use this open source slider later on to customize UI better
+//import Slider from "react-native-slider"
 
 export class VitalSlider extends Component {
   constructor(props) {
@@ -24,7 +26,7 @@ export class VitalSlider extends Component {
   }
 
   renderSliderValue() {
-    if(this.props.sliderName.indexOf("BP") !== -1){
+    if(this.props.sliderName.indexOf("Blood Pressure") !== -1){
       return(
         <Text style={style.sliderValueText}>
           {this.props.bpLevels[this.state.sliderValue]}

@@ -3,7 +3,7 @@ import {StyleSheet} from "react-native";
 export default StyleSheet.create({
     sliderContainer: {
         flex: 1,
-        margin: 10,
+        margin: 15,
         justifyContent: 'flex-start'
     },
     sliderSwitch: {
