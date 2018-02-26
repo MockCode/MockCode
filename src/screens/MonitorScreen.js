@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Text, View, Dimensions, TextInput, StyleSheet, StatusBar, Alert, Button } from 'react-native';
 import { connect, Provider } from "react-redux";
-import Orientation from "react-native-orientation";
+// import Orientation from "react-native-orientation";
 import { NearbyAPI } from "react-native-nearby-api";
 
 import PropTypes from 'prop-types'
@@ -27,7 +27,7 @@ export default class MonitorScreen extends Component {
   // }
   componentDidMount(){
     StatusBar.setHidden(true);
-    Orientation.lockToLandscape();
+    // Orientation.lockToLandscape();
   }
 
   static navigationOptions = {
