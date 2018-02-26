@@ -68,7 +68,7 @@ export default class MonitorScreen extends Component {
     const {goBack} = this.props.navigation;
     return (
       <View style={styles.column}>
-        <NetworkComp/> // Does not render
+        <NetworkComp/>
         <View style={styles.row}>
           <View style={styles.filler} />
           <Text style = {styles.statusNumber}>
