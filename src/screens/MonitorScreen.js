@@ -11,6 +11,7 @@ import {API_KEYS} from '../api'
 import { NetworkComp } from '../components/network';
 import navigation from '../navigation';
 import SelectModeScreen from './SelectModeScreen';
+// import { NetworkComp } from '../components/network';
 
 // const nearbyAPI = new NearbyAPI(true);
 
@@ -68,6 +69,7 @@ export default class MonitorScreen extends Component {
     const {goBack} = this.props.navigation;
     return (
       <View style={styles.column}>
+        <NetworkComp/>
         <View style={styles.row}>
           <View style={styles.filler} />
           <Text style = {styles.statusNumber}>
@@ -90,7 +92,9 @@ export default class MonitorScreen extends Component {
           <View style = {{flex: 1, marginRight:0}}/>
             <Button
               title='Exit'
-              onPress={()=>{goBack(), Orientation.lockToPortrait();}}
+              // onPress={()=>{goBack(), Orientation.lockToPortrait();}}
+            onPress={() => { goBack()}}
+              
             />
         </View>
       </View>
