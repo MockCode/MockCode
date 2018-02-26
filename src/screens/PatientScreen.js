@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
-import { Image, StyleSheet, View } from 'react-native';
+import {
+  Button,
+  Image,
+  StyleSheet,
+  View,
+  TouchableOpacity
+} from 'react-native';
 import { connect, Provider } from "react-redux";
 import Orientation from "react-native-orientation";
 import { NearbyAPI } from "react-native-nearby-api";
@@ -19,23 +25,56 @@ export default class PatientScreen extends Component {
 
   constructor() {
     super();
+    this.state = {showBack: false};
+  }
+
+  // This conditionally renders a floating overlay back button
+  // https://stackoverflow.com/a/30268190/2379240
+  _renderBack() {
+    const {goBack} = this.props.navigation;
+    if (this.state.showBack) {
+      return (
+        <View style={styles.backButton}>
+          <Button
+            title='Exit'
+            onPress={()=>{goBack()}}
+          />
+        </View>
+      );
+    }
+    else {
+      return null;
+    }
+  }
+
+  _toggleBack() {
+    this.setState(previousState => {
+      previousState.showBack = !previousState.showBack;
+      return previousState;
+    });
   }
 
   render() {
-    const {goBack} = this.props.navigation;
     return (
-      <View style={styles.mockView}>
+      <TouchableOpacity
+        onPress={() => this._toggleBack()}
+        style={styles.mockView}
+        activeOpacity={1}
+      >
         <Image
           source={require("../components/img/sick.png")}
           style={styles.mock}
         />
-      </View>
+        {this._renderBack()}
+      </TouchableOpacity>
     );
   }
 };
 
 const mapStateToProps = (state) => {
-  return { }
+  return {
+    showBack: state.showBack
+  }
 }
 
 module.exports = connect(mapStateToProps)(PatientScreen);
@@ -51,7 +90,13 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     width: undefined,
     height: undefined,
-    // transform: [{scaleX: 0.5}, {scaleY: 0.5}],
     resizeMode: 'contain'
+  },
+  backButton: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0
   }
 });
