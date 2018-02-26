@@ -1,5 +1,7 @@
 # MockCode
-[![Build Status](https://travis-ci.org/MockCode/MockCode.svg?branch=master)](https://travis-ci.org/MockCode/MockCode)
+Unit Tests: [![Build Status](https://travis-ci.org/MockCode/MockCode.svg?branch=master)](https://travis-ci.org/MockCode/MockCode)
+ iOS: [![Build status](https://build.appcenter.ms/v0.1/apps/b8b57cb3-e3f7-4a43-ba80-f77012d4962f/branches/master/badge)](https://appcenter.ms)
+  Android: [![Build status](https://build.appcenter.ms/v0.1/apps/d9bb5824-e4c7-4c33-aff2-be38fc4c9ea8/branches/master/badge)](https://appcenter.ms)
 
 Mock code is a cross platform app that aides in medical training for cpr, resuscitation and other simulated trauma scenarios.
 
