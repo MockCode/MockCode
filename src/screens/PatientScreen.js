@@ -12,6 +12,10 @@ import { NearbyAPI } from "react-native-nearby-api";
 
 import PropTypes from 'prop-types'
 
+var happy = "../components/img/happy.png";
+var sick = "../components/img/sick.png";
+var hmm = "../components/img/hmm.png";
+
 export default class PatientScreen extends Component {
   static navigationOptions = {
     title: 'Patient',
@@ -20,7 +24,7 @@ export default class PatientScreen extends Component {
 
   constructor() {
     super();
-    this.state = {showBack: false};
+    this.state = {showBack: false, face: "sick"};
   }
 
   // This conditionally renders a floating overlay back button
@@ -50,16 +54,24 @@ export default class PatientScreen extends Component {
   }
 
   render() {
+    if (this.state.face == "hmm") {
+      theImage = <Image source = {require(hmm)} style={styles.mock} />
+    } else if (this.state.face == "sick") {
+      theImage = <Image source = {require(sick)} style={styles.mock} />
+    } else if (this.state.face == "happy") {
+      theImage = <Image source = {require(happy)} style={styles.mock} />
+    }
     return (
       <TouchableOpacity
         onPress={() => this._toggleBack()}
         style={styles.mockView}
         activeOpacity={1}
       >
-        <Image
-          source={require("../components/img/sick.png")}
+        {/* <Image
+          source = {require(hmm)}
           style={styles.mock}
-        />
+        /> */}
+        {theImage}
         {this._renderBack()}
       </TouchableOpacity>
     );
@@ -68,7 +80,8 @@ export default class PatientScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    showBack: state.showBack
+    showBack: state.showBack,
+    face: state.face
   }
 }
 

@@ -57,6 +57,16 @@ function O2Sat(state = 50, action) {
   }
 }
 
+//Ideally this action just changes the source state for the image, not sure how the formatting should go
+function FaceChange(state = 'hmm', action) {
+  switch (action.type) {
+    case ACTIONS.UPDATE_FACE:
+      return action.value
+    default:
+      return state
+  }
+}
+
 const MockApp = combineReducers({
     NearbyApi,
     HeartRate,

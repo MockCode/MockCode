@@ -67,6 +67,7 @@ export default class ControllerScreen extends Component {
             step = {1} />
         </View>
         <View style={styles.patientFace}>
+
         </View>
       </View>
     );
