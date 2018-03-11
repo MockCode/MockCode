@@ -7,14 +7,17 @@ import {
   View,
   TouchableOpacity
 } from 'react-native';
+import Video from 'react-native-video';
 import { connect, Provider } from "react-redux";
 import { NearbyAPI } from "react-native-nearby-api";
 
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-var happy = "../components/img/happy.png";
-var sick = "../components/img/sick.png";
-var hmm = "../components/img/hmm.png";
+const faces = {
+  normal: require('../components/vid/normal.mp4'),
+  dead: require('../components/vid/dead.mp4'),
+  discomfort: require('../components/vid/discomfort.mp4'),
+}
 
 export default class PatientScreen extends Component {
   static navigationOptions = {
@@ -24,7 +27,7 @@ export default class PatientScreen extends Component {
 
   constructor() {
     super();
-    this.state = {showBack: false, face: "sick"};
+    this.state = {showBack: false, face: 'normal'};
   }
 
   // This conditionally renders a floating overlay back button
@@ -54,24 +57,20 @@ export default class PatientScreen extends Component {
   }
 
   render() {
-    if (this.state.face == "hmm") {
-      theImage = <Image source = {require(hmm)} style={styles.mock} />
-    } else if (this.state.face == "sick") {
-      theImage = <Image source = {require(sick)} style={styles.mock} />
-    } else if (this.state.face == "happy") {
-      theImage = <Image source = {require(happy)} style={styles.mock} />
-    }
     return (
       <TouchableOpacity
         onPress={() => this._toggleBack()}
-        style={styles.mockView}
+        style={styles.container}
         activeOpacity={1}
       >
-        {/* <Image
-          source = {require(hmm)}
-          style={styles.mock}
-        /> */}
-        {theImage}
+        <Video
+          source={faces[this.state.face]}
+          repeat={true}
+          paused={false}
+          resizeMode='stretch'
+          style={styles.video}
+          muted={true}
+        />
         {this._renderBack()}
       </TouchableOpacity>
     );
@@ -88,17 +87,16 @@ const mapStateToProps = (state) => {
 module.exports = connect(mapStateToProps)(PatientScreen);
 
 const styles = StyleSheet.create({
-  mockView: {
+  container: {
     flex: 1
   },
-  mock: {
+  video: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
     alignContent: 'center',
     width: undefined,
     height: undefined,
-    resizeMode: 'contain'
   },
   backButton: {
     position: 'absolute',
