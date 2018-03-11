@@ -27,7 +27,7 @@ export default class PatientScreen extends Component {
 
   constructor() {
     super();
-    this.state = {showBack: false, face: 'normal'};
+    this.state = {showBack: false};
   }
 
   // This conditionally renders a floating overlay back button
@@ -64,7 +64,7 @@ export default class PatientScreen extends Component {
         activeOpacity={1}
       >
         <Video
-          source={faces[this.state.face]}
+          source={faces[this.props.face]}
           repeat={true}
           paused={false}
           resizeMode='stretch'
@@ -79,7 +79,6 @@ export default class PatientScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    showBack: state.showBack,
     face: state.face
   }
 }
