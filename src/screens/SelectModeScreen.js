@@ -26,8 +26,7 @@ export default class SelectModeScreen extends Component {
       <Container>
         <View style={{flex: 1, height: '100%'}}>
           <Grid>
-            <Col>
-            </Col>
+            <Col></Col>
             <Col size={6}>
               <Row size={1} style={{alignSelf: 'center'}}>
                 <Text style={[{fontSize: 50, marginTop: 10}, styles.menuTextColor]}> Mock Code </Text>

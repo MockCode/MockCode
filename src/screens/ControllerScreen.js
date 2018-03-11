@@ -24,13 +24,6 @@ export default class ControllerScreen extends Component {
     title: "Controller"
   };
 
-  sliderUpdate(value) {
-    this.state.sliderValue = value;
-    // store.dispatch(Update_Slider(value.toString()))
-    store.dispatch(Update_Value(ACTIONS.UPDATE_HEART_RATE, value));
-    // TODO: implement redux action
-  }
-
   render() {
     return (
       <View style={styles.container}>
