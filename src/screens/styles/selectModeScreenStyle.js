@@ -1,21 +1,20 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-    // container: {
-    //   flex: 1,
-    //   alignItems: 'center',
-    // },
-    // modes: {
-    //   flex: 1,
-    //   flexDirection: 'column',
-    //   justifyContent: 'space-around',
-    //   alignContent: 'space-around',
-    //   paddingHorizontal: '10%'
-    // },
-    // peers: {
-    //   flex: 1,
-    //   paddingHorizontal: '20%',
-    //   paddingBottom: '10%'
-    // }
+    horizontalRuler: {
+        borderBottomWidth: 1,
+        borderBottomColor: '#c2c4c6',
+        width: '95%',
+        alignSelf: 'center'
+    },
+
+    screenNavButton: {
+        width: '50%',
+        alignSelf: 'center'
+    },
+
+    menuTextColor: {
+       color: '#8c8f93'
+   } 
 });
   
