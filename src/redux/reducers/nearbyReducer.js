@@ -59,7 +59,6 @@ function O2Sat(state = 50, action) {
 
 //Ideally this action just changes the source state for the image, not sure how the formatting should go
 function face(state = 'normal', action) {
-  console.log('Reducing face update');
   switch (action.type) {
     case ACTIONS.UPDATE_FACE:
       return action.value
