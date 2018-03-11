@@ -56,7 +56,7 @@ export class VitalSlider extends Component {
       <View style={style.sliderContainer}>
         <View style={style.sliderSwitch}>
           <Text style={style.sliderTitle}>{this.props.sliderName}</Text>
-          <Switch
+          <Switch style={{}}
             value = {this.state.switchValue}
             onValueChange={this.onSwitchChange}
           /> 

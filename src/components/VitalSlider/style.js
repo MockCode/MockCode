@@ -3,6 +3,7 @@ import {StyleSheet} from "react-native";
 export default StyleSheet.create({
     sliderContainer: {
         flex: 1,
+        flexDirection: 'column',
         margin: 15,
         justifyContent: 'flex-start'
     },
