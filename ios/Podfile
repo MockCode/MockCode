@@ -17,6 +17,8 @@ target 'MockCode' do
 
   # pod 'react-native-orientation', :path => '../node_modules/react-native-orientation'
 
+  pod 'react-native-video', :path => '../node_modules/react-native-video'
+
   # target 'example' do
   
   # end
