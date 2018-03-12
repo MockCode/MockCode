@@ -18,18 +18,12 @@ const bloodPressureLevels = ["62/40", "68/42", "76/46" , "88/50", "92/52", "98/5
 export default class ControllerScreen extends Component {
   constructor() {
     super();
+    this.state = store.getState();
   }
 
   static navigationOptions = {
     title: "Controller"
   };
-
-  sliderUpdate(value) {
-    this.state.sliderValue = value;
-    // store.dispatch(Update_Slider(value.toString()))
-    store.dispatch(Update_Value(ACTIONS.UPDATE_HEART_RATE, value));
-    // TODO: implement redux action
-  }
 
   render() {
     return (
@@ -39,21 +33,21 @@ export default class ControllerScreen extends Component {
           <VitalSlider
             min={20} 
             max={300} 
-            initialValue={70} 
+            initialValue={this.state.HeartRate} 
             sliderName="Heart Rate (BPM)"
             actionType={ACTIONS.UPDATE_HEART_RATE}
             step={1} />
           <VitalSlider 
             min={60} 
             max={100}
-            initialValue={80} 
+            initialValue={this.state.O2Sat} 
             sliderName="O2 Saturation %"
             actionType={ACTIONS.UPDATE_O2SAT}
             step={1} />
           <VitalSlider 
             min={0} 
             max={15}
-            initialValue={8} 
+            initialValue={bloodPressureLevels.indexOf(this.state.bloodPressure)} 
             sliderName="Blood Pressure"
             actionType={ACTIONS.UPDATE_BLOOD_PRESSURE}
             bpLevels = {bloodPressureLevels}
@@ -61,7 +55,7 @@ export default class ControllerScreen extends Component {
           <VitalSlider 
             min={0} 
             max={50} 
-            initialValue={25} 
+            initialValue={this.state.EtC02} 
             sliderName="EtCO2 (mmHg)"
             actionType={ACTIONS.UPDATE_ETCO2}
             step = {1} />

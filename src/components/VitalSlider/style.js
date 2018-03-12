@@ -3,11 +3,13 @@ import {StyleSheet} from "react-native";
 export default StyleSheet.create({
     sliderContainer: {
         flex: 1,
+        flexDirection: 'column',
         margin: 15,
         justifyContent: 'flex-start'
     },
     sliderSwitch: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     sliderTitle: {
         color: 'black',
@@ -15,7 +17,8 @@ export default StyleSheet.create({
         fontSize: 25
     },
     sliderValueText: {
-        fontSize: 16,
+        marginLeft: 10,
+        fontSize: 20,
         fontWeight: 'bold',
         alignSelf: 'center'
     }

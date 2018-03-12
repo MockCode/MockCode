@@ -23,9 +23,16 @@ export class NetworkComp extends Component {
   
       nearbyApi.onConnected(message => {
         //TODO: dispatch successful connect action
+        console.log("Connected to Nearby.");
+        
         nearbyApi.subscribe();
       });
-  
+      nearbyApi.onSubscribeSuccess(() => {
+        console.log("Subscribe Success.");
+      });
+      nearbyApi.onSubscribeFailed(() => {
+        console.log("Subscribe failed.");
+      });
       nearbyApi.onFound(message => {
         store.dispatch(On_Message_Found(message));
       });
