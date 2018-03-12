@@ -7,8 +7,11 @@ export default StyleSheet.create({
       flexDirection: 'column',
       justifyContent: 'space-between'
     },
-    sliders: {
+    slider: {
       flex: 1
+    },
+    sliders: {
+      flex: 2
     },
     patientFaceControls: {
       flex: 1

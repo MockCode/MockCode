@@ -44,6 +44,7 @@ export default class ControllerScreen extends Component {
             initialValue={70}
             sliderName="Heart Rate (BPM)"
             actionType={ACTIONS.UPDATE_HEART_RATE}
+            style={styles.slider}
             step={1} />
           <VitalSlider
             min={60}
@@ -51,6 +52,7 @@ export default class ControllerScreen extends Component {
             initialValue={80}
             sliderName="O2 Saturation %"
             actionType={ACTIONS.UPDATE_O2SAT}
+            style={styles.slider}
             step={1} />
           <VitalSlider
             min={0}
@@ -59,6 +61,7 @@ export default class ControllerScreen extends Component {
             sliderName="Blood Pressure"
             actionType={ACTIONS.UPDATE_BLOOD_PRESSURE}
             bpLevels = {bloodPressureLevels}
+            style={styles.slider}
             step={1} />
           <VitalSlider
             min={0}
@@ -66,6 +69,7 @@ export default class ControllerScreen extends Component {
             initialValue={25}
             sliderName="EtCO2 (mmHg)"
             actionType={ACTIONS.UPDATE_ETCO2}
+            style={styles.slider}
             step = {1} />
         </View>
         <View style={styles.patientFaceControls}>
