@@ -21,6 +21,11 @@ export default class SelectModeScreen extends Component {
   //     Orientation.lockToPortrait();
   //   }
   // }
+  constructor(props) {
+    super(props);
+    this.state = store.getState()
+    devices = this.state.NearbyApi.devices
+  }
   componentDidMount(){
     // if (Platform.OS != 'Jest') {
     //   Orientation.lockToPortrait();
@@ -51,7 +56,7 @@ export default class SelectModeScreen extends Component {
           />
         </View>
         <View style={styles.peers}>
-          <PeerList data={[{id: '1'}, {id: '2'}, {id: '3'}, {id: '4'}, {id: '5'}, {id: '6'}, {id: '7'}, {id: '8'}, {id: '9'}, {id: '10'}, {id: '11'}, {id: '12'} ]}/>
+          <PeerList data={devices}/>
         </View>
       </View>
     );

@@ -7,16 +7,7 @@ import API_KEYS from '../../api'
 
 const initialState = {
     nearbyApi: new NearbyAPI(true),
-    controllerValues : [{
-        controllerValueType: ControllerValues.HEART_RATE,
-        value: 0
-    },{
-      controllerValueType: ControllerValues.BLOOD_PRESSURE,
-      value: 0
-    },{
-      controllerValueType: ControllerValues.O2Sat,
-      value: 0
-    }]
+    devices:[{id:"sample"}]
 }
 
 
@@ -24,7 +15,12 @@ function NearbyApi(state = initialState, action) {
   console.log("hit the reducer")
   switch (action.type) {
   case ACTIONS.MESSAGE_FOUND:
-    console.log(action.value)
+    console.log("message found:", action.value)
+  case ACTIONS.HELLO_RESPONSE:
+    state.devices.push({id:action.value})
+    console.log(state)
+    console.log("action:", action.value)
+    return state
   default:
     return state
   }
