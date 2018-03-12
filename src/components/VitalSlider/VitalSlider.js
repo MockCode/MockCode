@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import style from "./style";
 import { Text, View, Switch, Slider } from "react-native";
-import { Update_Slider, Update_Value, ACTIONS } from '../../redux/actions/nearbyActions'
+import { Update_Value, ACTIONS } from '../../redux/actions/nearbyActions';
+import { HeartRhythmSelector } from '../HeartRhythmSelector';
+import {Container} from 'native-base';
 
 // May use this open source slider later on to customize UI better
 //import Slider from "react-native-slider"
@@ -51,13 +53,25 @@ export class VitalSlider extends Component {
 
   }
 
+  renderWaveFormSelector() {
+    if(this.props.sliderName.indexOf("Heart Rate") !== -1){
+      return(
+        <HeartRhythmSelector />
+      )
+    }
+  }
+
   render() {
     return (
+      <Container>
       <View style={style.sliderContainer}>
         <View style={style.sliderSwitch}>
           <View style={{flexDirection: 'row'}}>
             <Text style={style.sliderTitle}>{this.props.sliderName}</Text>
             {this.renderSliderValue()}
+          </View>
+          <View style={{bottom: 5}}>
+            {this.renderWaveFormSelector()}
           </View>
           <Switch style={{}}
             value = {this.state.switchValue}
@@ -74,6 +88,7 @@ export class VitalSlider extends Component {
           step = {this.props.step}
         />
       </View>
+      </Container>
     );
   }
 }
