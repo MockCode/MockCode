@@ -17,9 +17,15 @@ const faces = {
   normal: require('../components/vid/normal.mp4'),
   dead: require('../components/vid/dead.mp4'),
   discomfort: require('../components/vid/discomfort.mp4'),
-}
+};
 
-export default class PatientScreen extends Component {
+export const faceNames = {
+  normal: 'Normal',
+  dead: 'Dead',
+  discomfort: 'Discomfort',
+};
+
+class PatientScreen extends Component {
   static navigationOptions = {
     title: 'Patient',
     header: null
@@ -83,7 +89,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-module.exports = connect(mapStateToProps)(PatientScreen);
+// This default is actually exporting PatientScreen
+export default connect(mapStateToProps)(PatientScreen);
 
 const styles = StyleSheet.create({
   container: {
