@@ -7,6 +7,8 @@ import { NearbyAPI } from "react-native-nearby-api";
 import {API_KEYS} from '../api'
 import {Update_Slider, Update_Value, ACTIONS} from '../redux/actions/nearbyActions'
 import { NetworkComp } from '../components/network';
+import FaceButton from '../components/FaceButton';
+import FaceButtonList from '../components/FaceButtonList';
 
 const API_KEY = API_KEYS.nearby;
 
@@ -34,44 +36,42 @@ export default class ControllerScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <NetworkComp/>        
+        <NetworkComp/>
         <View style={styles.sliders}>
           <VitalSlider
-            min={20} 
-            max={300} 
-            initialValue={70} 
+            min={20}
+            max={300}
+            initialValue={70}
             sliderName="Heart Rate (BPM)"
             actionType={ACTIONS.UPDATE_HEART_RATE}
             step={1} />
-          <VitalSlider 
-            min={60} 
+          <VitalSlider
+            min={60}
             max={100}
-            initialValue={80} 
+            initialValue={80}
             sliderName="O2 Saturation %"
             actionType={ACTIONS.UPDATE_O2SAT}
             step={1} />
-          <VitalSlider 
-            min={0} 
+          <VitalSlider
+            min={0}
             max={15}
-            initialValue={8} 
+            initialValue={8}
             sliderName="Blood Pressure"
             actionType={ACTIONS.UPDATE_BLOOD_PRESSURE}
             bpLevels = {bloodPressureLevels}
             step={1} />
-          <VitalSlider 
-            min={0} 
-            max={50} 
-            initialValue={25} 
+          <VitalSlider
+            min={0}
+            max={50}
+            initialValue={25}
             sliderName="EtCO2 (mmHg)"
             actionType={ACTIONS.UPDATE_ETCO2}
             step = {1} />
         </View>
-        <View style={styles.patientFace}>
-
+        <View style={styles.patientFaceControls}>
+          <FaceButtonList />
         </View>
       </View>
     );
   }
 }
-
-

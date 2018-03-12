@@ -8,9 +8,9 @@ export default StyleSheet.create({
       justifyContent: 'space-between'
     },
     sliders: {
-      flex:0.65
+      flex: 1
     },
-    patientFace: {
-      flex: 0.5
+    patientFaceControls: {
+      flex: 1
     }
 })
