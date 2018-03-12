@@ -8,9 +8,9 @@
  */
 
 #import "AppDelegate.h"
-#import <AppCenterReactNativeCrashes/AppCenterReactNativeCrashes.h>
-#import <AppCenterReactNativeAnalytics/AppCenterReactNativeAnalytics.h>
-#import <AppCenterReactNative/AppCenterReactNative.h>
+//#import <AppCenterReactNativeCrashes/AppCenterReactNativeCrashes.h>
+//#import <AppCenterReactNativeAnalytics/AppCenterReactNativeAnalytics.h>
+//#import <AppCenterReactNative/AppCenterReactNative.h>
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
@@ -23,7 +23,11 @@
 {
   NSURL *jsCodeLocation;
 
-  [AppCenterReactNative register];  // Initialize AppCenter 
+//  [AppCenterReactNative register];  // Initialize AppCenter 
+
+ // [AppCenterReactNative register];  // Initialize AppCenter 
+
+//  [AppCenterReactNative register];  // Initialize AppCenter
 
 //  [AppCenterReactNative register];  // Initialize AppCenter
 

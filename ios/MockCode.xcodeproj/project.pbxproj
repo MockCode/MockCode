@@ -34,9 +34,10 @@
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* MockCodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MockCodeTests.m */; };
+		7AC3BB842055F48C00A79E7A /* libRNWebGL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC3BB832055F48400A79E7A /* libRNWebGL.a */; };
+		7AC3BB852055F53400A79E7A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		9C5128B92041EDC4004FD43B /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
-		9C879914203D3602006F5FB1 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		9C879916203D3A23006F5FB1 /* libAppCenterReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C8797BA203D3229006F5FB1 /* libAppCenterReactNative.a */; };
 		9C879917203D3A23006F5FB1 /* libAppCenterReactNativeAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C8797BD203D3229006F5FB1 /* libAppCenterReactNativeAnalytics.a */; };
 		9C879918203D3A23006F5FB1 /* libAppCenterReactNativeCrashes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C8797C0203D3229006F5FB1 /* libAppCenterReactNativeCrashes.a */; };
@@ -248,6 +249,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTLinking;
 		};
+		7AC3BB822055F48400A79E7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AC3BB542055F48400A79E7A /* RNWebGL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4107012F1ACB723B00C6AA39;
+			remoteInfo = RNWebGL;
+		};
 		832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
@@ -377,6 +385,7 @@
 		667B109520824B39837EE032 /* libAppCenterReactNative.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAppCenterReactNative.a; sourceTree = "<group>"; };
 		71A1855E2CDC3EE340172709 /* libPods-MockCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MockCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7AC3BB542055F48400A79E7A /* RNWebGL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNWebGL.xcodeproj; path = "../node_modules/react-native-webgl/ios/RNWebGL.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		9B262F876771440081857CDA /* RNNearbyApi.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNNearbyApi.xcodeproj; path = "../node_modules/react-native-nearby-api/ios/RNNearbyApi.xcodeproj"; sourceTree = "<group>"; };
 		9B819ACC115343F297264D30 /* libAppCenterReactNativeAnalytics.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAppCenterReactNativeAnalytics.a; sourceTree = "<group>"; };
@@ -403,6 +412,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AC3BB852055F53400A79E7A /* libReact.a in Frameworks */,
+				7AC3BB842055F48C00A79E7A /* libRNWebGL.a in Frameworks */,
 				9CEC949120420FE600DC0E37 /* libRNNearbyApi.a in Frameworks */,
 				9C5128B92041EDC4004FD43B /* libRCTAnimation.a in Frameworks */,
 				9C879916203D3A23006F5FB1 /* libAppCenterReactNative.a in Frameworks */,
@@ -418,7 +429,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				9C879914203D3602006F5FB1 /* libReact.a in Frameworks */,
 				075DED084756ACEAA49C8486 /* libPods-MockCode.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,6 +577,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7AC3BB542055F48400A79E7A /* RNWebGL.xcodeproj */,
 				9CE764882043BE9200A1D260 /* libreact-native-orientation.a */,
 				9CE7635D2043B85D00A1D260 /* libreact-native-orientation.a */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
@@ -589,6 +600,14 @@
 			children = (
 				78C398B91ACF4ADC00677621 /* libRCTLinking.a */,
 				3DAD3E881DF850E9000B6D8A /* libRCTLinking-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7AC3BB552055F48400A79E7A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7AC3BB832055F48400A79E7A /* libRNWebGL.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -802,11 +821,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = KNRKAZW3E7;
+						DevelopmentTeam = 693D9897FY;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = KNRKAZW3E7;
+						DevelopmentTeam = 693D9897FY;
 						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -895,6 +914,10 @@
 				{
 					ProductGroup = 9C87953B203D2721006F5FB1 /* Products */;
 					ProjectRef = 9B262F876771440081857CDA /* RNNearbyApi.xcodeproj */;
+				},
+				{
+					ProductGroup = 7AC3BB552055F48400A79E7A /* Products */;
+					ProjectRef = 7AC3BB542055F48400A79E7A /* RNWebGL.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1095,6 +1118,13 @@
 			fileType = archive.ar;
 			path = libRCTLinking.a;
 			remoteRef = 78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7AC3BB832055F48400A79E7A /* libRNWebGL.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNWebGL.a;
+			remoteRef = 7AC3BB822055F48400A79E7A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		832341B51AAA6A8300B99B32 /* libRCTText.a */ = {
@@ -1384,7 +1414,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = KNRKAZW3E7;
+				DEVELOPMENT_TEAM = 693D9897FY;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1418,7 +1448,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = KNRKAZW3E7;
+				DEVELOPMENT_TEAM = 693D9897FY;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
@@ -1452,7 +1482,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = KNRKAZW3E7;
+				DEVELOPMENT_TEAM = 693D9897FY;
 				GCC_NO_COMMON_BLOCKS = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1472,7 +1502,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ca.begert.mockcode;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.begert.mockcode1;
 				PRODUCT_NAME = MockCode;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1489,7 +1519,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KNRKAZW3E7;
+				DEVELOPMENT_TEAM = 693D9897FY;
 				GCC_NO_COMMON_BLOCKS = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1509,7 +1539,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ca.begert.mockcode;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.begert.mockcode1;
 				PRODUCT_NAME = MockCode;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

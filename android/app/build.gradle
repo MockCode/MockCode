@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-webgl')
     compile project(':react-native-nearby-api')
     compile project(':react-native-orientation')
     compile project(':appcenter-crashes')

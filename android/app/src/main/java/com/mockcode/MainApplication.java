@@ -3,6 +3,7 @@ package com.mockcode;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import fr.greweb.rnwebgl.RNWebGLPackage;
 import com.badfeatures.nearby.RNNearbyApiPackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.microsoft.appcenter.reactnative.crashes.AppCenterReactNativeCrashesPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNWebGLPackage(),
             new RNNearbyApiPackage(),
             new OrientationPackage(),
             new AppCenterReactNativeCrashesPackage(MainApplication.this, getResources().getString(R.string.appcenterCrashes_whenToSendCrashes)),
