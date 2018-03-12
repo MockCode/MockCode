@@ -57,7 +57,7 @@ export class VitalSlider extends Component {
     if(this.props.sliderName.indexOf("Heart Rate") !== -1){
       return(
         <HeartRhythmSelector />
-      )
+      );
     }
   }
 
