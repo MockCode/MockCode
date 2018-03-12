@@ -16,6 +16,9 @@ const initialState = {
     },{
       controllerValueType: ControllerValues.O2Sat,
       value: 0
+    },{
+      controllerValueType: ControllerValues.EtC02,
+      value: 0
     }]
 }
 
@@ -39,7 +42,7 @@ function HeartRate(state = 80, action) {
   }
 }
 
-function bloodPressure(state = '130/86', action) {
+function bloodPressure(state = '120/78', action) {
   switch (action.type) {
     case ACTIONS.UPDATE_BLOOD_PRESSURE:
       return action.value
@@ -48,7 +51,7 @@ function bloodPressure(state = '130/86', action) {
   }
 }
 
-function O2Sat(state = 50, action) {
+function O2Sat(state = 96, action) {
   switch (action.type) {
     case ACTIONS.UPDATE_O2SAT:
       return action.value
@@ -67,12 +70,22 @@ function face(state = 'normal', action) {
   }
 }
 
+function EtC02(state= 25, action) {
+  switch (action.type) {
+    case ACTIONS.UPDATE_ETCO2:
+      return action.value
+    default:
+      return state
+  }
+}
+
 const MockApp = combineReducers({
     NearbyApi,
     HeartRate,
     bloodPressure,
     O2Sat,
-    face
+    face,
+    EtC02,
 });
 
 export default MockApp;
