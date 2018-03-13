@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import style from "./style";
-import { Text, View, Switch, Slider } from "react-native";
+import { Text, View, Switch } from "react-native";
 import { Update_Value, ACTIONS } from '../../redux/actions/nearbyActions';
 import { HeartRhythmSelector } from '../HeartRhythmSelector';
 import {Container} from 'native-base';
 
-// May use this open source slider later on to customize UI better
-//import Slider from "react-native-slider"
+//May use this open source slider later on to customize UI better
+import Slider from "react-native-slider"
 
 export class VitalSlider extends Component {
   constructor(props) {
@@ -64,14 +64,14 @@ export class VitalSlider extends Component {
     if(this.props.sliderName.indexOf("Heart Rate") !== -1){
       return (
         <View style={{flexDirection: 'row'}}>
-        <HeartRhythmSelector onValueChange={this.onWaveFormChange} />
-        <Text style={{alignSelf: 'center',
-                      fontWeight: 'bold',
-                      marginLeft: 10,
-                      fontSize: 17, 
-                      color: 'black',
-                      bottom: 2.5}}> 
-        Current: {this.state.waveForm} </Text>                
+          <HeartRhythmSelector onValueChange={this.onWaveFormChange} />
+          <Text style={{alignSelf: 'center',
+                        fontWeight: 'bold',
+                        marginLeft: 10,
+                        fontSize: 17, 
+                        color: 'black',
+                        bottom: 2.5}}>
+          {this.state.waveForm} </Text>               
         </View>
       );
     }
@@ -93,14 +93,17 @@ export class VitalSlider extends Component {
         </View>
         <View style={style.slider}>
           <Slider
-            disabled = {!this.state.switchValue}
-            value={this.state.sliderValue}
-            onValueChange={this.onSliderChange}
-            minimumValue={this.props.min}
-            maximumValue={this.props.max}
-            onSlidingComplete={this.onSlidingComplete}
-            step = {this.props.step}
-          />
+              disabled = {!this.state.switchValue}
+              value={this.state.sliderValue}
+              onValueChange={this.onSliderChange}
+              minimumValue={this.props.min}
+              maximumValue={this.props.max}
+              onSlidingComplete={this.onSlidingComplete}
+              step = {this.props.step}
+              style = {{width: '80%', alignSelf: 'center'}}
+              minimumTrackTintColor="#009688"
+              thumbTintColor="#009688"
+            />
         </View>
       </View>
     );

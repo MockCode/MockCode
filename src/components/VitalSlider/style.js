@@ -11,9 +11,6 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
-    slider: {
-        flex: 0.6
-    },
     sliderTitle: {
         color: 'black',
         fontWeight: 'bold',
