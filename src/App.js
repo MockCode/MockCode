@@ -12,6 +12,7 @@ import {API_KEYS} from './api'
 import RootNavigator from './navigation'
 import MonitorScreen from './screens/MonitorScreen'
 import {NetworkComp} from './components/network'
+import {Root} from 'native-base'
 
 // const nearbyAPI = new NearbyAPI(true);
 
@@ -43,7 +44,9 @@ export default class App extends Component {
     // <network/>
     return (
       <Provider store={store}>
-        <RootNavigator />
+        <Root>
+          <RootNavigator />
+        </Root>
       </Provider>
     );
   }

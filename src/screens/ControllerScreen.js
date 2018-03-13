@@ -33,7 +33,8 @@ export default class ControllerScreen extends Component {
           <VitalSlider
             min={20} 
             max={300} 
-            initialValue={this.state.HeartRate} 
+            initialValue={this.state.HeartRate}
+            initialWaveForm={"Normal Sinus Rhythmn"} 
             sliderName="Heart Rate (BPM):"
             actionType={ACTIONS.UPDATE_HEART_RATE}
             step={1} />

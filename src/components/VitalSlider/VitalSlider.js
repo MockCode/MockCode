@@ -14,9 +14,11 @@ export class VitalSlider extends Component {
     super(props);
     this.onSliderChange = this.onSliderChange.bind(this);
     this.onSwitchChange = this.onSwitchChange.bind(this);
+    this.onWaveFormChange = this.onWaveFormChange.bind(this);
     this.state = {
       sliderValue: props.initialValue,
-      switchValue: true
+      switchValue: true,
+      waveForm: props.initialWaveForm
     };
   }
 
@@ -26,6 +28,11 @@ export class VitalSlider extends Component {
 
   onSwitchChange = (value) => {
     this.setState({switchValue: value});
+  }
+
+  onWaveFormChange = (value) => {  
+    this.setState({waveForm: value});
+    console.log("WaveForm: ", this.state.waveForm);
   }
 
   onSlidingComplete = (value) => {
@@ -55,40 +62,41 @@ export class VitalSlider extends Component {
 
   renderWaveFormSelector() {
     if(this.props.sliderName.indexOf("Heart Rate") !== -1){
-      return(
-        <HeartRhythmSelector />
+      return (
+        <View style={{flexDirection: 'row'}}>
+        <HeartRhythmSelector onValueChange={this.onWaveFormChange} />
+        <Text style={{alignSelf: 'center', fontWeight: 'bold', marginLeft: 10, fontSize: 17, color: 'black'}}> Current: {this.state.waveForm} </Text>                
+        </View>
       );
     }
   }
 
   render() {
     return (
-      <Container>
       <View style={style.sliderContainer}>
-        <View style={style.sliderSwitch}>
+        <View style={style.titleValueSwitch}>
           <View style={{flexDirection: 'row'}}>
             <Text style={style.sliderTitle}>{this.props.sliderName}</Text>
             {this.renderSliderValue()}
           </View>
-          <View style={{bottom: 5}}>
-            {this.renderWaveFormSelector()}
-          </View>
-          <Switch style={{}}
+          {this.renderWaveFormSelector()}
+          <Switch
             value = {this.state.switchValue}
             onValueChange={this.onSwitchChange}
           /> 
         </View>
-        <Slider
-          disabled = {!this.state.switchValue}
-          value={this.state.sliderValue}
-          onValueChange={this.onSliderChange}
-          minimumValue={this.props.min}
-          maximumValue={this.props.max}
-          onSlidingComplete={this.onSlidingComplete}
-          step = {this.props.step}
-        />
+        <View style={style.slider}>
+          <Slider
+            disabled = {!this.state.switchValue}
+            value={this.state.sliderValue}
+            onValueChange={this.onSliderChange}
+            minimumValue={this.props.min}
+            maximumValue={this.props.max}
+            onSlidingComplete={this.onSlidingComplete}
+            step = {this.props.step}
+          />
+        </View>
       </View>
-      </Container>
     );
   }
 }

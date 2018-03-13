@@ -7,9 +7,12 @@ export default StyleSheet.create({
         margin: 15,
         justifyContent: 'flex-start'
     },
-    sliderSwitch: {
+    titleValueSwitch: {
         flexDirection: 'row',
         justifyContent: 'space-between'
+    },
+    slider: {
+        flex: 0.6
     },
     sliderTitle: {
         color: 'black',
@@ -18,7 +21,7 @@ export default StyleSheet.create({
     },
     sliderValueText: {
         marginLeft: 10,
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: 'bold',
         alignSelf: 'center'
     }

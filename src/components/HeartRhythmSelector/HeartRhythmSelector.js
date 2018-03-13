@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from'prop-types'
 import { Icon, Root, Container, Button, ActionSheet, Text } from "native-base";
 
 const BUTTONS = ["Normal Sinus Rhythmn", "Ventricular Tachycardia" ,"Ventricular Fibrillation"]
@@ -11,26 +12,30 @@ export class HeartRhythmSelector extends Component {
     this.state = {}
   }
 
-
   render() {
     return (
-      <Root>
-        <Button iconLeft light
+        <Button rounded small iconLeft light
         onPress={() => ActionSheet.show(
           {
-          options: BUTTONS,
-          cancelButtonIndex: CANCEL_INDEX,
-          destructiveButtonIndex: DESTRUCTIVE_INDEX,
-          title: "Heartbeat Waveform"
+            options: BUTTONS,
+            cancelButtonIndex: CANCEL_INDEX,
+            destructiveButtonIndex: DESTRUCTIVE_INDEX,
+            title: "Heartbeat Waveform"
           },
           buttonIndex => {
             this.setState({clicked: BUTTONS[buttonIndex]});
+            if (buttonIndex >= 0 && buttonIndex < BUTTONS.length){
+              this.props.onValueChange(BUTTONS[buttonIndex]);
+            }
           }
         )}>
         <Icon name='pulse' />
         <Text>Waveforms</Text>
         </Button>
-      </Root>
     );
   }
+}
+
+HeartRhythmSelector.propTypes = {
+  onValueChange: PropTypes.func.isRequired
 }
