@@ -5,11 +5,14 @@ import {
   StyleSheet,
   StatusBar,
   Alert,
-  Platform
+  Platform,
+  Dimensions
 } from 'react-native';
 import { Container, Content, Button, Text, Grid, Row, Col } from 'native-base';
 import PeerList from '../components/PeerList';
 import styles from "./styles/selectModeScreenStyle";
+import {scale, moderateScale} from "../utils/scaling"
+
 
 export default class SelectModeScreen extends Component {
   componentDidMount(){
@@ -17,23 +20,22 @@ export default class SelectModeScreen extends Component {
   }
 
   static navigationOptions = {
-    title: 'Select Mode'
-  }
+    header: null
+  };
 
   render() {
     const {navigate} = this.props.navigation;
     return (
       <Container>
-        <View style={{flex: 1, height: '100%'}}>
           <Grid>
             <Col></Col>
-            <Col size={6}>
+            <Col size={7}>
               <Row size={1} style={{alignSelf: 'center'}}>
-                <Text style={[{fontSize: 50, marginTop: 10}, styles.menuTextColor]}> Mock Code </Text>
+                <Text style={[{fontSize: moderateScale(50), marginTop: 10}, styles.menuText]}> Mock Code </Text>
               </Row>
               <Row size={0.6}>
                 <Col>
-                <Text style={[{fontSize: 30}, styles.menuTextColor]}> Choose Interface </Text>
+                <Text style={[{fontSize: moderateScale(30)}, styles.menuText]}> Choose Interface </Text>
                 <View style={styles.horizontalRuler}/>
                 </Col>
               </Row>
@@ -52,17 +54,16 @@ export default class SelectModeScreen extends Component {
               </Row>
               <Row size={0.6}>
                 <Col>
-                  <Text style={[{fontSize: 30}, styles.menuTextColor]}> Nearby </Text>
+                  <Text style={[{fontSize: moderateScale(30)}, styles.menuText]}> Nearby </Text>
                   <View style={styles.horizontalRuler}/>                                         
                 </Col>
               </Row>
-              <Row size={5} style={{alignSelf: 'center', paddingHorizontal: '10%'}}>
+              <Row size={3} style={{alignSelf: 'center', paddingHorizontal: '10%'}}>
                 <PeerList data={[{id: '1'}, {id: '2'}, {id: '3'}, {id: '4'}, {id: '5'}, {id: '6'}, {id: '7'}, {id: '8'}, {id: '9'}, {id: '10'}, {id: '11'}, {id: '12'} ]}/>
               </Row>
             </Col>
             <Col></Col>
           </Grid>
-        </View>
       </Container>
     );
   };
