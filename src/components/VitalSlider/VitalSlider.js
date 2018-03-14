@@ -89,6 +89,8 @@ export class VitalSlider extends Component {
           <Switch
             value = {this.state.switchValue}
             onValueChange={this.onSwitchChange}
+            onTintColor="#1073ff"
+            thumbTintColor="white"
           /> 
         </View>
         <View style={style.slider}>
@@ -101,8 +103,10 @@ export class VitalSlider extends Component {
               onSlidingComplete={this.onSlidingComplete}
               step = {this.props.step}
               style = {{width: '80%', alignSelf: 'center'}}
-              minimumTrackTintColor="#009688"
-              thumbTintColor="#009688"
+              trackStyle={style.trackStyle}
+              thumbStyle={style.thumbStyle}
+              minimumTrackTintColor='#1073ff'
+              maximumTrackTintColor='#b7b7b7'
             />
         </View>
       </View>

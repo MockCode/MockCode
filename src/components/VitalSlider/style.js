@@ -21,5 +21,19 @@ export default StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
         alignSelf: 'center'
+    },
+    thumbStyle: {
+        width: 30,
+        height: 30,
+        borderRadius: 30 / 2,
+        backgroundColor: 'white',
+        shadowColor: 'black',
+        shadowOffset: {width: 0, height: 2},
+        shadowRadius: 2,
+        shadowOpacity: 0.35
+    },
+    trackStyle: {
+        height: 2,
+        borderRadius: 1,
     }
 })
