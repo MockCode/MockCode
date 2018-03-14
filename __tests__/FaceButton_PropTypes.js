@@ -16,6 +16,7 @@ import FaceButton from '../src/components/FaceButton';
 describe('FaceButton PropTypes tests', () => {
   // Storage for the old error function
   let oldError;
+  let mockError;
 
   // Save a reference to the old error function so we can replace it later
   beforeAll(() => {
@@ -26,7 +27,8 @@ describe('FaceButton PropTypes tests', () => {
   // This needs to be done before each test so we can count what we're doing
   // in the test.
   beforeEach(() => {
-    global.console.error = jest.fn();
+    mockError = jest.fn();
+    global.console.error = mockError;
   });
 
   // When everything's done we need to put the old function back
@@ -40,10 +42,11 @@ describe('FaceButton PropTypes tests', () => {
 
     // Test that our mock function got called once and with an error message
     // specifically about bad number type
-    expect(global.console.error.mock.calls.length).toBe(1);
-    expect(global.console.error.mock.calls[0][0])
-      .toBe('Warning: Failed prop type: Invalid value prop type: number\n' +
-            '    in FaceButton');
+    expect(mockError).toHaveBeenCalledTimes(1);
+    expect(mockError)
+      .toHaveBeenLastCalledWith(
+        expect.stringContaining('Invalid value prop type: number')
+      );
   });
 
   it('fails with missing value prop', () => {
@@ -52,10 +55,11 @@ describe('FaceButton PropTypes tests', () => {
 
     // Test that our mock function got called once with an error message
     // specifically about missing value prop
-    expect(global.console.error.mock.calls.length).toBe(1);
-    expect(global.console.error.mock.calls[0][0])
-      .toBe('Warning: Failed prop type: Value prop is required\n' +
-            '    in FaceButton');
+    expect(mockError).toHaveBeenCalledTimes(1);
+    expect(mockError)
+      .toHaveBeenLastCalledWith(
+        expect.stringContaining('Failed prop type: Value prop is required')
+      );
   });
 
   describe('FaceButton tests requiring faceNames', () => {
@@ -65,16 +69,17 @@ describe('FaceButton PropTypes tests', () => {
 
       // Test that our mock function got called once with an error message
       // specifically about missing value prop
-      expect(global.console.error.mock.calls.length).toBe(1);
-      expect(global.console.error.mock.calls[0][0])
-        .toBe('Warning: Failed prop type: Value prop is not a patient face ' +
-              'name: fake\n    in FaceButton');
+      expect(mockError).toHaveBeenCalledTimes(1);
+      expect(mockError).toHaveBeenLastCalledWith(
+        expect.stringContaining('Failed prop type: Value prop is not a ' +
+                                'patient face name: fake')
+      );
     });
 
     it('succeeds with a real face name', () => {
       // Build the object
       <FaceButton value='test1'/>;
-      expect(global.console.error.mock.calls.length).toBe(0);
+      expect(mockError).toHaveBeenCalledTimes(0);
     });
   })
 });
