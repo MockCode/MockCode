@@ -60,6 +60,16 @@ function O2Sat(state = 96, action) {
   }
 }
 
+//Ideally this action just changes the source state for the image, not sure how the formatting should go
+function face(state = 'normal', action) {
+  switch (action.type) {
+    case ACTIONS.UPDATE_FACE:
+      return action.value
+    default:
+      return state
+  }
+}
+
 function EtC02(state= 25, action) {
   switch (action.type) {
     case ACTIONS.UPDATE_ETCO2:
@@ -74,7 +84,8 @@ const MockApp = combineReducers({
     HeartRate,
     bloodPressure,
     O2Sat,
-    EtC02
+    face,
+    EtC02,
 });
 
 export default MockApp;

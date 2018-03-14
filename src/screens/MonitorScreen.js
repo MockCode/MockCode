@@ -35,9 +35,7 @@ export default class MonitorScreen extends Component {
     title: 'Monitor',
     header: null
   }
-  static propTypes = {
-    prop: PropTypes
-  }
+  
   constructor() {
     super();
     this.state = {
@@ -94,7 +92,7 @@ export default class MonitorScreen extends Component {
               title='Exit'
               // onPress={()=>{goBack(), Orientation.lockToPortrait();}}
             onPress={() => { goBack()}}
-              
+
             />
         </View>
       </View>
