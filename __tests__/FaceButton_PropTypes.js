@@ -59,8 +59,6 @@ describe('FaceButton PropTypes tests', () => {
   });
 
   describe('FaceButton tests requiring faceNames', () => {
-    beforeAll(() => {
-    });
     it('fails with bad face name', () => {
       // Build the object
       <FaceButton value='fake'/>;
