@@ -41,13 +41,13 @@ export default class SelectModeScreen extends Component {
               </Row>
               <Row size={2}>
                 <Col style={{justifyContent: 'space-around'}}>
-                  <Button style={styles.screenNavButton} full onPress={() => navigate('ControllerScreen')}>
+                  <Button bordered style={styles.screenNavButton} block onPress={() => navigate('ControllerScreen')}>
                     <Text> Controller </Text>
                   </Button>
-                  <Button style={styles.screenNavButton} full onPress={() => navigate('MonitorScreen')}>
+                  <Button bordered style={styles.screenNavButton} block onPress={() => navigate('MonitorScreen')}>
                     <Text> Monitor </Text>
                   </Button>
-                  <Button style={styles.screenNavButton} full onPress={() => navigate('PatientScreen')}>
+                  <Button bordered style={styles.screenNavButton} block onPress={() => navigate('PatientScreen')}>
                     <Text> Patient Face </Text>
                 </Button>
                 </Col>
