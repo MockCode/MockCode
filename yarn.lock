@@ -1949,24 +1949,24 @@ gl-format-compiler-error@^1.0.2:
     glsl-shader-name "^1.0.0"
     sprintf-js "^1.0.3"
 
-gl-react-native@^3.15.0:
-  version "3.15.0"
-  resolved "https://registry.yarnpkg.com/gl-react-native/-/gl-react-native-3.15.0.tgz#3e9b67a234d075a19d985a6eb053fcdab2de154b"
+gl-react-native@^3.14.0:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/gl-react-native/-/gl-react-native-3.14.0.tgz#034172fdff1925bfd53c0ce873c152ca62cce704"
   dependencies:
-    prop-types "^15.6.1"
+    prop-types "^15.5.8"
     webgltexture-loader-react-native "^0.6.0"
 
-gl-react@^3.15.0:
-  version "3.15.0"
-  resolved "https://registry.yarnpkg.com/gl-react/-/gl-react-3.15.0.tgz#bd98e8955c61ac5fa466fffd6b146175f839da5a"
+gl-react@^3.14.0:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/gl-react/-/gl-react-3.14.0.tgz#efc462c554d817988a0e874bced94422d63a52e9"
   dependencies:
     gl-shader "^4.2.1"
     invariant "^2.2.1"
     ndarray "^1.0.18"
-    prop-types "^15.6.1"
+    prop-types "^15.5.8"
     typedarray-pool "^1.1.0"
     webgltexture-loader "^0.6.0"
-    webgltexture-loader-ndarray "^0.9.0"
+    webgltexture-loader-ndarray "^0.6.0"
 
 gl-shader@^4.2.1:
   version "4.2.1"
@@ -3745,14 +3745,6 @@ prop-types@^15.5.10, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.0:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
-prop-types@^15.6.1:
-  version "15.6.1"
-  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
-  dependencies:
-    fbjs "^0.8.16"
-    loose-envify "^1.3.1"
-    object-assign "^4.1.1"
-
 pseudomap@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
@@ -4916,9 +4908,9 @@ weakmap-shim@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/weakmap-shim/-/weakmap-shim-1.1.1.tgz#d65afd784109b2166e00ff571c33150ec2a40b49"
 
-webgltexture-loader-ndarray@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/webgltexture-loader-ndarray/-/webgltexture-loader-ndarray-0.9.0.tgz#1ea839620ce9413cdd6015f4e17bfa973e973563"
+webgltexture-loader-ndarray@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/webgltexture-loader-ndarray/-/webgltexture-loader-ndarray-0.6.0.tgz#898b3d8d1fde4eba9682eb41ba922fa2757eef35"
   dependencies:
     ndarray "^1.0.18"
     ndarray-ops "^1.2.2"

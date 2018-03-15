@@ -15,10 +15,9 @@ A three device setup allows for an instructor to control a scenario remotely and
 npm install
 react-native link
 grep -rl --include \*.h --include \*.cpp --include \*.cc --include \*.in AddLogSink node_modules/react-native/third-party/ | xargs sed -i '' 's/AddLogSink/ReactAddLogSink/g'
-grep -rl --include \*.h --include \*.cpp --include \*.cc --include \*.in RemoveLogSink node_modules/react-native/third-party/ | xargs sed -i '' 's/RemoveLogSink/ReactRemoveLogSink/g'
+grep -rl --include \*.h --include \*.cpp --include e*.cc --include \*.in RemoveLogSink node_modules/react-native/third-party/ | xargs sed -i '' 's/RemoveLogSink/ReactRemoveLogSink/g'
+Note for fred : `node_modules/react-native-webgl/ios/``
 ```
-
-Note for fred : drag `node_modules/react-native-webgl/ios/RNWebGL.xcodeproj` into project
 
 ### Android
 
