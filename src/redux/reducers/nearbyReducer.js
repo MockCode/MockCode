@@ -12,14 +12,14 @@ const initialState = {
 
 
 function NearbyApi(state = initialState, action) {
-  console.log("hit the reducer")
+  // console.log("hit the reducer")
   switch (action.type) {
   case ACTIONS.MESSAGE_FOUND:
-    console.log("message found:", action.value)
+    // console.log("message found:", action.value)
   case ACTIONS.HELLO_RESPONSE:
-    state.devices.push({id:action.value})
-    console.log(state)
-    console.log("action:", action.value)
+    if (state.devices.indexOf(action.value) == -1) state.devices.push({id:action.value});
+    // console.log(state)
+    // console.log("action:", action.value)
     return state
   default:
     return state

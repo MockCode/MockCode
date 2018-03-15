@@ -12,12 +12,12 @@ import DeviceInfo from 'react-native-device-info'
 
 export class NetworkComp extends Component {
   componentDidMount() {
-    console.log("network was created");
-    console.log(DeviceInfo.getDeviceName())
+    // console.log("network was created");
+    // console.log(DeviceInfo.getDeviceName())
     state = store.getState()
     var nearbyApi = state.NearbyApi.nearbyApi;
     // console.log(state);
-    console.log(nearbyApi);
+    // console.log(nearbyApi);
     if (nearbyApi != undefined) {
       // var nearbyApi = new NearbyAPI(true);
       // console.log(Platform.OS)
@@ -33,13 +33,13 @@ export class NetworkComp extends Component {
       nearbyApi.onSubscribeSuccess(() => {
         let m = {type:ACTIONS.HELLO_REQUEST, message: DeviceInfo.getDeviceName()}
         nearbyApi.publish(JSON.stringify(m));
-        console.log(m)
+        // console.log(m)
       })
       nearbyApi.onPublishSuccess(message => {
-        console.log(message, "psucess");
+        // console.log(message, "psucess");
       });
       nearbyApi.onFound(message => {
-        console.log(message);
+        // console.log(message);
         store.dispatch(On_Message_Found(message));
       });
 
