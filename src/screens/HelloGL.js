@@ -41,10 +41,6 @@ class HelloBlue extends React.Component {
                 uniform float particles[3]; 
                 uniform int time;
                 uniform vec2 plot[1];
-                
-                float getPos(
-
-
                 void main () {
                     if (uv.x < particles[0] && uv.x > particles[0] - particles[1] && uv.y < plot[0][0] && uv.y > plot[0][time] - particles[1]) {
                         gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
@@ -54,7 +50,6 @@ class HelloBlue extends React.Component {
                     }
                 }
                 `
-                vertex:
             }}
             />
             </Surface>
