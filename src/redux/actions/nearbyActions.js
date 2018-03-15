@@ -43,12 +43,12 @@ export function On_Message_Found(message) {
   return (dispatch, getState) => {
 		let m = JSON.parse(message);
 		// console.log(m);
-		if (m.type == ACTIONS.HELLO_REQUEST) {
-			let m = {message: DeviceInfo.getDeviceName(), type: ACTIONS.HELLO_RESPONSE}
+		if (m.type === ACTIONS.HELLO_REQUEST) {
+			let response_m = {message: DeviceInfo.getDeviceName(), type: ACTIONS.HELLO_RESPONSE}
 			// console.log(m)
-			getState().NearbyApi.nearbyApi.publish(JSON.stringify(m))
+			getState().NearbyApi.nearbyApi.publish(JSON.stringify(response_m))
 			return dispatch(Update_Store(ACTIONS.HELLO_RESPONSE, m.message))
-		} else if (m.type == ACTIONS.HELLO_RESPONSE) {
+		} else if (m.type === ACTIONS.HELLO_RESPONSE) {
 			return dispatch({type: m.type, value: m.message})
 		} else {
 			dispatch(Update_Store(m.type, m.message)) 

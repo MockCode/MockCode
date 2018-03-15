@@ -12,6 +12,7 @@ import { Container, Content, Button, Text, Grid, Row, Col } from 'native-base';
 import PeerList from '../components/PeerList';
 import styles from "./styles/selectModeScreenStyle";
 import {scale, moderateScale} from "../utils/scaling"
+import { NetworkComp } from '../components/network';
 
 
 export default class SelectModeScreen extends Component {
@@ -72,7 +73,8 @@ export default class SelectModeScreen extends Component {
                 </Col>
               </Row>
               <Row size={3} style={{alignSelf: 'center', paddingHorizontal: '10%'}}>
-                <PeerList data={[{id: '1'}, {id: '2'}, {id: '3'}, {id: '4'}, {id: '5'}, {id: '6'}, {id: '7'}, {id: '8'}, {id: '9'}, {id: '10'}, {id: '11'}, {id: '12'} ]}/>
+                <PeerList/>
+                {/* <PeerList data={[{id: '1'}, {id: '2'}, {id: '3'}, {id: '4'}, {id: '5'}, {id: '6'}, {id: '7'}, {id: '8'}, {id: '9'}, {id: '10'}, {id: '11'}, {id: '12'} ]}/> */}
               </Row>
             </Col>
             <Col></Col>
