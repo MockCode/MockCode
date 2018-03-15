@@ -13,8 +13,8 @@ export default StyleSheet.create({
         alignSelf: 'center'
     },
 
-    menuTextColor: {
-       color: '#8c8f93'
+    menuText: {
+       color: '#5b5e63',
    } 
 });
   

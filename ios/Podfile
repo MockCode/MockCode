@@ -17,6 +17,9 @@ target 'MockCode' do
 
   # pod 'react-native-orientation', :path => '../node_modules/react-native-orientation'
 
+  # pod 'react-native-video', :path => '../node_modules/react-native-video'
+
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
 
   pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
 
