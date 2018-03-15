@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from'prop-types'
 import { Icon, Root, Container, Button, ActionSheet, Text } from "native-base";
+import { moderateScale } from "../utils/scaling";
 
 const BUTTONS = ["Normal Sinus Rhythmn", "Ventricular Tachycardia" ,"Ventricular Fibrillation"]
 const DESTRUCTIVE_INDEX = 3;
@@ -28,9 +29,8 @@ export class HeartRhythmSelector extends Component {
               this.props.onValueChange(BUTTONS[buttonIndex]);
             }
           }
-        )}>
-        <Icon name='pulse' />
-        <Text>Waveforms</Text>
+        )} style={{width: moderateScale(100), flexDirection: 'row', justifyContent:'center'}}>
+        <Icon name='pulse' style={{marginRight: 10}}/>
         </Button>
     );
   }

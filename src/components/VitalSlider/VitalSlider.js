@@ -65,13 +65,13 @@ export class VitalSlider extends Component {
       return (
         <View style={{flexDirection: 'row'}}>
           <HeartRhythmSelector onValueChange={this.onWaveFormChange} />
-          <Text style={{alignSelf: 'center',
+          {/* <Text style={{alignSelf: 'center',
                         fontWeight: 'bold',
                         marginLeft: 10,
                         fontSize: 17, 
                         color: 'black',
                         bottom: 2.5}}>
-          {this.state.waveForm} </Text>               
+          {this.state.waveForm} </Text>                */}
         </View>
       );
     }

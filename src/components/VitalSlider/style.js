@@ -1,4 +1,5 @@
 import {StyleSheet} from "react-native";
+import {moderateScale} from "../../utils/scaling"
 
 export default StyleSheet.create({
     sliderContainer: {
@@ -14,11 +15,11 @@ export default StyleSheet.create({
     sliderTitle: {
         color: 'black',
         fontWeight: 'bold',
-        fontSize: 25
+        fontSize: moderateScale(25)
     },
     sliderValueText: {
         marginLeft: 10,
-        fontSize: 25,
+        fontSize: moderateScale(25),
         fontWeight: 'bold',
         alignSelf: 'center'
     },
