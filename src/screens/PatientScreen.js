@@ -7,12 +7,25 @@ import {
   View,
   TouchableOpacity
 } from 'react-native';
+import Video from 'react-native-video';
 import { connect, Provider } from "react-redux";
 import { NearbyAPI } from "react-native-nearby-api";
 
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-export default class PatientScreen extends Component {
+const faces = {
+  normal: require('../components/vid/normal.mp4'),
+  dead: require('../components/vid/dead.mp4'),
+  discomfort: require('../components/vid/discomfort.mp4'),
+};
+
+export const faceNames = {
+  normal: 'Normal',
+  dead: 'Dead',
+  discomfort: 'Discomfort',
+};
+
+class PatientScreen extends Component {
   static navigationOptions = {
     title: 'Patient',
     header: null
@@ -53,12 +66,16 @@ export default class PatientScreen extends Component {
     return (
       <TouchableOpacity
         onPress={() => this._toggleBack()}
-        style={styles.mockView}
+        style={styles.container}
         activeOpacity={1}
       >
-        <Image
-          source={require("../components/img/sick.png")}
-          style={styles.mock}
+        <Video
+          source={faces[this.props.face]}
+          repeat={true}
+          paused={false}
+          resizeMode='stretch'
+          style={styles.video}
+          muted={true}
         />
         {this._renderBack()}
       </TouchableOpacity>
@@ -68,24 +85,24 @@ export default class PatientScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    showBack: state.showBack
+    face: state.face
   }
 }
 
-module.exports = connect(mapStateToProps)(PatientScreen);
+// This default is actually exporting PatientScreen
+export default connect(mapStateToProps)(PatientScreen);
 
 const styles = StyleSheet.create({
-  mockView: {
+  container: {
     flex: 1
   },
-  mock: {
+  video: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
     alignContent: 'center',
     width: undefined,
     height: undefined,
-    resizeMode: 'contain'
   },
   backButton: {
     position: 'absolute',

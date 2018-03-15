@@ -7,7 +7,20 @@ import API_KEYS from '../../api'
 
 const initialState = {
     nearbyApi: new NearbyAPI(true),
-    devices:[{id:"sample"}]
+    devices:[{id:"sample"}],
+    controllerValues : [{
+        controllerValueType: ControllerValues.HEART_RATE,
+        value: 0
+    },{
+      controllerValueType: ControllerValues.BLOOD_PRESSURE,
+      value: 0
+    },{
+      controllerValueType: ControllerValues.O2Sat,
+      value: 0
+    },{
+      controllerValueType: ControllerValues.EtC02,
+      value: 0
+    }]
 }
 
 
@@ -35,7 +48,7 @@ function HeartRate(state = 80, action) {
   }
 }
 
-function bloodPressure(state = '130/86', action) {
+function bloodPressure(state = '120/78', action) {
   switch (action.type) {
     case ACTIONS.UPDATE_BLOOD_PRESSURE:
       return action.value
@@ -44,9 +57,28 @@ function bloodPressure(state = '130/86', action) {
   }
 }
 
-function O2Sat(state = 50, action) {
+function O2Sat(state = 96, action) {
   switch (action.type) {
     case ACTIONS.UPDATE_O2SAT:
+      return action.value
+    default:
+      return state
+  }
+}
+
+//Ideally this action just changes the source state for the image, not sure how the formatting should go
+function face(state = 'normal', action) {
+  switch (action.type) {
+    case ACTIONS.UPDATE_FACE:
+      return action.value
+    default:
+      return state
+  }
+}
+
+function EtC02(state= 25, action) {
+  switch (action.type) {
+    case ACTIONS.UPDATE_ETCO2:
       return action.value
     default:
       return state
@@ -57,7 +89,9 @@ const MockApp = combineReducers({
     NearbyApi,
     HeartRate,
     bloodPressure,
-    O2Sat
+    O2Sat,
+    face,
+    EtC02,
 });
 
 export default MockApp;
