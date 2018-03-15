@@ -32,7 +32,7 @@ export class VitalSlider extends Component {
 
   onWaveFormChange = (value) => {  
     this.setState({waveForm: value});
-    console.log("WaveForm: ", this.state.waveForm);
+    store.dispatch(Update_Value(ACTIONS.UPDATE_WAVEFORM, value));
   }
 
   onSlidingComplete = (value) => {
