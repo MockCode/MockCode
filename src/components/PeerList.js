@@ -33,14 +33,11 @@ class PeerList extends Component {
 
   render() {
     return (
-      // <View>
-      // <NetworkComp/>
       <FlatList
         data={this.props.devices}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
       />
-      // </View>
     )
   }
 }
