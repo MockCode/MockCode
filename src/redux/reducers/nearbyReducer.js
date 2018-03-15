@@ -19,6 +19,9 @@ const initialState = {
     },{
       controllerValueType: ControllerValues.EtC02,
       value: 0
+    },{
+      controllerValueType: ControllerValues.Waveform,
+      value: 0
     }]
 }
 
@@ -79,13 +82,23 @@ function EtC02(state= 25, action) {
   }
 }
 
+function Waveform(state = 'Normal Sinus Rhythmn', action) {
+  switch (action.type) {
+    case ACTIONS.UPDATE_WAVEFORM:
+      return action.value
+    default:
+      return state
+  }
+}
+
 const MockApp = combineReducers({
     NearbyApi,
     HeartRate,
     bloodPressure,
     O2Sat,
-    face,
     EtC02,
+    Waveform,
+    face,
 });
 
 export default MockApp;
