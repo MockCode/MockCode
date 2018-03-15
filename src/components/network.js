@@ -4,16 +4,20 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {NearbyAPI} from 'react-native-nearby-api'
 import {API_KEYS} from '../api'
-import {On_Message_Found} from '../redux/actions/nearbyActions'
+import {On_Message_Found, ACTIONS} from '../redux/actions/nearbyActions'
+
+// var DeviceInfo = require('react-native-device-info');
+import DeviceInfo from 'react-native-device-info'
 
 
 export class NetworkComp extends Component {
   componentDidMount() {
-    console.log("network was created");
+    // console.log("network was created");
+    // console.log(DeviceInfo.getDeviceName())
     state = store.getState()
     var nearbyApi = state.NearbyApi.nearbyApi;
     // console.log(state);
-    console.log(nearbyApi);
+    // console.log(nearbyApi);
     if (nearbyApi != undefined) {
       // var nearbyApi = new NearbyAPI(true);
       // console.log(Platform.OS)
@@ -27,13 +31,17 @@ export class NetworkComp extends Component {
         
         nearbyApi.subscribe();
       });
+  
       nearbyApi.onSubscribeSuccess(() => {
-        console.log("Subscribe Success.");
-      });
-      nearbyApi.onSubscribeFailed(() => {
-        console.log("Subscribe failed.");
+        let m = {type:ACTIONS.HELLO_REQUEST, message: DeviceInfo.getDeviceName()}
+        nearbyApi.publish(JSON.stringify(m));
+        // console.log(m)
+      })
+      nearbyApi.onPublishSuccess(message => {
+        // console.log(message, "psucess");
       });
       nearbyApi.onFound(message => {
+        // console.log(message);
         store.dispatch(On_Message_Found(message));
       });
 

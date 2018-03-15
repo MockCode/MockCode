@@ -1,5 +1,6 @@
 import { NearbyAPI } from "react-native-nearby-api";
 import { API_KEYS } from '../../api'
+import DeviceInfo from 'react-native-device-info'
 
 export const UPDATE_SLIDER = 'UPDATE_SLIDER';
 
@@ -10,6 +11,8 @@ export const ACTIONS = {
 	  UPDATE_ETCO2: "UPDATE_ET_CO2",
 	  UPDATE_WAVEFORM: "UPDATE_WAVEFORM",
     MESSAGE_FOUND: "ON_MESSAGE_FOUND",
+		HELLO_RESPONSE: "HELLO_RESPONSE",
+		HELLO_REQUEST: "HELLO_REQUEST",
     UPDATE_FACE: "UPDATE_FACE"
 }
 
@@ -38,11 +41,21 @@ export function Update_Value(type, value) {
 
 
 export function On_Message_Found(message) {
-  return (dispatch) => {
-    let m = JSON.parse(message);
-    dispatch(Update_Store(m.type, m.message))
-    return dispatch({ type: ACTIONS.MESSAGE_FOUND, value: message })
-  }
+  return (dispatch, getState) => {
+		let m = JSON.parse(message);
+		// console.log(m);
+		if (m.type === ACTIONS.HELLO_REQUEST) {
+			let response_m = {message: DeviceInfo.getDeviceName(), type: ACTIONS.HELLO_RESPONSE}
+			// console.log(m)
+			getState().NearbyApi.nearbyApi.publish(JSON.stringify(response_m))
+			return dispatch(Update_Store(ACTIONS.HELLO_RESPONSE, m.message))
+		} else if (m.type === ACTIONS.HELLO_RESPONSE) {
+			return dispatch({type: m.type, value: m.message})
+		} else {
+			dispatch(Update_Store(m.type, m.message)) 
+		}
+		return dispatch({ type: ACTIONS.MESSAGE_FOUND, value: message })
+	} 
 }
 
 export function On_Message(message) {
