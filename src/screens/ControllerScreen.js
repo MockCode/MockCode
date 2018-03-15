@@ -33,10 +33,11 @@ export default class ControllerScreen extends Component {
         <NetworkComp/>
         <View style={styles.sliders}>
           <VitalSlider
-            min={20}
-            max={300}
-            initialValue={this.state.HeartRate} 
-            sliderName="Heart Rate (BPM)"
+            min={20} 
+            max={300} 
+            initialValue={this.state.HeartRate}
+            initialWaveForm={"Normal Sinus Rhythmn"} 
+            sliderName="Heart Rate (BPM):"
             actionType={ACTIONS.UPDATE_HEART_RATE}
             style={styles.slider}
             step={1} />
@@ -45,7 +46,7 @@ export default class ControllerScreen extends Component {
             max={100}
             initialValue={80}
             initialValue={this.state.O2Sat} 
-            sliderName="O2 Saturation %"
+            sliderName="O2 Saturation %:"
             actionType={ACTIONS.UPDATE_O2SAT}
             style={styles.slider}
             step={1} />
@@ -54,7 +55,7 @@ export default class ControllerScreen extends Component {
             max={15}
             initialValue={8}
             initialValue={bloodPressureLevels.indexOf(this.state.bloodPressure)} 
-            sliderName="Blood Pressure"
+            sliderName="Blood Pressure:"
             actionType={ACTIONS.UPDATE_BLOOD_PRESSURE}
             bpLevels = {bloodPressureLevels}
             style={styles.slider}
@@ -63,7 +64,7 @@ export default class ControllerScreen extends Component {
             min={0}
             max={50}
             initialValue={this.state.EtC02} 
-            sliderName="EtCO2 (mmHg)"
+            sliderName="EtCO2 (mmHg):"
             actionType={ACTIONS.UPDATE_ETCO2}
             style={styles.slider}
             step = {1} />

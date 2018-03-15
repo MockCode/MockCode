@@ -21,6 +21,8 @@ target 'MockCode' do
 
   # pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
 
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+
   # target 'example' do
   
   # end
