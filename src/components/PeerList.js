@@ -6,6 +6,7 @@ import {
   FlatList,
   StyleSheet
 } from 'react-native';
+import {connect} from 'react-redux';
 import { NetworkComp } from './network';
 
 class PeerListElement extends PureComponent {
@@ -32,12 +33,14 @@ class PeerList extends Component {
 
   render() {
     return (
+      <View>
       <NetworkComp/>
       <FlatList
-        data={this.props.devices.devices}
+        data={this.props.devices}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
       />
+      </View>
     )
   }
 }
@@ -64,7 +67,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    devices:state.NearbyApi
+    devices:state.NearbyApi.devices
   }
 }
 

@@ -32,7 +32,7 @@ function NearbyApi(state = initialState, action) {
     // console.log("message found:", action.value)
     return state;
   case ACTIONS.HELLO_RESPONSE:
-
+    
     state.devices.push({ id: action.value });
     // if (state.devices.indexOf({id:action.value}) == -1) state.devices.push({id:action.value});
     // console.log(state)
