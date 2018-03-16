@@ -4,9 +4,10 @@ import {Surface} from "gl-react-native";
 import { Shaders, Node, GLSL } from "gl-react";
 
 const stateForTime = (t) => ({
-    plot : [[0.9, 0.0, 0.1, 0.3, 0.5, 0.5, 0.4, 0.0, 0.8, 0.6, 0.2, 0.6, 0.7, 0.5, 0.5, 0.8, 0.5, 0.6, 0.3, 0.0, 0.7, 0.5, 0.3, 0.3, 0.2, 0.2, 0.3, 0.8, 0.8, 0.8, 0.8, 0.6, 0.0, 0.2, 0.8, 0.0, 0.1, 0.7, 0.9, 0.3, 0.5, 0.3, 0.9, 0.2, 0.8, 0.4, 0.1, 0.2, 0.8, 0.2]],
-    time: (Math.floor(t / 100) % 50),
-    particles: [(t / 10000) % 1, 0.02]
+    plot : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
+    timeStep: (t / 10000) % 1,
+    plotStep: Math.floor((t / 10000) % 1 * 50),
+    time: t,
 });
 
 class HelloBlue extends React.Component {
@@ -25,29 +26,41 @@ class HelloBlue extends React.Component {
     }
 
     render() {
-        const { plot, particles } = this.state
+        const { timeStep, plot, plotStep } = this.state
         return(
             <Animated.View style={styles.surfaceView}>
             <Surface style={styles.surface}>
             <Node
             uniforms={{
+                timeStep,
                 plot,
-                particles,
+                plotStep,
             }}
             shader={{
                 frag: `
                 precision highp float;
                 varying vec2 uv;
-                uniform float particles[3]; 
-                uniform int time;
-                uniform vec2 plot[1];
+                uniform float time;
+                uniform float timeStep;
+                uniform int plotStep;
+                uniform float plot[50];
+
+                float cursorWidth = 0.05;
+
+                float Curve(float x, float y)
+                {
+                    //return abs(x-y);
+                    return clamp(4. - abs(x-y) * 64., 0.0, 1.0);
+                }
+
+                float intersect (float a, float b)
+                {
+                        return a + b;
+                }
+
                 void main () {
-                    if (uv.x < particles[0] && uv.x > particles[0] - particles[1] && uv.y < plot[0][0] && uv.y > plot[0][time] - particles[1]) {
-                        gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
-                    }
-                    else if (uv.x > particles[0] && uv.x < particles[0] + particles[1] && uv.y < plot[0][0] && uv.y > plot[0][time] - particles[1]) {
-                        gl_FragColor = vec4(0.,0.,0.,0.);
-                    }
+                    gl_FragColor = vec4(0.);
+                    gl_FragColor += vec4(intersect(Curve(plot[plotStep] * 2., uv.y), Curve(uv.x, timeStep)));
                 }
                 `
             }}
