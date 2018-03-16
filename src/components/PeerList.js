@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Component } from 'react';
 import {
   View,
   Text,
@@ -6,6 +6,8 @@ import {
   FlatList,
   StyleSheet
 } from 'react-native';
+import {connect} from 'react-redux';
+import { NetworkComp } from './network';
 
 class PeerListElement extends PureComponent {
   render() {
@@ -22,7 +24,7 @@ class PeerListElement extends PureComponent {
   }
 }
 
-export default class PeerList extends PureComponent {
+class PeerList extends Component {
   _keyExtractor = (item, index) => item.id;
 
   _renderItem = ({item}) => (
@@ -32,7 +34,7 @@ export default class PeerList extends PureComponent {
   render() {
     return (
       <FlatList
-        data={this.props.data}
+        data={this.props.devices}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
       />
@@ -58,3 +60,13 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   }
 })
+
+
+const mapStateToProps = (state) => {
+  return {
+    devices:state.NearbyApi.devices
+  }
+}
+
+export default connect(mapStateToProps)(PeerList);
+

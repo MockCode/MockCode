@@ -14,15 +14,6 @@ target 'MockCode' do
  
   pod 'NearbyMessages'
 
-  pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga/Yoga.podspec'
-  pod 'React', path: '../node_modules/react-native', :subspecs => [
-  'Core'
-  ]
-
-  # pod 'react-native-orientation', :path => '../node_modules/react-native-orientation'
-
-  pod 'react-native-webgl', :path => '../node_modules/react-native-webgl'
-
   # target 'example' do
   
   # end

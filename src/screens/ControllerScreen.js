@@ -7,6 +7,8 @@ import { NearbyAPI } from "react-native-nearby-api";
 import {API_KEYS} from '../api'
 import {Update_Slider, Update_Value, ACTIONS} from '../redux/actions/nearbyActions'
 import { NetworkComp } from '../components/network';
+import FaceButton from '../components/FaceButton';
+import FaceButtonList from '../components/FaceButtonList';
 
 const API_KEY = API_KEYS.nearby;
 
@@ -18,59 +20,59 @@ const bloodPressureLevels = ["62/40", "68/42", "76/46" , "88/50", "92/52", "98/5
 export default class ControllerScreen extends Component {
   constructor() {
     super();
+    this.state = store.getState();
   }
 
   static navigationOptions = {
     title: "Controller"
   };
 
-  sliderUpdate(value) {
-    this.state.sliderValue = value;
-    // store.dispatch(Update_Slider(value.toString()))
-    store.dispatch(Update_Value(ACTIONS.UPDATE_HEART_RATE, value));
-    // TODO: implement redux action
-  }
-
   render() {
     return (
       <View style={styles.container}>
-        <NetworkComp/>        
+        <NetworkComp/>
         <View style={styles.sliders}>
           <VitalSlider
             min={20} 
             max={300} 
-            initialValue={70} 
-            sliderName="Heart Rate (BPM)"
+            initialValue={this.state.HeartRate}
+            initialWaveForm={"Normal Sinus Rhythmn"} 
+            sliderName="Heart Rate (BPM):"
             actionType={ACTIONS.UPDATE_HEART_RATE}
+            style={styles.slider}
             step={1} />
-          <VitalSlider 
-            min={60} 
+          <VitalSlider
+            min={60}
             max={100}
-            initialValue={80} 
-            sliderName="O2 Saturation %"
+            initialValue={80}
+            initialValue={this.state.O2Sat} 
+            sliderName="O2 Saturation %:"
             actionType={ACTIONS.UPDATE_O2SAT}
+            style={styles.slider}
             step={1} />
-          <VitalSlider 
-            min={0} 
+          <VitalSlider
+            min={0}
             max={15}
-            initialValue={8} 
-            sliderName="Blood Pressure"
+            initialValue={8}
+            initialValue={bloodPressureLevels.indexOf(this.state.bloodPressure)} 
+            sliderName="Blood Pressure:"
             actionType={ACTIONS.UPDATE_BLOOD_PRESSURE}
             bpLevels = {bloodPressureLevels}
+            style={styles.slider}
             step={1} />
-          <VitalSlider 
-            min={0} 
-            max={50} 
-            initialValue={25} 
-            sliderName="EtCO2 (mmHg)"
+          <VitalSlider
+            min={0}
+            max={50}
+            initialValue={this.state.EtC02} 
+            sliderName="EtCO2 (mmHg):"
             actionType={ACTIONS.UPDATE_ETCO2}
+            style={styles.slider}
             step = {1} />
         </View>
-        <View style={styles.patientFace}>
+        <View style={styles.patientFaceControls}>
+          <FaceButtonList />
         </View>
       </View>
     );
   }
 }
-
-

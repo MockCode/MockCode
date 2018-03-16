@@ -1,20 +1,24 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import style from "./style";
-import { Text, View, Switch, Slider } from "react-native";
-import { Update_Slider, Update_Value, ACTIONS } from '../../redux/actions/nearbyActions'
+import { Text, View, Switch } from "react-native";
+import { Update_Value, ACTIONS } from '../../redux/actions/nearbyActions';
+import { HeartRhythmSelector } from '../HeartRhythmSelector';
+import {Container} from 'native-base';
 
-// May use this open source slider later on to customize UI better
-//import Slider from "react-native-slider"
+//May use this open source slider later on to customize UI better
+import Slider from "react-native-slider"
 
 export class VitalSlider extends Component {
   constructor(props) {
     super(props);
     this.onSliderChange = this.onSliderChange.bind(this);
     this.onSwitchChange = this.onSwitchChange.bind(this);
+    this.onWaveFormChange = this.onWaveFormChange.bind(this);
     this.state = {
       sliderValue: props.initialValue,
-      switchValue: true
+      switchValue: true,
+      waveForm: props.initialWaveForm
     };
   }
 
@@ -24,6 +28,11 @@ export class VitalSlider extends Component {
 
   onSwitchChange = (value) => {
     this.setState({switchValue: value});
+  }
+
+  onWaveFormChange = (value) => {  
+    this.setState({waveForm: value});
+    store.dispatch(Update_Value(ACTIONS.UPDATE_WAVEFORM, value));
   }
 
   onSlidingComplete = (value) => {
@@ -51,26 +60,55 @@ export class VitalSlider extends Component {
 
   }
 
+  renderWaveFormSelector() {
+    if(this.props.sliderName.indexOf("Heart Rate") !== -1){
+      return (
+        <View style={{flexDirection: 'row'}}>
+          <HeartRhythmSelector onValueChange={this.onWaveFormChange} />
+          {/* <Text style={{alignSelf: 'center',
+                        fontWeight: 'bold',
+                        marginLeft: 10,
+                        fontSize: 17, 
+                        color: 'black',
+                        bottom: 2.5}}>
+          {this.state.waveForm} </Text>                */}
+        </View>
+      );
+    }
+  }
+
   render() {
     return (
       <View style={style.sliderContainer}>
-        <View style={style.sliderSwitch}>
-          <Text style={style.sliderTitle}>{this.props.sliderName}</Text>
+        <View style={style.titleValueSwitch}>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={style.sliderTitle}>{this.props.sliderName}</Text>
+            {this.renderSliderValue()}
+          </View>
+          {this.renderWaveFormSelector()}
           <Switch
             value = {this.state.switchValue}
             onValueChange={this.onSwitchChange}
+            onTintColor="#1073ff"
+            thumbTintColor="white"
           /> 
         </View>
-        {this.renderSliderValue()}
-        <Slider
-          disabled = {!this.state.switchValue}
-          value={this.state.sliderValue}
-          onValueChange={this.onSliderChange}
-          minimumValue={this.props.min}
-          maximumValue={this.props.max}
-          onSlidingComplete={this.onSlidingComplete}
-          step = {this.props.step}
-        />
+        <View style={style.slider}>
+          <Slider
+              disabled = {!this.state.switchValue}
+              value={this.state.sliderValue}
+              onValueChange={this.onSliderChange}
+              minimumValue={this.props.min}
+              maximumValue={this.props.max}
+              onSlidingComplete={this.onSlidingComplete}
+              step = {this.props.step}
+              style = {{width: '80%', alignSelf: 'center'}}
+              trackStyle={style.trackStyle}
+              thumbStyle={style.thumbStyle}
+              minimumTrackTintColor='#1073ff'
+              maximumTrackTintColor='#b7b7b7'
+            />
+        </View>
       </View>
     );
   }
