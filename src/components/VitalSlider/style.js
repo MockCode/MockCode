@@ -23,9 +23,9 @@ export default StyleSheet.create({
         fontWeight: 'bold',
     },
     thumbStyle: {
-        width: 30,
-        height: 30,
-        borderRadius: 30 / 2,
+        width: moderateScale(30),
+        height: moderateScale(30),
+        borderRadius: moderateScale(30 / 2),
         backgroundColor: 'white',
         shadowColor: 'black',
         shadowOffset: {width: 0, height: 2},
@@ -46,9 +46,8 @@ export default StyleSheet.create({
         margin: '0.5%'
     },
     waveFormButtonText: {
-        fontSize: moderateScale(20),
+        fontSize: moderateScale(15),
         margin: 5,
-        fontWeight: 'bold',
         color: 'black'
     }
 })
