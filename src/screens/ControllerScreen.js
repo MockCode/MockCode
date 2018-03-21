@@ -12,7 +12,7 @@ import FaceButtonList from '../components/FaceButtonList';
 
 const API_KEY = API_KEYS.nearby;
 
-const bloodPressureLevels = ["62/40", "68/42", "76/46" , "88/50", "92/52", "98/54", "102/56",
+const BLOOD_PRESSURE_LEVELS = ["62/40", "68/42", "76/46" , "88/50", "92/52", "98/54", "102/56",
                              "108/58", "112/60", "120/78", "134/82", "144/88", "164/96",
                              "192/98", "242/112", "284/122"];
 
@@ -54,10 +54,10 @@ export default class ControllerScreen extends Component {
             min={0}
             max={15}
             initialValue={8}
-            initialValue={bloodPressureLevels.indexOf(this.state.bloodPressure)} 
+            initialValue={BLOOD_PRESSURE_LEVELS.indexOf(this.state.bloodPressure)} 
             sliderName="Blood Pressure:"
             actionType={ACTIONS.UPDATE_BLOOD_PRESSURE}
-            bpLevels = {bloodPressureLevels}
+            bpLevels = {BLOOD_PRESSURE_LEVELS}
             style={styles.slider}
             step={1} />
           <VitalSlider

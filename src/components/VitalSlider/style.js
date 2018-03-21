@@ -5,8 +5,8 @@ export default StyleSheet.create({
     sliderContainer: {
         flex: 1,
         flexDirection: 'column',
-        margin: 15,
-        justifyContent: 'flex-start'
+        margin: '1.5%',
+        justifyContent: 'space-around'
     },
     titleValueSwitch: {
         flexDirection: 'row',
@@ -21,7 +21,6 @@ export default StyleSheet.create({
         marginLeft: 10,
         fontSize: moderateScale(25),
         fontWeight: 'bold',
-        alignSelf: 'center'
     },
     thumbStyle: {
         width: 30,
@@ -36,5 +35,20 @@ export default StyleSheet.create({
     trackStyle: {
         height: 2,
         borderRadius: 1,
+    },
+    waveFormSelect: {
+        width: moderateScale(100), 
+        flexDirection: 'row', 
+        justifyContent:'center',
+        marginTop: 5
+    },
+    waveFormButton: {
+        margin: '0.5%'
+    },
+    waveFormButtonText: {
+        fontSize: moderateScale(20),
+        margin: 5,
+        fontWeight: 'bold',
+        color: 'black'
     }
 })
