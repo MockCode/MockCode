@@ -1,6 +1,6 @@
 import React from "react";
 import { Animated, StyleSheet, View} from "react-native";
-import {Surface} from "gl-react-native";
+import { Surface } from "gl-react-native";
 import { Shaders, Node, GLSL } from "gl-react";
 
 const stateForTime = (t) => ({
@@ -10,7 +10,7 @@ const stateForTime = (t) => ({
     time: t,
 });
 
-class HelloBlue extends React.Component {
+class WaveformCanvas extends React.Component {
     
     state = stateForTime(0)
 
@@ -85,4 +85,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default HelloBlue;
+export default WaveformCanvas;

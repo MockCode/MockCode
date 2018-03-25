@@ -13,7 +13,7 @@ import navigation from '../navigation';
 import SelectModeScreen from './SelectModeScreen';
 // import { NetworkComp } from '../components/network';
 
-import HelloBlue from "./HelloGL";
+import WaveformCanvas from "../components/WaveformCanvas";
 // const nearbyAPI = new NearbyAPI(true);
 
 var {height, width} = Dimensions.get('window');
@@ -71,7 +71,7 @@ export default class MonitorScreen extends Component {
     <View style={styles.column}>
                 <NetworkComp/>
                 <View style={styles.row}>
-                    <HelloBlue />
+                    <WaveformCanvas />
                     <View style={styles.column}>
                         <View style = {styles.row}>
                             <Text style = {styles.statusNumber}>
@@ -86,7 +86,7 @@ export default class MonitorScreen extends Component {
                     </View>
                 </View>
                 <View style={styles.row}>
-                    <HelloBlue />
+                    <WaveformCanvas />
                     <View style={styles.column}>
                         <View style = {styles.row}>
                             <Text style = {styles.statusNumber}>
@@ -101,7 +101,7 @@ export default class MonitorScreen extends Component {
                     </View>
                 </View>
                 <View style={styles.row}>
-                    <HelloBlue />
+                    <WaveformCanvas />
                     <View style={styles.column}>
                         <View style = {styles.row}>
                             <Text style = {styles.statusNumber}>
