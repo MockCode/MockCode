@@ -32,13 +32,23 @@ class WaveformCanvas extends React.Component {
         this.y = 50;
         this.begin = Date.now();
         this.renderFrame = this.renderFrame.bind(this);
+
+
+        this.fps = 30;
+        // this.now;
+        this.then = Date.now();
+        this.interval = 1000 / this.fps;
+        // this.delta;
         // console.log(Dimensions.get('window').height, Dimensions.get('window').width);
     }
     componentDidMount() {
         // const ctx = this.refs.canvas.getContext('2d');
         // this.setState({ctx:ctx})
         // this.setState({ data: [[0, 50], [2, 50]]});
-
+        this.fps = 30;
+        // this.now;
+        this.then = Date.now();
+        this.interval = 1000 / this.fps;
         requestAnimationFrame(() => {
             this.renderFrame();
         });
@@ -67,9 +77,13 @@ class WaveformCanvas extends React.Component {
         // t = Date.now() - this.begin;
         // console.log(t);
         // if (t > 100000) {
+        now = Date.now();
+        delta = now - this.then;
 
+        if (delta > this.interval) {
+            this.then = now - (delta % this.interval);
         
-        const stepsize = 2;
+            const stepsize = 5;
         
 
             if (this.state.dimensions){
@@ -91,12 +105,16 @@ class WaveformCanvas extends React.Component {
                     this.front.push([x, y]);
                     if (this.back.length > 2) {
                         // this.setState({back_points:this.state.back_points.splice(0,1)})
-                        this.back.splice(0, 1);
+                        // this.back.splice(0, 1);
+                        this.back.shift()
                         // console.log(this.state.back_points)
                     }
                     if (this.front.length >= 2 && this.back.length >= 2) {
                         // console.log(this.front.join(' '),this.back.join(' '));
-                        this.setState({front:this.front.join(' '), back:this.back.join(' ')});
+                        // if (this.front.length % 10 == 1) {
+                            this.setState({front:this.front.join(' '), back:this.back.join(' ')});
+
+                        // }
 
                     }
                 } else {
@@ -113,6 +131,7 @@ class WaveformCanvas extends React.Component {
 
                 }
             }
+        }
 
         // }
         // this.begin = t;
