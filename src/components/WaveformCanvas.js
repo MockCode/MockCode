@@ -1,7 +1,8 @@
 import React from "react";
 import { Animated, StyleSheet, View} from "react-native";
+// import Dimensions from 'Dimensions'
 // import Canvas from 'react-native-canvas'
-import Svg, {Polyline} from 'react-native-svg';
+import Svg, {Polyline, Circle} from 'react-native-svg';
 // import { Surface } from "gl-react-native";
 // import { Shaders, Node, GLSL } from "gl-react";
 
@@ -21,16 +22,17 @@ class WaveformCanvas extends React.Component {
             x:0,
             y:50,
             canvas:null,
-            ctx:null,
-            front:"0,0 2,0",
+            front:"-1,50 -1,50",
             back:"198,0 200,0",
+            dimensions:undefined
         };
         this.front = [];
-        this.back = [];
+        this.back = [[201,0], [202, 0]];
         this.x = 0;
         this.y = 50;
         this.begin = Date.now();
         this.renderFrame = this.renderFrame.bind(this);
+        // console.log(Dimensions.get('window').height, Dimensions.get('window').width);
     }
     componentDidMount() {
         // const ctx = this.refs.canvas.getContext('2d');
@@ -70,44 +72,9 @@ class WaveformCanvas extends React.Component {
         const stepsize = 2;
         
 
-            if (this.state.ctx != null) {
-
+            if (this.state.dimensions){
                 x = this.x + stepsize;
-                y = 50 + 2*this.fourierMap(x);
-                if (Math.random() > .97) {
-                    y = 20;
-                }
-                this.state.ctx.fillStyle = 'purple';
-                this.state.ctx.strokeStyle = 'red'
-
-                this.state.ctx.lineWidth = 3
-                this.state.ctx.beginPath();
-                this.state.ctx.moveTo(this.x, this.y);
-                this.state.ctx.lineTo(x, y);
-                this.state.ctx.closePath();
-                this.state.ctx.stroke();
-
-
-                // this.state.ctx.fillRect(this.state.x, 0, this.state.x+10, 10);
-                this.state.ctx.fillStyle = 'black';
-                this.state.ctx.clearRect(x, 0, 5 , 100);
-                
-                
-                if (x< 200) {
-                    this.x = x;
-                    this.y = y;
-                    // this.setState({ x: x, y:y});
-                } else {
-                    // this.setState({ x: 0});
-                    this.x = 0;
-                    this.y = 50;
-                    // this.state.ctx.fillStyle = 'black' ;
-                    // this.state.ctx.fillRect(0,0,200,100);
-                    
-                }
-            } else if (this.state.front != null){
-                x = this.x + stepsize;
-                y = 50 + 2 * this.fourierMap(x);
+                y = this.state.dimensions.height /2 + 2 * this.fourierMap(x);
                 if (Math.random() > .97) {
                     y = 20;
                 }
@@ -116,7 +83,7 @@ class WaveformCanvas extends React.Component {
                 // this.setState({front_points:this.state.front_points.push([x,y])});
                 // this.state.front_points.push([x,y]);
                 // console.log(this.state.front_points);
-                if (x < 200) {
+                if (x < this.state.dimensions.width) {
                     this.x = x;
                     this.y = y;
                     // this.setState({ x: x, y:y});
@@ -127,7 +94,7 @@ class WaveformCanvas extends React.Component {
                         this.back.splice(0, 1);
                         // console.log(this.state.back_points)
                     }
-                    if (this.front.length > 2 && this.back.length > 2) {
+                    if (this.front.length >= 2 && this.back.length >= 2) {
                         // console.log(this.front.join(' '),this.back.join(' '));
                         this.setState({front:this.front.join(' '), back:this.back.join(' ')});
 
@@ -135,10 +102,10 @@ class WaveformCanvas extends React.Component {
                 } else {
                     // this.setState({ x: 0});
                     this.x = 0;
-                    this.y = 50;
+                    this.y = this.state.dimensions.height /2;
                     // console.log(this.front, this.back)
                     this.back = this.front;
-                    this.front = [[0,0], [0,50]];
+                    this.front = [[-1,this.y], [-1,this.y]];
                     
                     // this.setState({back_points:this.state.front_points, front_points:[[0,50], [2,50]]})
                     // this.state.ctx.fillStyle = 'black' ;
@@ -153,21 +120,42 @@ class WaveformCanvas extends React.Component {
         requestAnimationFrame(this.renderFrame);
         // setInterval( this.renderFrame, 100000/60);
     }
-    
+    onLayout = event => {
+        let { width, height } = event.nativeEvent.layout
+        if (this.state.dimensions) {
+            if (width == this.state.dimensions.width && height == this.state.dimensions.height) return;
+        }
+        this.setState({ dimensions: { width:width, height:height } })
+        this.front = [];
+        this.back = [[width+1, height/2], [width+1, height/2]];
+        // if (width != this.state.dimensions.width || height != this.state.dimensions.height ) {
+
+        // }
+    }
     render() {
         // return (<Canvas ref="canvas" />)
         // let points = this.state.data;
-        return (<Svg height="100" width="200">
-            <Polyline points={this.state.front}
-                fill="none"
-                stroke="red"
-                strokeWidth="3"/>
-            <Polyline points={this.state.back}
-                fill="none"
-                stroke="blue"
-                strokeWidth="3" />
-                </Svg>
+        // console.log(this.state.dimensions);
+        if (this.state.dimensions) {
+            return (
+                <View style={{ flex: 1, alignSelf: 'stretch' }} onLayout={this.onLayout} >
+                <Svg height={this.state.dimensions.height} width={this.state.dimensions.width}>
+                        <Polyline points={this.state.front}
+                            fill="none"
+                            stroke="red"
+                            strokeWidth="3"/>
+                        <Polyline points={this.state.back}
+                            fill="none"
+                            stroke="blue"
+                            strokeWidth="3" />
+                        <Circle r="4" cx={this.x} cy={this.y} fill="red"/>
+                    </Svg>
+                </View>
                 );
+        } else {
+            return (<View style={{ flex: 1, alignSelf: 'stretch' }} onLayout={this.onLayout}/>);
+                   
+        }
         // return(null)
     }
 }
