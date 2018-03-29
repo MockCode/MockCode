@@ -14,6 +14,7 @@ export var waveformData = {
     'NSR': {
       'duration': 800,
       'nPoints': 300,
+      'nWaves': 1,
       'range': {
         'min': -0.535,
         'max': 0.94
