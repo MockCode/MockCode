@@ -13,7 +13,7 @@ import navigation from '../navigation';
 import SelectModeScreen from './SelectModeScreen';
 // import { NetworkComp } from '../components/network';
 
-import WaveformCanvas from "../components/WaveformCanvas";
+import WaveformCanvas from "../components/Waveform/WaveformCanvas";
 // const nearbyAPI = new NearbyAPI(true);
 
 var {height, width} = Dimensions.get('window');
@@ -71,7 +71,9 @@ export default class MonitorScreen extends Component {
     <View style={styles.column}>
                 <NetworkComp/>
                 <View style={styles.row}>
-                    <WaveformCanvas />
+                    <View style={styles.surfaceView} >
+                      <WaveformCanvas />
+                    </View>
                     <View style={styles.column}>
                         <View style = {styles.row}>
                             <Text style = {styles.statusNumber}>
@@ -86,7 +88,9 @@ export default class MonitorScreen extends Component {
                     </View>
                 </View>
                 <View style={styles.row}>
-                    <WaveformCanvas />
+                    <View style={styles.surfaceView} >
+                      <WaveformCanvas />
+                    </View>
                     <View style={styles.column}>
                         <View style = {styles.row}>
                             <Text style = {styles.statusNumber}>
@@ -101,7 +105,9 @@ export default class MonitorScreen extends Component {
                     </View>
                 </View>
                 <View style={styles.row}>
-                    <WaveformCanvas />
+                    <View style={styles.surfaceView} >
+                      <WaveformCanvas />
+                    </View>
                     <View style={styles.column}>
                         <View style = {styles.row}>
                             <Text style = {styles.statusNumber}>
@@ -145,9 +151,10 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     surfaceView : {
-        width: '75%',
+        width: '72%',
         height: '92%',
-        marginBottom: '8%'
+        marginBottom: '8%',
+        marginRight: '3%'
     },
     column: {
         flex: 1,
