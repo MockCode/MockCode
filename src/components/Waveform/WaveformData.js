@@ -1,10 +1,22 @@
 import React from 'react';
 
 /*
- * This is the database of data points for specific waveforms 
- *
- * duration: duration of the snippet in ms
+ * This is the database of data points for specific waveforms.
+ * We store a base number of waves for each required waveform and render multiples 
+ * of them, allowing us to render specific rates accurately
+ * 
+ * rateRange: the range of renderable bpm for the given waveform
+ * duration: duration each respective wave in the snippet in ms
+ * totalDuration: total duration of the snippet in ms
  * nPoints: number of points in the duration
+ * nWaves: number of waves in the snippet
+ * minWaveWidth: smallest width of wave that encapsulates most of the necessary data 
+ *    represented as either minimum width in points or maximum skip in points
+ * compressionPolicy: the way we compress the waveform. NB: this is "mod" or "skip"
+ *    skip skips over elements to compress the wave with similar spacing up to 
+ *    minWaveWidth points skipped, 
+ *    mod removes data from the end of the wave down to minWaveWidth points
+ *    When compressionPolicy is mod, minWaveWidth represents the width, when it is skip, minWaveWidth represents the maximum number of points that can be skipped before too much clarity is lost
  * range: the minimum and maximum y values of the given waveform snippet
  * dataPoints: array of the data points for the snippet
  *
@@ -12,9 +24,13 @@ import React from 'react';
 export var waveformData = {
   'HR':{
     'NSR': {
-      'duration': 800,
+      'rateRange': [20, 300],
+      'duration': [800],
+      'totalDuration': 800,
       'nPoints': 300,
       'nWaves': 1,
+      'minWaveWidth': 35,
+      'compressionPolicy': 'mod',
       'range': {
         'min': -0.535,
         'max': 0.94
@@ -44,9 +60,13 @@ export var waveformData = {
     }
   },
   'BP':{
-    
+    'NORMAL': {
+
+    }
   },
   'O2Sat':{
-    
+    'NORMAL': {
+
+    }
   }
 }
