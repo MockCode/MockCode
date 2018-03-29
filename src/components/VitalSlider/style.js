@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import {moderateScale} from "../../utils/scaling"
+import {moderateScale, scale} from "../../utils/scaling"
 
 export default StyleSheet.create({
     sliderContainer: {
@@ -9,6 +9,7 @@ export default StyleSheet.create({
         justifyContent: 'space-around'
     },
     titleValueSwitch: {
+
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
@@ -37,10 +38,15 @@ export default StyleSheet.create({
         borderRadius: 1,
     },
     waveFormSelect: {
-        width: moderateScale(100), 
+        height: moderateScale(40), 
         flexDirection: 'row', 
         justifyContent:'center',
-        marginTop: 5
+    },
+    waveFormSelectText: {
+        fontSize: moderateScale(15),
+        fontWeight: 'bold',
+        color: 'black',
+        padding: 5
     },
     waveFormButton: {
         margin: '0.5%'

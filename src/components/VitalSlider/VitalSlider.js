@@ -68,11 +68,12 @@ export class VitalSlider extends Component {
   }
 
   _renderWaveformSelector() {
-    if(this.props.sliderName.indexOf("Heart Rate") !== -1){
+    if(this.props.sliderName.indexOf("Heart Rate") !== -1 && this.state.collapsed == true){
       return(
         <Button rounded small iconLeft light onPress={this._toggleExpanded}
           style={style.waveFormSelect}>
-          <Icon name='pulse' style={{marginRight: 10}}/>
+          {/* <Icon name='pulse' style={{}}/> */}
+          <Text style={style.waveFormSelectText}>{this.state.waveForm}</Text>
         </Button>
       )
     }
@@ -82,7 +83,7 @@ export class VitalSlider extends Component {
     if(this.props.sliderName.indexOf("Heart Rate") !== -1){
       return(
         <Collapsible collapsed={this.state.collapsed}>
-          <ScrollView horizontal contentContainerStyle={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
+          <ScrollView horizontal contentContainerStyle={{flex: 1, justifyContent: 'space-around'}}>
             <Button rounded small light style={style.waveFormButton}
               onPress={() => this._onWaveFormChange(WAVE_FORMS[0])}>
               <Text style={style.waveFormButtonText}>{WAVE_FORMS[0]}</Text>
@@ -115,26 +116,24 @@ export class VitalSlider extends Component {
             onValueChange={this._onSwitchChange}
             onTintColor="#1073ff"
             thumbTintColor="white"
-            tintColor="#8c9199"
+            tintColor="#babdc1"
           /> 
         </View>
-        <View style={style.slider}>
-          <Slider
-              disabled = {!this.state.switchValue}
-              value={this.state.sliderValue}
-              onValueChange={this._onSliderChange}
-              minimumValue={this.props.min}
-              maximumValue={this.props.max}
-              onSlidingComplete={this._onSlidingComplete}
-              step = {this.props.step}
-              style = {{width: '80%', alignSelf: 'center'}}
-              trackStyle={style.trackStyle}
-              thumbStyle={style.thumbStyle}
-              minimumTrackTintColor='#1073ff'
-              maximumTrackTintColor='#b7b7b7'
-            />
-        </View>
-      {this._renderWaveFormCollapsible()}
+        <Slider
+            disabled = {!this.state.switchValue}
+            value={this.state.sliderValue}
+            onValueChange={this._onSliderChange}
+            minimumValue={this.props.min}
+            maximumValue={this.props.max}
+            onSlidingComplete={this._onSlidingComplete}
+            step = {this.props.step}
+            style = {{width: '80%', alignSelf: 'center'}}
+            trackStyle={style.trackStyle}
+            thumbStyle={style.thumbStyle}
+            minimumTrackTintColor='#1073ff'
+            maximumTrackTintColor='#b7b7b7'
+          />
+        {this._renderWaveFormCollapsible()}
       </View>
     );
   }
