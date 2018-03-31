@@ -49,11 +49,13 @@ export default StyleSheet.create({
         padding: 5
     },
     waveFormButton: {
+        height:moderateScale(40),
         margin: '0.5%'
     },
     waveFormButtonText: {
-        fontSize: moderateScale(15),
-        margin: 5,
+        fontSize: moderateScale(15, 0.9),
+        paddingLeft: '1%',
+        paddingRight: '1%',
         color: 'black'
     }
 })
