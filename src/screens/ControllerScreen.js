@@ -37,7 +37,7 @@ export default class ControllerScreen extends Component {
             min={20} 
             max={300} 
             initialValue={this.state.HeartRate}
-            initialWaveForm={"Normal Sinus Rhythmn"} 
+            initialWaveForm={this.state.Waveform} 
             sliderName="Heart Rate (BPM):"
             actionType={ACTIONS.UPDATE_HEART_RATE}
             style={styles.slider}

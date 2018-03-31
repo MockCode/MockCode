@@ -9,7 +9,6 @@ export default StyleSheet.create({
         justifyContent: 'space-around'
     },
     titleValueSwitch: {
-
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
@@ -19,7 +18,7 @@ export default StyleSheet.create({
         fontSize: moderateScale(25)
     },
     sliderValueText: {
-        marginLeft: 10,
+        marginLeft: '2%',
         fontSize: moderateScale(25),
         fontWeight: 'bold',
     },

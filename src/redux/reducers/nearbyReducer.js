@@ -92,7 +92,7 @@ function EtC02(state= 25, action) {
   }
 }
 
-function Waveform(state = 'Normal Sinus Rhythmn', action) {
+function Waveform(state = 'Normal Sinus Rhythm', action) {
   switch (action.type) {
     case ACTIONS.UPDATE_WAVEFORM:
       return action.value
