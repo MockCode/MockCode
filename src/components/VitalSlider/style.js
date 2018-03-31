@@ -38,9 +38,7 @@ export default StyleSheet.create({
         borderRadius: 1,
     },
     waveFormSelect: {
-        height: moderateScale(40), 
-        flexDirection: 'row', 
-        justifyContent:'center',
+        height: moderateScale(40)
     },
     waveFormSelectText: {
         fontSize: moderateScale(15),

@@ -96,7 +96,7 @@ export class VitalSlider extends Component {
       return(
         <Button {...inputProps} onPress={this._toggleExpanded}
           style={style.waveFormSelect}>
-          {/* <Icon name='pulse' style={{}}/> */}
+          <Icon name='pulse' style={{}}/>
           <Text style={style.waveFormSelectText}>{this.state.waveForm}</Text>
         </Button>
       )
