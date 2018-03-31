@@ -8,8 +8,9 @@ import Collapsible from 'react-native-collapsible';
 import { moderateScale } from "../../utils/scaling";
 import Slider from "react-native-slider"
 
+
 const WAVE_FORMS = ["Normal Sinus Rhythm", "Ventricular Tachycardia",
-                    "Ventricular Fibrillation"]
+                    "Ventricular Fibrillation", "PEA/Asystole"]
 
 export class VitalSlider extends Component {
   constructor(props) {
@@ -84,17 +85,21 @@ export class VitalSlider extends Component {
       return(
         <Collapsible collapsed={this.state.collapsed}>
           <ScrollView horizontal contentContainerStyle={{flex: 1, justifyContent: 'space-around'}}>
-            <Button rounded small light style={style.waveFormButton}
+            <Button rounded small success style={style.waveFormButton}
               onPress={() => this._onWaveFormChange(WAVE_FORMS[0])}>
               <Text style={style.waveFormButtonText}>{WAVE_FORMS[0]}</Text>
             </Button>
-            <Button rounded small light style={style.waveFormButton}
+            <Button rounded small info style={style.waveFormButton}
               onPress={() => this._onWaveFormChange(WAVE_FORMS[1])}>
               <Text style={style.waveFormButtonText}>{WAVE_FORMS[1]}</Text>
             </Button>
-            <Button rounded small light style={style.waveFormButton}
+            <Button rounded small warning style={style.waveFormButton}
               onPress={() => this._onWaveFormChange(WAVE_FORMS[2])}>
               <Text style={style.waveFormButtonText}>{WAVE_FORMS[2]}</Text>
+            </Button>
+            <Button rounded small danger style={style.waveFormButton}
+              onPress={() => this._onWaveFormChange(WAVE_FORMS[3])}>
+              <Text style={style.waveFormButtonText}>{WAVE_FORMS[3]}</Text>
             </Button>
           </ScrollView>
         </Collapsible>
@@ -132,7 +137,7 @@ export class VitalSlider extends Component {
             thumbStyle={style.thumbStyle}
             minimumTrackTintColor='#1073ff'
             maximumTrackTintColor='#b7b7b7'
-          />
+        />
         {this._renderWaveFormCollapsible()}
       </View>
     );

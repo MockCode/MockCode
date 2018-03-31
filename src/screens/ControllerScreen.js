@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, ScrollView } from "react-native";
+import {Button} from 'native-base';
 import { VitalSlider } from "../components/VitalSlider";
 import styles from "./styles/controllerScreenStyle"
 
