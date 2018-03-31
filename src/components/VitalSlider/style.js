@@ -46,7 +46,8 @@ export default StyleSheet.create({
         fontSize: moderateScale(15),
         fontWeight: 'bold',
         color: 'black',
-        padding: 5
+        paddingLeft: '1%',
+        paddingRight: '1%'
     },
     waveFormButton: {
         height:moderateScale(40),

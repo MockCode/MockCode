@@ -70,8 +70,31 @@ export class VitalSlider extends Component {
 
   _renderWaveformSelector() {
     if(this.props.sliderName.indexOf("Heart Rate") !== -1 && this.state.collapsed == true){
+      var inputProps = {
+        rounded: true,
+        small: true,
+        iconLeft: true,
+      }
+      switch(this.state.waveForm){
+        case WAVE_FORMS[0]:
+          inputProps.success = true;
+          break;
+        case WAVE_FORMS[1]:
+          inputProps.info = true;
+          break;
+        case WAVE_FORMS[2]:
+          inputProps.warning = true;
+          break;
+        case WAVE_FORMS[3]:
+          inputProps.danger = true;
+          break;
+        default:
+          inputProps.light = true;
+          break;
+      }
+
       return(
-        <Button rounded small iconLeft light onPress={this._toggleExpanded}
+        <Button {...inputProps} onPress={this._toggleExpanded}
           style={style.waveFormSelect}>
           {/* <Icon name='pulse' style={{}}/> */}
           <Text style={style.waveFormSelectText}>{this.state.waveForm}</Text>
