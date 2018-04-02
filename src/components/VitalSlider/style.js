@@ -22,7 +22,7 @@ export default StyleSheet.create({
         fontSize: moderateScale(25),
         fontWeight: 'bold',
     },
-    thumbStyle: {
+    thumbStyleEnabled: {
         width: moderateScale(30),
         height: moderateScale(30),
         borderRadius: moderateScale(30 / 2),
@@ -31,6 +31,11 @@ export default StyleSheet.create({
         shadowOffset: {width: 0, height: 2},
         shadowRadius: 2,
         shadowOpacity: 0.35
+    },
+    thumbStyleDisabled: {
+        width: 0,
+        height: 0,
+        borderRadius: 0
     },
     trackStyle: {
         height: 2,

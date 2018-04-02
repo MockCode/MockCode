@@ -27,6 +27,11 @@ export default class ControllerScreen extends Component {
     title: "Controller"
   };
 
+  waveformCallback = (value) => {
+    store.dispatch(Update_Value(ACTIONS.UPDATE_WAVEFORM, value));
+    this.setState({Waveform: value});
+  }
+
   _compressionsChange() {
     if(this.state.Waveform === "Compressions In-Progress"){
       this.setState({Waveform: WAVE_FORMS[0]})
@@ -67,7 +72,8 @@ export default class ControllerScreen extends Component {
             min={20} 
             max={300} 
             initialValue={this.state.HeartRate}
-            waveForm={this.state.Waveform} 
+            waveform={this.state.Waveform}
+            waveformCallback={this.waveformCallback}
             sliderName="Heart Rate (BPM):"
             actionType={ACTIONS.UPDATE_HEART_RATE}
             style={styles.slider}
@@ -75,8 +81,8 @@ export default class ControllerScreen extends Component {
           <VitalSlider
             min={60}
             max={100}
-            initialValue={80}
-            initialValue={this.state.O2Sat} 
+            initialValue={this.state.O2Sat}
+            waveform={this.state.Waveform}
             sliderName="O2 Saturation %:"
             actionType={ACTIONS.UPDATE_O2SAT}
             style={styles.slider}
@@ -84,7 +90,8 @@ export default class ControllerScreen extends Component {
           <VitalSlider
             min={0}
             max={15}
-            initialValue={BLOOD_PRESSURE_LEVELS.indexOf(this.state.bloodPressure)} 
+            initialValue={BLOOD_PRESSURE_LEVELS.indexOf(this.state.bloodPressure)}
+            waveform={this.state.Waveform}
             sliderName="Blood Pressure:"
             actionType={ACTIONS.UPDATE_BLOOD_PRESSURE}
             bpLevels = {BLOOD_PRESSURE_LEVELS}
@@ -93,7 +100,8 @@ export default class ControllerScreen extends Component {
           <VitalSlider
             min={0}
             max={50}
-            initialValue={this.state.EtC02} 
+            initialValue={this.state.EtC02}
+            waveform={this.state.Waveform}
             sliderName="EtCO2 (mmHg):"
             actionType={ACTIONS.UPDATE_ETCO2}
             style={styles.slider}
