@@ -7,10 +7,7 @@ import { Icon, Button} from 'native-base';
 import Collapsible from 'react-native-collapsible';
 import { moderateScale } from "../../utils/scaling";
 import Slider from "react-native-slider"
-
-
-const WAVE_FORMS = ["Normal Sinus Rhythm", "Ventricular Tachycardia",
-                    "Ventricular Fibrillation", "PEA/Asystole"]
+import {WAVE_FORMS} from '../../utils/constants';
 
 export class VitalSlider extends Component {
   constructor(props) {
@@ -22,8 +19,12 @@ export class VitalSlider extends Component {
       sliderValue: props.initialValue,
       switchValue: true,
       collapsed: true,
-      waveForm: props.initialWaveForm
+      waveForm: props.waveForm
     };
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.setState({waveForm: newProps.waveForm});
   }
 
   _toggleExpanded = () => {
@@ -48,6 +49,17 @@ export class VitalSlider extends Component {
 
   _onWaveFormChange = (value) => {
     this._toggleExpanded();
+    switch(value) {
+      case WAVE_FORMS[1]:
+        if(this.props.sliderName.indexOf("Heart Rate") !== -1){
+          this.setState({sliderValue: 184});
+          store.dispatch(Update_Value(this.props.actionType, 184));
+        }
+        break;
+      // TODO: Add cases for other waveforms and their parameter changes
+      default:
+        break;
+    }
     this.setState({waveForm: value});
     store.dispatch(Update_Value(ACTIONS.UPDATE_WAVEFORM, value));
   }
@@ -75,6 +87,7 @@ export class VitalSlider extends Component {
         small: true,
         iconLeft: true,
       }
+
       switch(this.state.waveForm){
         case WAVE_FORMS[0]:
           inputProps.success = true;
@@ -88,6 +101,10 @@ export class VitalSlider extends Component {
         case WAVE_FORMS[3]:
           inputProps.danger = true;
           break;
+        case WAVE_FORMS[4]:
+          inputProps.disabled = true;
+          inputProps.light = true;
+          break;
         default:
           inputProps.light = true;
           break;
@@ -95,7 +112,7 @@ export class VitalSlider extends Component {
 
       return(
         <Button {...inputProps} onPress={this._toggleExpanded}
-          style={style.waveFormSelect}>
+          style={[style.waveFormSelect, inputProps.disabled ? {opacity : 0.25} : {}]}>
           <Icon name='pulse' style={{}}/>
           <Text style={style.waveFormSelectText}>{this.state.waveForm}</Text>
         </Button>
