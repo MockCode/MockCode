@@ -23,10 +23,10 @@ export class VitalSlider extends Component {
     };
   }
 
+  // All vital sliders need to be aware of the current waveform
+  // selected, and thus will receive new props of the current
+  // waveform selected by the user
   componentWillReceiveProps(newProps) {
-    // This is needed for the controller screen updating
-    // this component that compressions are in-progress,
-    // as compressions in-progress has its own unique waveform
     this.setState({waveform: newProps.waveform});
     this._onWaveformChange(newProps.waveform);
   }
@@ -54,12 +54,11 @@ export class VitalSlider extends Component {
   _onWaveformSelect = (value) => {
     this._toggleExpanded();
     this.props.waveformCallback(value);
-    // store.dispatch(Update_Value(ACTIONS.UPDATE_WAVEFORM, value));
   }
 
+  // This method is called when the waveform is changed
+  // in the global state of the app.
   _onWaveformChange = (value) => {
-    // This method is called when the waveform is changed
-    // in the global state of the app.
 
     // This is where the handling of which parameters are available
     // for tuning based on the waveform is handled.
@@ -93,6 +92,8 @@ export class VitalSlider extends Component {
         if(this.props.sliderName.indexOf("Heart Rate") !== -1){
           this.setState({sliderValue: 184, switchValue: false});
           store.dispatch(Update_Value(this.props.actionType, 184));
+        } else {
+          this.setState({switchValue: true});
         }
         break;
       case WAVE_FORMS[2]: // Ventricular Fibrillation
@@ -107,19 +108,21 @@ export class VitalSlider extends Component {
   }
 
   _renderSliderValue() {
-    if(this.props.sliderName.indexOf("Blood Pressure") !== -1){
-      return(
-        <Text style={style.sliderValueText}>
-          {this.props.bpLevels[this.state.sliderValue]}
-        </Text>
-      )
+    let sliderValue = ""
+    if(this.state.waveform === WAVE_FORMS[0] || this.state.waveform === WAVE_FORMS[1]){
+      if(this.props.sliderName.indexOf("Blood Pressure") !== -1){
+        sliderValue = this.props.bpLevels[this.state.sliderValue];
+      } else {
+        sliderValue = this.state.sliderValue;
+      }
+
     } else {
-      return(
-        <Text style={style.sliderValueText}>
-        {this.state.sliderValue}
-        </Text>
-      )
+      sliderValue = "---";
     }
+
+    return(
+      <Text style={style.sliderValueText}> {sliderValue} </Text>
+    )
   }
 
   _renderWaveformSelector() {
@@ -154,7 +157,7 @@ export class VitalSlider extends Component {
 
       return(
         <Button {...inputProps} onPress={this._toggleExpanded}
-          style={[style.waveFormSelect, inputProps.disabled ? {opacity : 0.25} : {}]}>
+          style={[style.waveFormSelect, inputProps.disabled ? {opacity : 0.1} : {}]}>
           <Icon name='pulse' style={{}}/>
           <Text style={style.waveFormSelectText}>{this.state.waveform}</Text>
         </Button>
