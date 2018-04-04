@@ -123,8 +123,3 @@ VitalSlider.propTypes = {
   step: PropTypes.number,
   bpLevels: PropTypes.arrayOf(PropTypes.string)
 }
-
-VitalSlider.defaultProps = {
-  min: 0,
-  max: 100
-}
