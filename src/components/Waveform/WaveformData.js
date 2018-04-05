@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 
 /*
  * This is the database of data points for specific waveforms.
@@ -23,6 +23,20 @@ import React from 'react';
  */
 export var waveformData = {
   'HR':{
+    'TEST':{
+      'rateRange': [20, 300],
+      'duration': [400],
+      'totalDuration': 400,
+      'nPoints': 10,
+      'nWaves': 1,
+      'minWaveWidth': 2,
+      'compressionPolicy': 'mod',
+      'range': {
+        'min': 0,
+        'max': 1
+      },
+      'dataPoints': [1,0,0,0,0,0,0,0,0,0]
+    },
     'NSR': {
       'rateRange': [20, 300],
       'duration': [800],

@@ -36,7 +36,6 @@
 		2DCD954D1E0B4F2C00145EB5 /* MockCodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MockCodeTests.m */; };
 		40089F69CD154E30999F9D56 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD43360DCD004E2891A8B73A /* Roboto.ttf */; };
 		5CBC9A688F4B45C5BFB251DC /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63F22974B50A4F5F82D9F4A1 /* MaterialIcons.ttf */; };
-		7AC3BB842055F48C00A79E7A /* libRNWebGL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC3BB832055F48400A79E7A /* libRNWebGL.a */; };
 		7AC3BB852055F53400A79E7A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8ABFD23449BF488F819C7B96 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F2E6D43B0944AB4A7EC909F /* Foundation.ttf */; };
@@ -486,7 +485,6 @@
 			files = (
 				9CA32C26206AE3E50082CAD8 /* libRNSVG.a in Frameworks */,
 				7AC3BB852055F53400A79E7A /* libReact.a in Frameworks */,
-				7AC3BB842055F48C00A79E7A /* libRNWebGL.a in Frameworks */,
 				9CC49EF1205AF6AF00901693 /* libRNDeviceInfo.a in Frameworks */,
 				9C88C29A205702330037C169 /* libRCTVideo.a in Frameworks */,
 				9CEC949120420FE600DC0E37 /* libRNNearbyApi.a in Frameworks */,

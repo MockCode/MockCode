@@ -40,6 +40,8 @@ class WaveformCanvas extends React.Component {
     // this.now;
     this.then = Date.now();
     this.interval = 1000 / this.fps;
+
+    this.windowTime = 5000;
     // this.delta;
     // console.log(Dimensions.get('window').height, Dimensions.get('window').width);
   }
@@ -55,6 +57,7 @@ class WaveformCanvas extends React.Component {
       this.renderFrame();
     });
   }
+
   handleCanvas = (canvas) => {
     console.log("render")
     // this.setState({canvas:canvas.getContext('2d')})
@@ -69,8 +72,17 @@ class WaveformCanvas extends React.Component {
   }
 
   ecgGenerator(x) {
-    return waveformData.NSR.dataPoints[x % 300]
+    let twindow = x % 300;
+    return waveformData.HR.NSR.dataPoints[twindow]
+    if (twindow < 35) {
+    } else {
+      return 1;
+    }
     //return Math.random()
+  }
+
+  config(w, h, bpm) {
+
   }
 
   renderFrame() {
