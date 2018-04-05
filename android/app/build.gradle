@@ -137,27 +137,14 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-webgl')
     compile project(':react-native-video')
     compile project(':react-native-svg')
     compile project(':react-native-orientation')
     compile project(':react-native-nearby-api')
-    compile project(':react-native-device-info')
 
-    compile project(':react-native-webgl')
-    compile project(':react-native-video')
-    compile project(':react-native-svg')
-    compile project(':react-native-orientation')
-    compile project(':react-native-nearby-api')
-    compile project(':react-native-device-info')
-
-    compile project(':react-native-webgl')
     compile(project(':react-native-device-info')) {
         exclude group: 'com.google.android.gms'
     }
-    compile project(':react-native-video')
-    compile project(':react-native-nearby-api')
-    compile project(':react-native-orientation')
     compile project(':appcenter-crashes')
     compile project(':appcenter-analytics')
     compile project(':appcenter')

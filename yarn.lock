@@ -4060,6 +4060,7 @@ react-native-canvas@^0.1.20:
   dependencies:
     ctx-polyfill lifaon74/ctx-polyfill
     parse5 "^3.0.2"
+
 react-native-collapsible@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/react-native-collapsible/-/react-native-collapsible-0.10.0.tgz#3a3db2685ea4ff1b25812840e719f1225e412936"
@@ -4158,12 +4159,6 @@ react-native-video@^2.0.0:
   dependencies:
     keymirror "0.1.1"
     prop-types "^15.5.10"
-
-react-native-webgl@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/react-native-webgl/-/react-native-webgl-0.8.0.tgz#f03552c639a2a022c67ff7b9d1256bd8aa56aadc"
-  dependencies:
-    prop-types "^15.5.8"
 
 react-native@^0.52.1:
   version "0.52.3"
