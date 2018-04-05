@@ -112,7 +112,7 @@ class WaveformCanvas extends React.Component {
       const stepsize = 5;
 
       // console.log(now, this.then, delta)
-      if (this.state.dimensions && 1) {
+      if (this.state.dimensions && 0) {
           var frame = this.r.getFrame(this.then, delta);
           // var frame = this.frame.slice(0);
 
@@ -159,7 +159,7 @@ class WaveformCanvas extends React.Component {
       }
 
 
-      if (this.state.dimensions && 0){
+      if (this.state.dimensions && 1){
         x = this.x + stepsize;
         // just a test for now to see it render :+1:
         // got magic numbers but it looks cool right now!!
