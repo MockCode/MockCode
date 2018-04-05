@@ -159,7 +159,7 @@ class WaveformCanvas extends React.Component {
       }
 
 
-      if (this.state.dimensions && 1){
+      if (this.state.dimensions && 0){
         x = this.x + stepsize;
         // just a test for now to see it render :+1:
         // got magic numbers but it looks cool right now!!
