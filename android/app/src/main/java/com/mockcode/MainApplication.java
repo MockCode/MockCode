@@ -11,6 +11,13 @@ import com.badfeatures.nearby.RNNearbyApiPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 
 import fr.greweb.rnwebgl.RNWebGLPackage;
+import com.brentvatne.react.ReactVideoPackage;
+import com.horcrux.svg.SvgPackage;
+import com.github.yamill.orientation.OrientationPackage;
+import com.badfeatures.nearby.RNNearbyApiPackage;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
+
+import fr.greweb.rnwebgl.RNWebGLPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.brentvatne.react.ReactVideoPackage;
 import com.badfeatures.nearby.RNNearbyApiPackage;
@@ -38,6 +45,15 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNWebGLPackage(),
+            new ReactVideoPackage(),
+            new SvgPackage(),
+            new OrientationPackage(),
+            new RNNearbyApiPackage(),
+            new RNDeviceInfo(),
+
+
+
             new RNWebGLPackage(),
             new ReactVideoPackage(),
             new SvgPackage(),

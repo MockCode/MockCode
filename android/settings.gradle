@@ -18,6 +18,19 @@ include ':react-native-webgl'
 project(':react-native-webgl').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-webgl/android')
 include ':react-native-video'
 project(':react-native-video').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-video/android')
+include ':react-native-svg'
+project(':react-native-svg').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-svg/android')
+include ':react-native-orientation'
+project(':react-native-orientation').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-orientation/android')
+include ':react-native-nearby-api'
+project(':react-native-nearby-api').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-nearby-api/android')
+include ':react-native-device-info'
+project(':react-native-device-info').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-device-info/android')
+
+include ':react-native-webgl'
+project(':react-native-webgl').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-webgl/android')
+include ':react-native-video'
+project(':react-native-video').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-video/android')
 include ':react-native-device-info'
 project(':react-native-device-info').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-device-info/android')
 include ':react-native-nearby-api'
