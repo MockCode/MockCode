@@ -4054,12 +4054,20 @@ react-devtools-core@3.0.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+<<<<<<< HEAD
 react-native-canvas@^0.1.20:
   version "0.1.20"
   resolved "https://registry.yarnpkg.com/react-native-canvas/-/react-native-canvas-0.1.20.tgz#8dbfbbdbc832c7e789614ca10d78e1814906fc87"
   dependencies:
     ctx-polyfill lifaon74/ctx-polyfill
     parse5 "^3.0.2"
+=======
+react-native-collapsible@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/react-native-collapsible/-/react-native-collapsible-0.10.0.tgz#3a3db2685ea4ff1b25812840e719f1225e412936"
+  dependencies:
+    prop-types "^15.5.10"
+>>>>>>> origin
 
 react-native-device-info@^0.17.4:
   version "0.17.4"

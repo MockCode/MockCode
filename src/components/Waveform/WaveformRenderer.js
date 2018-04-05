@@ -14,7 +14,7 @@ export default class Renderer {
       this.width = 200;
       this.height = 100;
 
-      this.changeWaveform('HR', 'NSR-SIMPLE');
+      this.changeWaveform('HR', 'NSR');
       this.updateFrequency(60);
       this.wave = [];
 

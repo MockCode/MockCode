@@ -7,7 +7,7 @@ import API_KEYS from '../../api'
 
 const initialState = {
     nearbyApi: new NearbyAPI(true),
-    devices:[{id:"sample"}],
+    devices: new Set(),
     controllerValues : [{
         controllerValueType: ControllerValues.HEART_RATE,
         value: 0
@@ -29,17 +29,11 @@ const initialState = {
 
 
 function NearbyApi(state = initialState, action) {
-  // console.log("hit the reducer")
   switch (action.type) {
   case ACTIONS.MESSAGE_FOUND:
-    // console.log("message found:", action.value)
     return state;
   case ACTIONS.HELLO_RESPONSE:
-    
-    state.devices.push({ id: action.value });
-    // if (state.devices.indexOf({id:action.value}) == -1) state.devices.push({id:action.value});
-    // console.log(state)
-    // console.log("action:", action.value)
+    state.devices.add(action.value);
     return state
   default:
     return state
@@ -92,7 +86,7 @@ function EtC02(state= 25, action) {
   }
 }
 
-function Waveform(state = 'Normal Sinus Rhythmn', action) {
+function Waveform(state = 'Normal Sinus Rhythm', action) {
   switch (action.type) {
     case ACTIONS.UPDATE_WAVEFORM:
       return action.value

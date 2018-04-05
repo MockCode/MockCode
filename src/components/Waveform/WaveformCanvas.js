@@ -41,14 +41,14 @@ class WaveformCanvas extends React.Component {
     this.renderFrame = this.renderFrame.bind(this);
 
 
-    this.fps = 6;
+    this.fps = 60;
     // this.now;
     this.then = Date.now();
     this.interval = 1000 / this.fps;
 
     this.windowTime = 5000;
     this.r = new Renderer('HR');
-    this.r.changeWaveform('HR', 'NSR-SIMPLE');
+    this.r.changeWaveform('HR', 'NSR');
     this.r.updateFrequency(120);
     this.frame = this.r.getFrame(0, 100);
     // this.delta;
@@ -120,10 +120,10 @@ class WaveformCanvas extends React.Component {
 
           
           var p_per_i = (delta/frame.length)*(this.state.dimensions.width/5000)
-          console.log(p_per_i)
+          // console.log(p_per_i)
           frame.forEach((y, i) => {
             // frame[i] = [this.x + i * p_per_i, this.state.dimensions.height / (r.waveform.range.max - r.waveform.range.min) * (y - r.waveform.range.min)]
-            frame[i] = [this.x + i * p_per_i, 200*y ]
+            frame[i] = [this.x + i*p_per_i, 10*(y + 0.5) ]
           })
           // console.log(frame);
           for (i = frame.length; i > 0; ) {
@@ -140,7 +140,7 @@ class WaveformCanvas extends React.Component {
               var removable = Math.floor((this.state.dimensions.width - this.x)/ p_per_i);
               this.y = this.state.dimensions.height/2;
               this.back = this.front.concat(frame.splice(0, removable))
-              this.front = [[-1, this.y], [-1, this.y]];
+              // this.front = [[-1, this.y], [-1, this.y]];
               i -= removable;
 
               this.x = 0;
