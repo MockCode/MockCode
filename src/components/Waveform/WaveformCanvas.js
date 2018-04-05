@@ -112,10 +112,13 @@ class WaveformCanvas extends React.Component {
       const stepsize = 5;
 
       // console.log(now, this.then, delta)
-      if (this.state.dimensions && 0) {
+      if (this.state.dimensions && 1) {
           var frame = this.r.getFrame(this.then, delta);
           // var frame = this.frame.slice(0);
 
+          if (frame.length != 0) {
+
+          
           var p_per_i = (delta/frame.length)*(this.state.dimensions.width/5000)
           console.log(p_per_i)
           frame.forEach((y, i) => {
@@ -134,7 +137,7 @@ class WaveformCanvas extends React.Component {
               
             } else {
               // console.log("swap")
-              var removable = (this.state.dimensions.width - this.x)/ p_per_i;
+              var removable = Math.floor((this.state.dimensions.width - this.x)/ p_per_i);
               this.y = this.state.dimensions.height/2;
               this.back = this.front.concat(frame.splice(0, removable))
               this.front = [[-1, this.y], [-1, this.y]];
@@ -143,10 +146,12 @@ class WaveformCanvas extends React.Component {
               this.x = 0;
             }
             if (this.front.length >= 2 && this.back.length >= 2) {
+              // console.log(this.front, this.back)
               this.setState({ front: this.front.join(' '), back: this.back.join(' ') });
     
             }
           }
+        }
 
         // this.x += frame.length* p_per_i;
 
