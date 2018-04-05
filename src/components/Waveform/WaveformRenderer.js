@@ -14,8 +14,9 @@ export default class Renderer {
       this.width = 200;
       this.height = 100;
 
-      this.changeWaveform('HR', 'TEST');
+      this.changeWaveform('HR', 'NSR-SIMPLE');
       this.updateFrequency(60);
+      this.wave = [];
 
       
 
@@ -35,10 +36,10 @@ export default class Renderer {
 
       // calculate slice
       var slice = []
-      console.log(time_in_frame, first_point, num_points, this.maxPoints);
+      // console.log(time_in_frame, first_point, num_points, this.maxPoints);
       // return slice;
       for (i = 0; num_points >0; i++) {
-        console.log(i)
+        // console.log(i)
         if (num_points > this.maxPoints - first_point) {
           // return 0;
           slice = slice.concat(this.waveform.dataPoints.slice(first_point, this.maxPoints - first_point));

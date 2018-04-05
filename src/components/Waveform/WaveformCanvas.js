@@ -8,6 +8,11 @@ import Svg, {Polyline, Circle} from 'react-native-svg';
 
 import { waveformData } from './WaveformData.js';
 
+// import Renderer from '../src/components/Waveform/WaveformRenderer.js';
+
+import Renderer from './WaveformRenderer'
+r = new Renderer('HR');
+
 const stateForTime = (t) => ({
   plot : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
   timeStep: (60 *(t / 100000)) % 1,
@@ -36,12 +41,16 @@ class WaveformCanvas extends React.Component {
     this.renderFrame = this.renderFrame.bind(this);
 
 
-    this.fps = 30;
+    this.fps = 6;
     // this.now;
     this.then = Date.now();
     this.interval = 1000 / this.fps;
 
     this.windowTime = 5000;
+    this.r = new Renderer('HR');
+    this.r.changeWaveform('HR', 'NSR-SIMPLE');
+    this.r.updateFrequency(120);
+    this.frame = this.r.getFrame(0, 100);
     // this.delta;
     // console.log(Dimensions.get('window').height, Dimensions.get('window').width);
   }
@@ -73,7 +82,7 @@ class WaveformCanvas extends React.Component {
 
   ecgGenerator(x) {
     let twindow = x % 300;
-    return waveformData.HR.NSR.dataPoints[twindow]
+    return waveformData.HR.VT.dataPoints[twindow]
     if (twindow < 35) {
     } else {
       return 1;
@@ -93,14 +102,59 @@ class WaveformCanvas extends React.Component {
     // if (t > 100000) {
     now = Date.now();
     delta = now - this.then;
+    // console.log(now)
+
+    
 
     if (delta > this.interval) {
-      this.then = now - (delta % this.interval);
+      // this.then = now - (delta % this.interval);
 
       const stepsize = 5;
 
+      // console.log(now, this.then, delta)
+      if (this.state.dimensions && 0) {
+          var frame = this.r.getFrame(this.then, delta);
+          // var frame = this.frame.slice(0);
 
-      if (this.state.dimensions){
+          var p_per_i = (delta/frame.length)*(this.state.dimensions.width/5000)
+          console.log(p_per_i)
+          frame.forEach((y, i) => {
+            // frame[i] = [this.x + i * p_per_i, this.state.dimensions.height / (r.waveform.range.max - r.waveform.range.min) * (y - r.waveform.range.min)]
+            frame[i] = [this.x + i * p_per_i, 200*y ]
+          })
+          // console.log(frame);
+          for (i = frame.length; i > 0; ) {
+            // console.log(i, this.front.length, this.back.length);
+            if ( this.x + i * p_per_i < this.state.dimensions.width) {
+              // console.log("space")
+              // append to front
+              this.front = this.front.concat(frame);
+              this.x += i* p_per_i;
+              i = 0
+              
+            } else {
+              // console.log("swap")
+              var removable = (this.state.dimensions.width - this.x)/ p_per_i;
+              this.y = this.state.dimensions.height/2;
+              this.back = this.front.concat(frame.splice(0, removable))
+              this.front = [[-1, this.y], [-1, this.y]];
+              i -= removable;
+
+              this.x = 0;
+            }
+            if (this.front.length >= 2 && this.back.length >= 2) {
+              this.setState({ front: this.front.join(' '), back: this.back.join(' ') });
+    
+            }
+          }
+
+        // this.x += frame.length* p_per_i;
+
+
+      }
+
+
+      if (this.state.dimensions && 0){
         x = this.x + stepsize;
         // just a test for now to see it render :+1:
         // got magic numbers but it looks cool right now!!
@@ -144,6 +198,7 @@ class WaveformCanvas extends React.Component {
 
         }
       }
+      this.then = now;
     }
 
     // }
