@@ -3934,6 +3934,12 @@ react-devtools-core@3.0.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-collapsible@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/react-native-collapsible/-/react-native-collapsible-0.10.0.tgz#3a3db2685ea4ff1b25812840e719f1225e412936"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-device-info@^0.17.4:
   version "0.17.4"
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.17.4.tgz#c135d4719f0512729de1c72e058a137e29ea1e3e"

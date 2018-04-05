@@ -7,9 +7,6 @@ export default StyleSheet.create({
       flexDirection: 'column',
       justifyContent: 'space-between'
     },
-    slider: {
-      flex: 1
-    },
     sliders: {
       flex: 2
     },
