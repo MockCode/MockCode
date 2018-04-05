@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { Shaders, Node, GLSL } from 'gl-react';
-import { AnimatedSurface, Surface } from "gl-react-native"; // for React Native
 import { Animated, Text, View, Dimensions, TextInput, StyleSheet, StatusBar, Alert, Button } from 'react-native';
 import { connect, Provider } from "react-redux";
 // import Orientation from "react-native-orientation";
