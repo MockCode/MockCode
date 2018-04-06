@@ -44,6 +44,12 @@ function HeartRate(state = 80, action) {
   switch (action.type) {
     case ACTIONS.UPDATE_HEART_RATE:
       return action.value
+    // case ACTIONS.UPDATE_WAVEFORM:
+    //   if (action.value == "Compressions In-Progress") {
+    //     return "--";
+    //   } else {
+    //     return 0;
+    //   }
     default:
       return state
   }

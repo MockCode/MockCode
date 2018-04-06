@@ -103,7 +103,7 @@ export var waveformData = {
       'minWaveWidth': 0,
       'compressionPolicy': 'skip',
       'range': {
-        'min': 0,
+        'min': -1,
         'max': 1
       },
       'dataPoints' : [0,0,0,0,0,0,0,0,-0.05,-0.1,0.1,0,0]

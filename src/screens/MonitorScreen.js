@@ -80,7 +80,8 @@ export default class MonitorScreen extends Component {
                         </View>
                         <View style = {styles.row}>
                             <Text style = {styles.statusNumber}>
-                                <Text>{this.props.heartRate}</Text>
+                                {this.props.Waveform == "Compressions In-Progress" && <Text>--</Text>}
+                                {this.props.Waveform != "Compressions In-Progress" && <Text>{this.props.heartRate}</Text>}                                
                             </Text>
                         </View>
                     </View>
@@ -97,7 +98,9 @@ export default class MonitorScreen extends Component {
                         </View>
                         <View style = {styles.row}>
                             <Text style = {styles.statusNumber}>
-                                <Text>{this.props.bloodPressure}</Text>
+                                {this.props.Waveform == "Compressions In-Progress" && <Text>--</Text>}
+                                {this.props.Waveform != "Compressions In-Progress" && <Text>{this.props.bloodPressure}</Text>} 
+                                {/* <Text>{this.props.bloodPressure}</Text> */}
                             </Text>
                         </View>
                     </View>
@@ -137,7 +140,8 @@ const mapStateToProps = (state) => {
     return {
         heartRate: state.HeartRate,
         bloodPressure: state.bloodPressure,
-        O2Sat: state.O2Sat
+        O2Sat: state.O2Sat,
+        Waveform: state.Waveform
     }
 }
 

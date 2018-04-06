@@ -2,7 +2,7 @@ import React from "react";
 import { Animated, StyleSheet, View} from "react-native";
 // import Dimensions from 'Dimensions'
 // import Canvas from 'react-native-canvas'
-import Svg, {Polyline, Circle} from 'react-native-svg';
+import Svg, {Polyline, Circle, Rect} from 'react-native-svg';
 // import { Surface } from "gl-react-native";
 // import { Shaders, Node, GLSL } from "gl-react";
 
@@ -36,12 +36,13 @@ class WaveformCanvas extends React.Component {
     this.front = [];
     this.back = [[201,0], [202, 0]];
     this.x = 0;
+    this.arrIndex = 0;
     this.y = 50;
     this.begin = Date.now();
     this.renderFrame = this.renderFrame.bind(this);
 
 
-    this.fps = 60;
+    this.fps = 15;
     // this.now;
     this.then = Date.now();
     this.interval = 1000 / this.fps;
@@ -113,15 +114,15 @@ class WaveformCanvas extends React.Component {
         case "PEA/Asystole":
         var w = waveformData.HR.PEA
           cadence = w.nPoints
-        
         break;
-        // case "Compressions In-Progress":
-        // var w = waveformData.HR.
+        case "Compressions In-Progress":
+        var w = waveformData.HR.ASYSTOLE;
+        cadence = w.nPoints;
       }
       // var bpm = 150;
       
       if (x < 10) {
-        console.log(c, store.getState().HeartRate, store.getState().Waveform);
+        console.log(store.getState().HeartRate, store.getState().Waveform);
       }
       var p = w.dataPoints[x % cadence];
       var scaled =  (w.range.max -  p) / (w.range.max - w.range.min) * this.state.dimensions.height
@@ -130,7 +131,12 @@ class WaveformCanvas extends React.Component {
       break
 
       case "BP":
-      return x % 200;
+        if (s.Waveform == "Compressions In-Progress") {
+          return this.state.dimensions.height /2;
+        } else {
+          return x % 200;
+
+        }
       break;
       case "O2Sat":
         scaled = this.state.dimensions.height - this.state.dimensions.height * (s.O2Sat / 100) + 10
@@ -213,10 +219,12 @@ class WaveformCanvas extends React.Component {
 
       if (this.state.dimensions && 1){
         x = this.x + stepsize;
+        
+        this.arrIndex += stepsize;
         // just a test for now to see it render :+1:
         // got magic numbers but it looks cool right now!!
         // y = this.state.dimensions.height / 1.5 - 0.5 * this.state.dimensions.height * this.ecgGenerator(x);
-        y = this._waveform(x);
+        y = this._waveform(this.arrIndex);
         // y = 200;
 
         // this.setState({front_points:this.state.front_points.push([x,y])});
@@ -224,6 +232,7 @@ class WaveformCanvas extends React.Component {
         // console.log(this.state.front_points);
         if (x < this.state.dimensions.width) {
           this.x = x;
+          // this.x = this.x % this.state.dimensions.width;
           this.y = y;
           // this.setState({ x: x, y:y});
           // this.setState({front_points:this.state.front_points.push([x,y])})
@@ -244,7 +253,10 @@ class WaveformCanvas extends React.Component {
           }
         } else {
           // this.setState({ x: 0});
+          // this.x = (this.x + stepsize) % this.state.dimensions.width;
+          // this.x += stepsize;
           this.x = 0;
+          // this.x = this.x % this.state.dimensions.width;
           this.y = this.state.dimensions.height /2;
           // console.log(this.front, this.back)
           this.back = this.front;
@@ -291,9 +303,10 @@ class WaveformCanvas extends React.Component {
         strokeWidth="3"/>
         <Polyline points={this.state.back}
         fill="none"
-        stroke="blue"
+        stroke="red"
         strokeWidth="3" />
-        <Circle r="4" cx={this.x} cy={this.y} fill="red"/>
+        {/* <Rect r="4" cx={this.x} cy={this.y} fill="#1c2321"/> */}
+        <Rect x={this.x -5} width="10" height={this.state.dimensions.height} fill="#1c2321"/>
         </Svg>
         </View>
       );
