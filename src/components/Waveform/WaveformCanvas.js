@@ -90,6 +90,58 @@ class WaveformCanvas extends React.Component {
     //return Math.random()
   }
 
+  _waveform(x) {
+    var s = store.getState();
+    switch (this.props.wavetype) {
+      case "HR":
+      switch (s.Waveform) {
+        case "Normal Sinus Rhythm":
+          var w = waveformData.HR.NSR;
+          c = Math.floor(this.state.dimensions.width / (5000 * (store.getState().HeartRate / 60000)));
+          cadence = Math.min(c, w.nPoints);
+        break
+
+        case "Ventricular Tachycardia":
+        var w = waveformData.HR.VT
+        cadence = w.nPoints
+        break;
+        case "Ventricular Fibrillation":
+        var w = waveformData.HR.VF
+          cadence = w.nPoints
+        
+        break;
+        case "PEA/Asystole":
+        var w = waveformData.HR.PEA
+          cadence = w.nPoints
+        
+        break;
+        // case "Compressions In-Progress":
+        // var w = waveformData.HR.
+      }
+      // var bpm = 150;
+      
+      if (x < 10) {
+        console.log(c, store.getState().HeartRate, store.getState().Waveform);
+      }
+      var p = w.dataPoints[x % cadence];
+      var scaled =  (w.range.max -  p) / (w.range.max - w.range.min) * this.state.dimensions.height
+        // console.log("here", 150*p + 100, c);
+        return scaled;
+      break
+
+      case "BP":
+      return x % 200;
+      break;
+      case "O2Sat":
+        scaled = this.state.dimensions.height - this.state.dimensions.height * (s.O2Sat / 100) + 10
+      // console.log("o2", scaled)
+        return scaled;
+      break;
+      default:
+      return 100;
+    }
+  }
+
   config(w, h, bpm) {
 
   }
@@ -107,7 +159,7 @@ class WaveformCanvas extends React.Component {
     
 
     if (delta > this.interval) {
-      // this.then = now - (delta % this.interval);
+      this.then = now - (delta % this.interval);
 
       const stepsize = 5;
 
@@ -159,12 +211,13 @@ class WaveformCanvas extends React.Component {
       }
 
 
-      if (this.state.dimensions && 0){
+      if (this.state.dimensions && 1){
         x = this.x + stepsize;
         // just a test for now to see it render :+1:
         // got magic numbers but it looks cool right now!!
-        y = this.state.dimensions.height / 1.5 - 0.5 * this.state.dimensions.height * this.ecgGenerator(x);
-
+        // y = this.state.dimensions.height / 1.5 - 0.5 * this.state.dimensions.height * this.ecgGenerator(x);
+        y = this._waveform(x);
+        // y = 200;
 
         // this.setState({front_points:this.state.front_points.push([x,y])});
         // this.state.front_points.push([x,y]);
@@ -203,7 +256,7 @@ class WaveformCanvas extends React.Component {
 
         }
       }
-      this.then = now;
+      // this.then = now;
     }
 
     // }

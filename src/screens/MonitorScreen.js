@@ -70,7 +70,7 @@ export default class MonitorScreen extends Component {
                 <NetworkComp/>
                 <View style={styles.row}>
                     <View style={styles.surfaceView} >
-                      <WaveformCanvas />
+                      <WaveformCanvas wavetype="HR" f={this.state.heartRate}/>
                     </View>
                     <View style={styles.column}>
                         <View style = {styles.row}>
@@ -87,7 +87,7 @@ export default class MonitorScreen extends Component {
                 </View>
                 <View style={styles.row}>
                     <View style={styles.surfaceView} >
-                      <WaveformCanvas />
+                      <WaveformCanvas wavetype="BP"/>
                     </View>
                     <View style={styles.column}>
                         <View style = {styles.row}>
@@ -104,7 +104,7 @@ export default class MonitorScreen extends Component {
                 </View>
                 <View style={styles.row}>
                     <View style={styles.surfaceView} >
-                      <WaveformCanvas />
+                      <WaveformCanvas wavetype="O2Sat"/>
                     </View>
                     <View style={styles.column}>
                         <View style = {styles.row}>
