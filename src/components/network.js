@@ -5,22 +5,15 @@ import { connect } from 'react-redux'
 import {NearbyAPI} from 'react-native-nearby-api'
 import {API_KEYS} from '../api'
 import {On_Message_Found, ACTIONS} from '../redux/actions/nearbyActions'
-
-// var DeviceInfo = require('react-native-device-info');
 import DeviceInfo from 'react-native-device-info'
 
 
 export class NetworkComp extends Component {
   componentDidMount() {
-    // console.log("network was created");
-    // console.log(DeviceInfo.getDeviceName())
     state = store.getState()
     var nearbyApi = state.NearbyApi.nearbyApi;
-    // console.log(state);
-    // console.log(nearbyApi);
     if (nearbyApi != undefined) {
-      // var nearbyApi = new NearbyAPI(true);
-      // console.log(Platform.OS)
+
       if (Platform.OS != 'Jest') {
         nearbyApi.connect(API_KEYS.nearby)
       }
@@ -28,7 +21,6 @@ export class NetworkComp extends Component {
       nearbyApi.onConnected(message => {
         //TODO: dispatch successful connect action
         console.log("Connected to Nearby.");
-        
         nearbyApi.subscribe();
       });
   

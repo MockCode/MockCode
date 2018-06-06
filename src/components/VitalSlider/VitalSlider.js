@@ -66,7 +66,7 @@ export class VitalSlider extends Component {
     // VF, PEA/Asystole, and Compr. In-Prog allow only movement of 
     // sliders (parameter values).
     switch(value) {
-      case WAVE_FORMS[0]: // Normal Sinus Rhythm
+      case WAVE_FORMS.NSR: // Normal Sinus Rhythm
         this.setState({switchValue: true});
         if(this.props.sliderName.indexOf("Heart Rate") !== -1){
           this.setState({sliderValue: NSR_VALUES.HEART_RATE});
@@ -88,7 +88,7 @@ export class VitalSlider extends Component {
           store.dispatch(Update_Value(ACTIONS.UPDATE_ETCO2, NSR_VALUES.ET_CO2));
         }
         break;
-      case WAVE_FORMS[1]: // Ventricular Tachycardia
+      case WAVE_FORMS.VTC: // Ventricular Tachycardia
         if(this.props.sliderName.indexOf("Heart Rate") !== -1){
           this.setState({sliderValue: 184, switchValue: false});
           store.dispatch(Update_Value(this.props.actionType, 184));
@@ -96,9 +96,9 @@ export class VitalSlider extends Component {
           this.setState({switchValue: true});
         }
         break;
-      case WAVE_FORMS[2]: // Ventricular Fibrillation
-      case WAVE_FORMS[3]: // PEA/Asystole
-      case WAVE_FORMS[4]: // Compressions In-Progress
+      case WAVE_FORMS.VTF: // Ventricular Fibrillation
+      case WAVE_FORMS.PEA: // PEA/Asystole
+      case WAVE_FORMS.CIP: // Compressions In-Progress
         this.setState({switchValue: false});
         break;
       default:
@@ -109,7 +109,7 @@ export class VitalSlider extends Component {
 
   _renderSliderValue() {
     let sliderValue = ""
-    if(this.state.waveform === WAVE_FORMS[0] || this.state.waveform === WAVE_FORMS[1]){
+    if(this.state.waveform === WAVE_FORMS.NSR || this.state.waveform === WAVE_FORMS.VTC){
       if(this.props.sliderName.indexOf("Blood Pressure") !== -1){
         sliderValue = this.props.bpLevels[this.state.sliderValue];
       } else {
@@ -134,19 +134,19 @@ export class VitalSlider extends Component {
       }
 
       switch(this.state.waveform){
-        case WAVE_FORMS[0]: // Normal Sinus Rhythm
+        case WAVE_FORMS.NSR: // Normal Sinus Rhythm
           inputProps.success = true;
           break;
-        case WAVE_FORMS[1]: // Ventricular Tachycardia
+        case WAVE_FORMS.VTC: // Ventricular Tachycardia
           inputProps.info = true;
           break;
-        case WAVE_FORMS[2]: // Ventricular Fibrillation
+        case WAVE_FORMS.VTF: // Ventricular Fibrillation
           inputProps.warning = true;
           break;
-        case WAVE_FORMS[3]: // PEA/Asystole
+        case WAVE_FORMS.PEA: // PEA/Asystole
           inputProps.danger = true;
           break;
-        case WAVE_FORMS[4]: // Compressions In-Progress
+        case WAVE_FORMS.CIP: // Compressions In-Progress
           inputProps.disabled = true;
           inputProps.light = true;
           break;
@@ -171,20 +171,20 @@ export class VitalSlider extends Component {
         <Collapsible collapsed={this.state.collapsed}>
           <ScrollView horizontal contentContainerStyle={{flex: 1, justifyContent: 'space-around'}}>
             <Button rounded small success style={style.waveFormButton}
-              onPress={() => this._onWaveformSelect(WAVE_FORMS[0])}>
-              <Text style={style.waveFormButtonText}>{WAVE_FORMS[0]}</Text>
+              onPress={() => this._onWaveformSelect(WAVE_FORMS.NSR)}>
+              <Text style={style.waveFormButtonText}>{WAVE_FORMS.NSR}</Text>
             </Button>
             <Button rounded small info style={style.waveFormButton}
-              onPress={() => this._onWaveformSelect(WAVE_FORMS[1])}>
-              <Text style={style.waveFormButtonText}>{WAVE_FORMS[1]}</Text>
+              onPress={() => this._onWaveformSelect(WAVE_FORMS.VTC)}>
+              <Text style={style.waveFormButtonText}>{WAVE_FORMS.VTC}</Text>
             </Button>
             <Button rounded small warning style={style.waveFormButton}
-              onPress={() => this._onWaveformSelect(WAVE_FORMS[2])}>
-              <Text style={style.waveFormButtonText}>{WAVE_FORMS[2]}</Text>
+              onPress={() => this._onWaveformSelect(WAVE_FORMS.VTF)}>
+              <Text style={style.waveFormButtonText}>{WAVE_FORMS.VTF}</Text>
             </Button>
             <Button rounded small danger style={style.waveFormButton}
-              onPress={() => this._onWaveformSelect(WAVE_FORMS[3])}>
-              <Text style={style.waveFormButtonText}>{WAVE_FORMS[3]}</Text>
+              onPress={() => this._onWaveformSelect(WAVE_FORMS.PEA)}>
+              <Text style={style.waveFormButtonText}>{WAVE_FORMS.PEA}</Text>
             </Button>
           </ScrollView>
         </Collapsible>

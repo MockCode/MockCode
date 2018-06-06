@@ -1,5 +1,10 @@
-export const WAVE_FORMS = ["Normal Sinus Rhythm", "Ventricular Tachycardia",
-                    "Ventricular Fibrillation", "PEA/Asystole", "Compressions In-Progress"];
+export const WAVE_FORMS = {
+    NSR: "Normal Sinus Rhythm", 
+    VTC: "Ventricular Tachycardia",
+    VTF: "Ventricular Fibrillation",
+    PEA: "PEA/Asystole", 
+    CIP: "Compressions In-Progress"
+};
 
 export const BLOOD_PRESSURE_LEVELS = 
                 ["62/40", "68/42", "76/46" , "88/50", "92/52", "98/54", "102/56",
