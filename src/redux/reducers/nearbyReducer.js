@@ -1,9 +1,10 @@
-import { ControllerValues, ACTIONS} from "../actions/nearbyActions"
+import { ACTIONS } from "../actions/nearbyActions"
 import { combineReducers } from 'redux'
 import { NearbyAPI } from "react-native-nearby-api";
 
-import API_KEYS from '../../api'
-
+const ControllerValues = {
+  HEART_RATE: "HEART_RATE"
+}
 
 const initialState = {
     nearbyApi: new NearbyAPI(true),

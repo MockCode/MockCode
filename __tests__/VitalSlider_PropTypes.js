@@ -26,7 +26,7 @@ describe('VitalSlider PropTypes Tests', () => {
             max={100}
             initialValue={50}
             actionType={ACTIONS.UPDATE_HEART_RATE}
-            waveform={WAVE_FORMS[0]}
+            waveform={WAVE_FORMS.NSR}
             sliderName={4} />
 
         expect(mockError).toHaveBeenCalledTimes(1);
@@ -65,7 +65,7 @@ describe('VitalSlider PropTypes Tests', () => {
             max={100}
             initialValue="hoeboi"
             actionType={ACTIONS.UPDATE_HEART_RATE}
-            waveform={WAVE_FORMS[0]}
+            waveform={WAVE_FORMS.NSR}
             sliderName={4} />
         
         expect(mockError).toHaveBeenCalledTimes(1);

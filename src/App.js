@@ -1,12 +1,10 @@
 import React, { Component} from 'react';
-import { NearbyAPI } from "react-native-nearby-api";
 import {connect, Provider } from "react-redux";
-import { createStore, bindActionCreators, applyMiddleware} from 'redux';
+import { createStore, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk'
 import MockApp from './redux/reducers/nearbyReducer'
 import {API_KEYS} from './api'
 import RootNavigator from './navigation'
-import {NetworkComp} from './components/network'
 import {Root} from 'native-base'
 
 export const nearbyAPI_KEY = API_KEYS.nearby;
