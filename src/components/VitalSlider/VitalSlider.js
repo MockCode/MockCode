@@ -4,8 +4,7 @@ import style from "./style";
 import { Text, View, Switch, ScrollView } from "react-native";
 import { Update_Value, ACTIONS } from '../../redux/actions/nearbyActions';
 import { Icon, Button} from 'native-base';
-import Collapsible from 'react-native-collapsible';
-import { moderateScale } from "../../utils/scaling";
+import WaveFormCollapsible from './WaveFormCollapsible';
 import Slider from "react-native-slider"
 import {WAVE_FORMS, NSR_VALUES} from '../../utils/constants';
 
@@ -168,26 +167,10 @@ export class VitalSlider extends Component {
   _renderWaveFormCollapsible() {
     if(this.props.sliderName.indexOf("Heart Rate") !== -1){
       return(
-        <Collapsible collapsed={this.state.collapsed}>
-          <ScrollView horizontal contentContainerStyle={{flex: 1, justifyContent: 'space-around'}}>
-            <Button rounded small success style={style.waveFormButton}
-              onPress={() => this._onWaveformSelect(WAVE_FORMS.NSR)}>
-              <Text style={style.waveFormButtonText}>{WAVE_FORMS.NSR}</Text>
-            </Button>
-            <Button rounded small info style={style.waveFormButton}
-              onPress={() => this._onWaveformSelect(WAVE_FORMS.VTC)}>
-              <Text style={style.waveFormButtonText}>{WAVE_FORMS.VTC}</Text>
-            </Button>
-            <Button rounded small warning style={style.waveFormButton}
-              onPress={() => this._onWaveformSelect(WAVE_FORMS.VTF)}>
-              <Text style={style.waveFormButtonText}>{WAVE_FORMS.VTF}</Text>
-            </Button>
-            <Button rounded small danger style={style.waveFormButton}
-              onPress={() => this._onWaveformSelect(WAVE_FORMS.PEA)}>
-              <Text style={style.waveFormButtonText}>{WAVE_FORMS.PEA}</Text>
-            </Button>
-          </ScrollView>
-        </Collapsible>
+        <WaveFormCollapsible 
+          collapsed={this.state.collapsed}
+          onWaveformSelect={this._onWaveformSelect}
+        />
       )
     }
   }

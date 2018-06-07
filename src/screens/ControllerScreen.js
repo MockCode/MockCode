@@ -6,7 +6,6 @@ import styles from "./styles/controllerScreenStyle"
 
 import {Update_Value, ACTIONS} from '../redux/actions/nearbyActions'
 import { NetworkComp } from '../components/network';
-import FaceButton from '../components/FaceButton';
 import FaceButtonList from '../components/FaceButtonList';
 import { moderateScale } from "../utils/scaling";
 import {BLOOD_PRESSURE_LEVELS, WAVE_FORMS} from '../utils/constants';
