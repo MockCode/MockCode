@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Platform } from 'react-native'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import {NearbyAPI} from 'react-native-nearby-api'
+import {Platform} from 'react-native'
 import {API_KEYS} from '../api'
 import {On_Message_Found, ACTIONS} from '../redux/actions/nearbyActions'
 import DeviceInfo from 'react-native-device-info'
@@ -53,13 +50,3 @@ export class NetworkComp extends Component {
     )
   }
 }
-
-// const mapStateToProps = (state) => ({
-  
-// })
-
-// const mapDispatchToProps = {
-  
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(componentName)

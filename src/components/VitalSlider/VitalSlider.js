@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import style from "./style";
 import { Text, View, Switch, ScrollView } from "react-native";
 import { Update_Value, ACTIONS } from '../../redux/actions/nearbyActions';
-import { Icon, Button} from 'native-base';
 import WaveFormCollapsible from './WaveFormCollapsible';
+import WaveFormSelector from './WaveFormSelector';
 import Slider from "react-native-slider"
 import {WAVE_FORMS, NSR_VALUES} from '../../utils/constants';
 
 export class VitalSlider extends Component {
   constructor(props) {
     super(props);
-    this._onSliderChange = this._onSliderChange.bind(this);
     this._onSliderChange = this._onSliderChange.bind(this);
     this._onWaveformChange = this._onWaveformChange.bind(this);
     this.state = {
@@ -126,40 +125,11 @@ export class VitalSlider extends Component {
 
   _renderWaveformSelector() {
     if(this.props.sliderName.indexOf("Heart Rate") !== -1 && this.state.collapsed == true){
-      var inputProps = {
-        rounded: true,
-        small: true,
-        iconLeft: true,
-      }
-
-      switch(this.state.waveform){
-        case WAVE_FORMS.NSR: // Normal Sinus Rhythm
-          inputProps.success = true;
-          break;
-        case WAVE_FORMS.VTC: // Ventricular Tachycardia
-          inputProps.info = true;
-          break;
-        case WAVE_FORMS.VTF: // Ventricular Fibrillation
-          inputProps.warning = true;
-          break;
-        case WAVE_FORMS.PEA: // PEA/Asystole
-          inputProps.danger = true;
-          break;
-        case WAVE_FORMS.CIP: // Compressions In-Progress
-          inputProps.disabled = true;
-          inputProps.light = true;
-          break;
-        default:
-          inputProps.light = true;
-          break;
-      }
-
       return(
-        <Button {...inputProps} onPress={this._toggleExpanded}
-          style={[style.waveFormSelect, inputProps.disabled ? {opacity : 0.1} : {}]}>
-          <Icon name='pulse' style={{}}/>
-          <Text style={style.waveFormSelectText}>{this.state.waveform}</Text>
-        </Button>
+        <WaveFormSelector
+          toggleCallback={this._toggleExpanded}
+          waveform={this.state.waveform}
+        />
       )
     }
   }

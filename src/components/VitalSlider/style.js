@@ -40,15 +40,5 @@ export default StyleSheet.create({
     trackStyle: {
         height: 2,
         borderRadius: 1,
-    },
-    waveFormSelect: {
-        height: moderateScale(40)
-    },
-    waveFormSelectText: {
-        fontSize: moderateScale(15),
-        fontWeight: 'bold',
-        color: 'black',
-        paddingLeft: '1%',
-        paddingRight: '1%'
     }
 })
