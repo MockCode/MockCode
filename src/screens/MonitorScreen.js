@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
-
 import { Animated, Text, View, Dimensions, TextInput, StyleSheet, StatusBar, Alert, Button } from 'react-native';
-import { connect, Provider } from "react-redux";
+import {connect} from "react-redux";
 // import Orientation from "react-native-orientation";
-import { NearbyAPI } from "react-native-nearby-api";
-
-import {API_KEYS} from '../api'
 import { NetworkComp } from '../components/network';
-import navigation from '../navigation';
-import SelectModeScreen from './SelectModeScreen';
-// import { NetworkComp } from '../components/network';
-
 import WaveformCanvas from "../components/Waveform/WaveformCanvas";
-// const nearbyAPI = new NearbyAPI(true);
 
 var {height, width} = Dimensions.get('window');
 
@@ -43,25 +34,7 @@ export default class MonitorScreen extends Component {
             bloodPressure: "120/80",
             O2Sat: "60"
         };
-
-        // nearbyAPI.connect(API_KEYS.nearby);
-        // console.log(API_KEYS.nearby);
-
     }
-    // store.subscribe() => {
-
-    // }
-    // componentDidMount() {
-    //   nearbyAPI.onConnected(message => {
-    //     nearbyAPI.subscribe();
-    //   });
-
-
-    //   nearbyAPI.onFound(message => {
-    //     this.setState({ message: message});
-    //   });
-    //   };
-
 
     render() {
         const { goBack } = this.props.navigation;

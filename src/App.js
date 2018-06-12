@@ -22,8 +22,8 @@ store = createStore(MockApp, applyMiddleware(thunkMiddleware))
 export default class App extends Component {
   constructor() {
     super();
-    // nearbyAPI.connect(API_KEY);
   }
+  
   render() {
     return (
       <Provider store={store}>

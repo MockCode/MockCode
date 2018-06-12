@@ -33,10 +33,7 @@ export class NetworkComp extends Component {
         // console.log(message);
         store.dispatch(On_Message_Found(message));
       });
-
     }
-
-
   };
   
   componentWillUnmount() {
