@@ -8,6 +8,21 @@ import WaveformCanvas from "../components/Waveform/WaveformCanvas";
 var {height, width} = Dimensions.get('window');
 
 export default class MonitorScreen extends Component {
+    constructor() {
+        super();
+        this.state = {
+            message: "",
+            heartRate: "98",
+            bloodPressure: "120/80",
+            O2Sat: "60"
+        };
+    }
+
+    static navigationOptions = {
+        title: 'Monitor',
+        header: null
+    }
+
     // componentWillMount(){
     //   const initialOrientation = Orientation.getInitialOrientation();
     //   if (initialOrientation == 'PORTRAIT'){
@@ -20,20 +35,6 @@ export default class MonitorScreen extends Component {
     componentDidMount(){
         StatusBar.setHidden(true);
         // Orientation.lockToLandscape();
-    }
-
-    static navigationOptions = {
-        title: 'Monitor',
-        header: null
-    }
-    constructor() {
-        super();
-        this.state = {
-            message: "",
-            heartRate: "98",
-            bloodPressure: "120/80",
-            O2Sat: "60"
-        };
     }
 
     render() {
