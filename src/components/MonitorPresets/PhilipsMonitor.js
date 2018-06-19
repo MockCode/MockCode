@@ -15,17 +15,20 @@ export default class PhilipsMonitor extends Component{
                     </View>
                     <View style={styles.oSatWave}>
                     </View>
-                    <View style={styles.respRateWave}>
+                    <View style={styles.nbpInfo}>
                     </View>
                 </View>
                 <View style={styles.dataSection}>
                     <View style={styles.heartRateData}>
-                        <VitalsInfo heartRate={97}/>
+                        <VitalsInfo vitalSignName="HR" vitalRate={80} style={{color: '#48fb47'}}/>
                     </View>
                     <View style={styles.oSatData}>
+                        <VitalsInfo vitalSignName="SpO2" vitalRate={95} style={{color: 'blue'}}/>
                     </View>
-                    <View style={styles.respRateData}>
+                    <View style={styles.nbpInfoExtra}>
                     </View>
+                </View>
+                <View style={styles.pulseSection}>
                 </View>
             </View>
         );
@@ -38,22 +41,21 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        height: '100%',
-        width: '100%'
     },
     waveformSection: {
-        flex: 2,
+        flex: 3,
         flexDirection: 'column',
-        height: '100%',
-        width: '100%',
-        backgroundColor: 'red'
     },
     dataSection: {
-        flex: 1.1,
+        flex: 1,
         flexDirection: 'column',
         height: '100%',
         width: '100%',
         backgroundColor: 'green'
+    },
+    pulseSection: {
+        flex: 1,
+        flexDirection: 'column'
     },
     heartRateWave: {
         flex: 1,
@@ -75,12 +77,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: 'grey'
     },
-    respRateWave: {
+    nbpInfo: {
         flex: 1,
         flexDirection: 'row',
         backgroundColor: 'purple'
     },
-    respRateData: {
+    nbpInfoExtra: {
         flex: 1,
         flexDirection: 'row',
         backgroundColor: 'white'
