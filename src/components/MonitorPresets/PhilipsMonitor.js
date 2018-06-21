@@ -19,20 +19,24 @@ export default class PhilipsMonitor extends Component{
                     <View style={styles.oSatWave}>
                     </View>
                     <View style={styles.nbpInfo}>
-                        <View style={{flex: 0.5}}>
-                            <Text>NBP</Text>
-                            <Text>Sys.</Text>
-                            <Text>Dia.</Text>
-                            <Text>Mean</Text>
+                        <View style={{flex: 0.8}}>
+                            <Text style={{fontSize: moderateScale(25), marginLeft: '2%'}}>NBP</Text>
+                        <View>
+                            <Text style={{fontSize: moderateScale(18), marginTop: '-7%', marginLeft: '2%'}}>Sys.</Text>
+                            <Text style={{fontSize: moderateScale(18), marginTop: '-7%', marginLeft: '2%'}}>Dia.</Text>
+                            <Text style={{fontSize: moderateScale(18), marginTop: '-7%', marginLeft: '2%'}}>Mean</Text>
                         </View>
-                        <View style={{flex: 2, backgroundColor: 'green'}}>
+                        </View>
+                        <View style={{flex: 3, backgroundColor: 'green'}}>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                            <Text>Pulse</Text>
-                            <Text style={{marginRight: '7%'}}>Man</Text>
+                                <Text>Pulse</Text>
+                                <Text style={{marginRight: '20%'}}>Man</Text>
                             </View>
-                            <Text style={{fontSize: moderateScale(80)}}>{"118/83"}</Text>
+                            <Text style={{fontSize: moderateScale(80), marginTop: '-7%'}}>{"118/83"}</Text>
                         </View>
-                        <View style={{flex : 1.5}}>
+                        <View style={{flex : 1.5, alignItems: 'center'}}>
+                            <Text style={{fontSize: moderateScale(18)}}>NBP</Text>
+                            <Text style={{fontSize: moderateScale(18),}}>mmHg</Text>
                         </View>
                     </View>
                 </View>
@@ -54,6 +58,7 @@ export default class PhilipsMonitor extends Component{
                         />
                     </View>
                     <View style={styles.nbpInfoExtra}>
+                        <Text>118/13</Text>
                     </View>
                 </View>
                 {/* View to contain the right side of monitor, where the pulse of
@@ -130,6 +135,7 @@ const styles = StyleSheet.create({
     nbpInfoExtra: {
         flex: 1,
         flexDirection: 'row',
+        justifyContent: 'flex-end',
         backgroundColor: 'white'
     },
 })
