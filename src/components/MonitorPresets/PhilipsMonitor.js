@@ -11,14 +11,33 @@ export default class PhilipsMonitor extends Component{
     render() {
         return (
             <View style={styles.container}>
+                {/* This view contains the column where any waveforms are drawn
+                    for certain vital signs (e.g., heart rate). */}
                 <View style={styles.waveformSection}>
                     <View style={styles.heartRateWave}>
                     </View>
                     <View style={styles.oSatWave}>
                     </View>
                     <View style={styles.nbpInfo}>
+                        <View style={{flex: 0.5}}>
+                            <Text>NBP</Text>
+                            <Text>Sys.</Text>
+                            <Text>Dia.</Text>
+                            <Text>Mean</Text>
+                        </View>
+                        <View style={{flex: 2, backgroundColor: 'green'}}>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                            <Text>Pulse</Text>
+                            <Text style={{marginRight: '7%'}}>Man</Text>
+                            </View>
+                            <Text style={{fontSize: moderateScale(80)}}>{"118/83"}</Text>
+                        </View>
+                        <View style={{flex : 1.5}}>
+                        </View>
                     </View>
                 </View>
+                {/* This view contains the column where all of the current vital sign
+                    values are shown (middle column), along with the vital sign name. */}
                 <View style={styles.dataSection}>
                     <View style={styles.heartRateData}>
                         <VitalsInfo 
@@ -37,6 +56,8 @@ export default class PhilipsMonitor extends Component{
                     <View style={styles.nbpInfoExtra}>
                     </View>
                 </View>
+                {/* View to contain the right side of monitor, where the pulse of
+                    patient is shown as determined by the O2Sat. */}
                 <View style={styles.pulseSection}>
                     <View style={{flex: 1.4, backgroundColor: 'black', justifyContent: 'center'}}>
                         <View style={{flexDirection: 'row', justifyContent: 'center'}}>
