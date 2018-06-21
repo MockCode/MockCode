@@ -21,6 +21,7 @@ class MonitorScreen extends Component {
     }
 
     componentWillUnmount() {
+        Orientation.lockToPortrait();
         Orientation.unlockAllOrientations();
     }
 
