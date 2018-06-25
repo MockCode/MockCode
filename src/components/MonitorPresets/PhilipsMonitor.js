@@ -15,28 +15,30 @@ export default class PhilipsMonitor extends Component{
                     for certain vital signs (e.g., heart rate). */}
                 <View style={styles.waveformSection}>
                     <View style={styles.heartRateWave}>
+                    {/* TODO: PLACE HEARTRATE WAVEFORM RENDERER HERE */}
                     </View>
                     <View style={styles.oSatWave}>
+                    {/* TODO: PLACE O2SAT RENDERER HERE */}
                     </View>
                     <View style={styles.nbpInfo}>
                         <View style={{flex: 0.8}}>
-                            <Text style={{fontSize: moderateScale(25), marginLeft: '2%'}}>NBP</Text>
+                            <Text style={{fontSize: moderateScale(25), marginLeft: '2%', color: '#EBB0D7', fontWeight: 'bold'}}>NBP</Text>
                         <View>
-                            <Text style={{fontSize: moderateScale(18), marginTop: '-7%', marginLeft: '2%'}}>Sys.</Text>
-                            <Text style={{fontSize: moderateScale(18), marginTop: '-7%', marginLeft: '2%'}}>Dia.</Text>
-                            <Text style={{fontSize: moderateScale(18), marginTop: '-7%', marginLeft: '2%'}}>Mean</Text>
+                            <Text style={bpInfoStyle.sysDiaMeanText}>Sys.</Text>
+                            <Text style={bpInfoStyle.sysDiaMeanText}>Dia.</Text>
+                            <Text style={bpInfoStyle.sysDiaMeanText}>Mean</Text>
                         </View>
                         </View>
-                        <View style={{flex: 3, backgroundColor: 'green'}}>
+                        <View style={{flex: 3, backgroundColor: 'black'}}>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                                <Text>Pulse</Text>
+                                <Text style={{fontSize:moderateScale(20), color: '#EBB0D7'}}>Pulse</Text>
                                 <Text style={{marginRight: '20%'}}>Man</Text>
                             </View>
-                            <Text style={{fontSize: moderateScale(80), marginTop: '-7%'}}>{"118/83"}</Text>
+                            <Text style={bpInfoStyle.nbpValueLarge}>{"118/83"}</Text>
                         </View>
                         <View style={{flex : 1.5, alignItems: 'center'}}>
-                            <Text style={{fontSize: moderateScale(18)}}>NBP</Text>
-                            <Text style={{fontSize: moderateScale(18),}}>mmHg</Text>
+                            <Text style={{fontSize: moderateScale(18), color :'#EBB0D7'}}>NBP</Text>
+                            <Text style={{fontSize: moderateScale(18), color :'#EBB0D7'}}>mmHg</Text>
                         </View>
                     </View>
                 </View>
@@ -82,6 +84,20 @@ export default class PhilipsMonitor extends Component{
     }
 }
 
+const bpInfoStyle = StyleSheet.create({
+    sysDiaMeanText: {
+        fontSize: moderateScale(18),
+        marginTop: '-7%',
+        marginLeft: '2%',
+        color: '#8A2BE2'
+    },
+    nbpValueLarge: {
+        fontSize: moderateScale(80),
+        marginTop: '-7%',
+        color: '#EBB0D7'
+    }
+})
+
 const pulseStyle = StyleSheet.create({
     
 })
@@ -95,13 +111,14 @@ const styles = StyleSheet.create({
     waveformSection: {
         flex: 3.5,
         flexDirection: 'column',
+        backgroundColor: 'black'
     },
     dataSection: {
         flex: 1,
         flexDirection: 'column',
         height: '100%',
         width: '100%',
-        backgroundColor: 'green'
+        backgroundColor: 'black'
     },
     pulseSection: {
         flex: 1.5,
@@ -109,33 +126,29 @@ const styles = StyleSheet.create({
     },
     heartRateWave: {
         flex: 1,
-        flexDirection: 'row',
-        backgroundColor: 'blue'
+        flexDirection: 'row'
     },
     heartRateData: {
         flex: 1,
         flexDirection: 'row',
-        backgroundColor: 'orange'
     },
     oSatWave: {
         flex: 1,
-        flexDirection: 'row',
-        backgroundColor: 'yellow'
+        flexDirection: 'row'
     },
     oSatData: {
         flex: 1,
         flexDirection: 'row',
-        backgroundColor: 'grey'
     },
     nbpInfo: {
         flex: 1,
         flexDirection: 'row',
-        backgroundColor: 'purple'
+        backgroundColor: 'black'
     },
     nbpInfoExtra: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        backgroundColor: 'white'
+        backgroundColor: 'black'
     },
 })

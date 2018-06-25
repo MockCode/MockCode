@@ -10,13 +10,13 @@ export default class VitalInfo extends React.PureComponent {
                 <View style={{flex: 1, flexDirection: 'column', justifyContent: 'flex-start'}}>
                     <Text style={[this.props.style, {marginBottom: '-5%'}]}>{this.props.vitalSignName}</Text>
                     <View style={{alignItems: 'flex-end', marginRight:'70%'}}>
-                        <Text style={{color: 'green'}}>120</Text>
-                        <Text style={{color: 'green', marginTop: '-15%'}}>50</Text>
+                        <Text style={this.props.style}>120</Text>
+                        <Text style={[this.props.style, {marginTop: '-15%'}]}>50</Text>
                     </View>
                 </View>
             </View>
             <View style={styles.vitalRate}>
-                <Text style={{fontSize: moderateScale(80), color: '#48fb47'}}>{this.props.vitalRate}</Text>
+                <Text style={[{fontSize: moderateScale(80)}, this.props.style]}>{this.props.vitalRate}</Text>
             </View>
         </View>
         );
