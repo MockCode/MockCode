@@ -22,7 +22,7 @@ export default class PhilipsMonitor extends Component{
                     </View>
                     <View style={styles.nbpInfo}>
                         <View style={{flex: 0.8}}>
-                            <Text style={{fontSize: moderateScale(25), marginLeft: '2%', color: '#EBB0D7', fontWeight: 'bold'}}>NBP</Text>
+                            <Text style={{fontSize: moderateScale(25), marginLeft: '2%', color: '#ffe6f3', fontWeight: 'bold'}}>NBP</Text>
                         <View>
                             <Text style={bpInfoStyle.sysDiaMeanText}>Sys.</Text>
                             <Text style={bpInfoStyle.sysDiaMeanText}>Dia.</Text>
@@ -30,15 +30,15 @@ export default class PhilipsMonitor extends Component{
                         </View>
                         </View>
                         <View style={{flex: 3, backgroundColor: 'black'}}>
-                            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                            {/* <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                                 <Text style={{fontSize:moderateScale(20), color: '#EBB0D7'}}>Pulse</Text>
                                 <Text style={{marginRight: '20%'}}>Man</Text>
-                            </View>
+                            </View> */}
                             <Text style={bpInfoStyle.nbpValueLarge}>{"118/83"}</Text>
                         </View>
                         <View style={{flex : 1.5, alignItems: 'center'}}>
-                            <Text style={{fontSize: moderateScale(18), color :'#EBB0D7'}}>NBP</Text>
-                            <Text style={{fontSize: moderateScale(18), color :'#EBB0D7'}}>mmHg</Text>
+                            <Text style={{fontSize: moderateScale(25), color :'#ffe6f3', fontWeight: 'bold'}}>NBP</Text>
+                            <Text style={{fontSize: moderateScale(18), color :'#8A2BE2'}}>mmHg</Text>
                         </View>
                     </View>
                 </View>
@@ -49,7 +49,7 @@ export default class PhilipsMonitor extends Component{
                         <VitalsInfo 
                             vitalSignName="HR"
                             vitalRate={97}
-                            style={{color: '#48fb47'}}
+                            style={{color: '#80ff80'}}
                         />
                     </View>
                     <View style={styles.oSatData}>
@@ -60,7 +60,7 @@ export default class PhilipsMonitor extends Component{
                         />
                     </View>
                     <View style={styles.nbpInfoExtra}>
-                        <Text>118/13</Text>
+                        <Text style={{fontSize: moderateScale(25), color: '#ffe6f3'}}>118/13</Text>
                     </View>
                 </View>
                 {/* View to contain the right side of monitor, where the pulse of
@@ -93,8 +93,7 @@ const bpInfoStyle = StyleSheet.create({
     },
     nbpValueLarge: {
         fontSize: moderateScale(80),
-        marginTop: '-7%',
-        color: '#EBB0D7'
+        color: '#ffe6f3'
     }
 })
 
