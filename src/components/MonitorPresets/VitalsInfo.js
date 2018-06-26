@@ -16,7 +16,7 @@ export default class VitalInfo extends React.PureComponent {
                 </View>
             </View>
             <View style={styles.vitalRate}>
-                <Text style={[{fontSize: moderateScale(80)}, this.props.style]}>{this.props.vitalRate}</Text>
+                <Text style={[{fontSize: moderateScale(80), fontWeight: 'bold'}, this.props.style]}>{this.props.vitalRate}</Text>
             </View>
         </View>
         );
