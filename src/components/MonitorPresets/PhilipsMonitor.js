@@ -23,18 +23,18 @@ export default class PhilipsMonitor extends Component{
                     <View style={styles.nbpInfo}>
                         <View style={{flex: 0.8}}>
                             <Text style={{fontSize: moderateScale(25), marginLeft: '2%', color: '#ffe6f3', fontWeight: 'bold'}}>NBP</Text>
-                        <View>
-                            <Text style={bpInfoStyle.sysDiaMeanText}>Sys.</Text>
-                            <Text style={bpInfoStyle.sysDiaMeanText}>Dia.</Text>
-                            <Text style={bpInfoStyle.sysDiaMeanText}>Mean</Text>
-                        </View>
+                            <View>
+                                <Text style={bpInfoStyle.sysDiaMeanText}>Sys.</Text>
+                                <Text style={bpInfoStyle.sysDiaMeanText}>Dia.</Text>
+                                <Text style={bpInfoStyle.sysDiaMeanText}>Mean</Text>
+                            </View>
                         </View>
                         <View style={{flex: 3, backgroundColor: 'black'}}>
                             {/* <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                                 <Text style={{fontSize:moderateScale(20), color: '#EBB0D7'}}>Pulse</Text>
                                 <Text style={{marginRight: '20%'}}>Man</Text>
                             </View> */}
-                            <Text style={bpInfoStyle.nbpValueLarge}>{"118/83"}</Text>
+                            <Text style={bpInfoStyle.nbpValueLarge}>{this.props.bloodPressure}</Text>
                         </View>
                         <View style={{flex : 1.5, alignItems: 'center'}}>
                             <Text style={{fontSize: moderateScale(25), color :'#ffe6f3', fontWeight: 'bold'}}>NBP</Text>
@@ -48,19 +48,19 @@ export default class PhilipsMonitor extends Component{
                     <View style={styles.heartRateData}>
                         <VitalsInfo 
                             vitalSignName="HR"
-                            vitalRate={97}
+                            vitalRate={this.props.heartRate}
                             style={{color: '#80ff80'}}
                         />
                     </View>
                     <View style={styles.oSatData}>
                         <VitalsInfo 
                             vitalSignName="SpO2" 
-                            vitalRate={95} 
+                            vitalRate={this.props.O2Sat} 
                             style={{color: '#15f4ee'}}
                         />
                     </View>
                     <View style={styles.nbpInfoExtra}>
-                        <Text style={{fontSize: moderateScale(25), color: '#ffe6f3'}}>118/13</Text>
+                        <Text style={{fontSize: moderateScale(25), color: '#ffe6f3'}}>{this.props.bloodPressure}</Text>
                     </View>
                 </View>
                 {/* View to contain the right side of monitor, where the pulse of
@@ -73,7 +73,7 @@ export default class PhilipsMonitor extends Component{
                                 <View style={{width: moderateScale(35), height: moderateScale(35), borderRadius: 5, backgroundColor: 'white'}}>
                                 </View>
                             </View>
-                            <Text style={{fontSize: moderateScale(60), color: 'white'}}>{95}</Text>
+                            <Text style={{fontSize: moderateScale(60), color: 'white'}}>{this.props.O2Sat}</Text>
                         </View>
                     </View>
                     <View style={{flex: 1, backgroundColor: 'black'}}>

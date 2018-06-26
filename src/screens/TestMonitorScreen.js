@@ -41,7 +41,10 @@ class MonitorScreen extends Component {
                 onResponderRelease={() => this.stopTouch(this.state.toggle)}
                 onStartShouldSetResponder={(e) => {return true}}>
                 <NetworkComp />
-                <PhilipsMonitor />
+                <PhilipsMonitor
+                    heartRate = {this.props.heartRate}
+                    bloodPressure = {this.props.bloodPressure}
+                    O2Sat = {this.props.O2Sat}/>
                 <PresetChangerArrow
                     show={this.state.toggle}
                     arrow="chevron-left"
