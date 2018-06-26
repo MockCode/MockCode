@@ -1,13 +1,10 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Text, View, StyleSheet} from 'react-native';
 import VitalsInfo from './VitalsInfo';
 import { moderateScale } from '../../utils/scaling';
+import PropTypes from 'prop-types';
 
-export default class PhilipsMonitor extends Component{
-    constructor(props){
-        super(props);
-    }
-
+export default class PhilipsMonitor extends React.PureComponent{
     render() {
         return (
             <View style={styles.container}>
@@ -84,6 +81,12 @@ export default class PhilipsMonitor extends Component{
     }
 }
 
+PhilipsMonitor.propTypes = {
+    heartRate: PropTypes.number.isRequired,
+    bloodPressure: PropTypes.string.isRequired,
+    O2Sat: PropTypes.number.isRequired
+}
+
 const bpInfoStyle = StyleSheet.create({
     sysDiaMeanText: {
         fontSize: moderateScale(18),
@@ -93,7 +96,8 @@ const bpInfoStyle = StyleSheet.create({
     },
     nbpValueLarge: {
         fontSize: moderateScale(80),
-        color: '#ffe6f3'
+        color: '#ffe6f3',
+        fontWeight: 'bold'
     }
 })
 

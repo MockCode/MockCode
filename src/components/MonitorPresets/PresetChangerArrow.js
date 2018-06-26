@@ -2,6 +2,7 @@ import React from 'react';
 import {TouchableOpacity, StyleSheet} from 'react-native'
 import FadeInView from 'react-native-fade-in-view';
 import {Icon} from 'native-base';
+import PropTypes from 'prop-types'
 
 export default class PresetChangerArrow extends React.PureComponent {
     render(){
@@ -20,6 +21,15 @@ export default class PresetChangerArrow extends React.PureComponent {
             </FadeInView>
         );
     }
+}
+
+PresetChangerArrow.propTypes = {
+    show: PropTypes.bool.isRequired,
+    arrow: PropTypes.string.isRequired,
+    style: PropTypes.shape({
+        left: PropTypes.number.isRequired,
+        top: PropTypes.number.isRequired
+    })
 }
 
 const styles = StyleSheet.create({
