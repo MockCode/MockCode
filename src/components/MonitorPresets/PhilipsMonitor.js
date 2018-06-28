@@ -3,6 +3,7 @@ import {Text, View, StyleSheet} from 'react-native';
 import VitalsInfo from './VitalsInfo';
 import { moderateScale } from '../../utils/scaling';
 import PropTypes from 'prop-types';
+import WaveformCanvas from '../Waveform/WaveformCanvas';
 
 export default class PhilipsMonitor extends React.PureComponent{
     render() {
@@ -12,7 +13,7 @@ export default class PhilipsMonitor extends React.PureComponent{
                     for certain vital signs (e.g., heart rate). */}
                 <View style={styles.waveformSection}>
                     <View style={styles.heartRateWave}>
-                    {/* TODO: PLACE HEARTRATE WAVEFORM RENDERER HERE */}
+                    {/* TODO: PLACE HEART WAVE RENDERER HERE */}
                     </View>
                     <View style={styles.oSatWave}>
                     {/* TODO: PLACE O2SAT RENDERER HERE */}

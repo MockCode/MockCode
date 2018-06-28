@@ -5,14 +5,17 @@ import {connect} from "react-redux";
 import Orientation from "react-native-orientation";
 import { NetworkComp } from '../components/network';
 import PhilipsMonitor from '../components/MonitorPresets/PhilipsMonitor';
-import FadeInView from 'react-native-fade-in-view';
 import PresetChangerArrow from '../components/MonitorPresets/PresetChangerArrow';
+import MONITOR_PRESETS from '../components/MonitorPresets';
 
 class MonitorScreen extends Component {
     constructor(props) {
         super(props);
         this.stopTouch = this.stopTouch.bind(this);
-        this.state = {toggle: false};
+        this.state = {
+            toggle: false,
+            currentPreset: 0
+        };
     }
 
     static navigationOptions = {
@@ -34,14 +37,26 @@ class MonitorScreen extends Component {
         this.setState({toggle: !toggle});
     }
 
+    onPresetChange(change){
+        switch(change){
+            case "left":
+                break;
+            case "right":
+                break;
+            default:
+                break;
+        }
+    }
+
     render() {
+        let CurrentMonitor = MONITOR_PRESETS[this.state.currentPreset];
         return (
             <View 
                 style={{flex: 1, flexDirection: 'row'}}
                 onResponderRelease={() => this.stopTouch(this.state.toggle)}
                 onStartShouldSetResponder={(e) => {return true}}>
                 <NetworkComp />
-                <PhilipsMonitor
+                <CurrentMonitor
                     heartRate = {this.props.heartRate}
                     bloodPressure = {this.props.bloodPressure}
                     O2Sat = {this.props.O2Sat}/>
@@ -50,12 +65,14 @@ class MonitorScreen extends Component {
                     arrow="chevron-left"
                     style={{left: Dimensions.get('window').width*(1/15),
                             top: Dimensions.get('window').height*(1/2.5)}}
+                    onClick={() => this.onPresetChange("left")}
                 />
                 <PresetChangerArrow
                     show={this.state.toggle}
                     arrow="chevron-right"
                     style={{left: Dimensions.get('window').width*(14/15),
                             top: Dimensions.get('window').height*(1/2.5)-5}}
+                    onClick={() => this.onPresetChange("right")}
                 />
             </View>
         );

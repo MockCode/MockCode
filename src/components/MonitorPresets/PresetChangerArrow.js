@@ -11,7 +11,9 @@ export default class PresetChangerArrow extends React.PureComponent {
             <FadeInView
                 duration={750}
                 style={[this.props.style, styles.presetChangers]}>
-                <TouchableOpacity style={styles.presetChangerButton}>
+                <TouchableOpacity
+                    onPress={() => this.props.onClick()}
+                    style={styles.presetChangerButton}>
                     <Icon
                         type='MaterialIcons'
                         name={this.props.arrow}
