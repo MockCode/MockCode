@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import { Animated, Text, View, Dimensions, TextInput, StyleSheet, StatusBar, Alert, Button } from 'react-native';
+import {View, StyleSheet, StatusBar, TouchableOpacity, Dimensions, Text, Button} from 'react-native';
+import {Icon} from 'native-base';
 import {connect} from "react-redux";
-// import Orientation from "react-native-orientation";
+import Orientation from "react-native-orientation";
 import { NetworkComp } from '../components/network';
-import WaveformCanvas from "../components/Waveform/WaveformCanvas";
+import PresetChangerArrow from '../components/MonitorPresets/PresetChangerArrow';
+import MONITOR_PRESETS from '../components/MonitorPresets';
 
-var {height, width} = Dimensions.get('window');
-
-export default class MonitorScreen extends Component {
-    constructor() {
-        super();
+class MonitorScreen extends Component {
+    constructor(props) {
+        super(props);
+        this.stopTouch = this.stopTouch.bind(this);
         this.state = {
-            message: "",
-            heartRate: "98",
-            bloodPressure: "120/80",
-            O2Sat: "60"
+            toggle: false,
+            currentPreset: 0
         };
     }
 
@@ -23,85 +22,65 @@ export default class MonitorScreen extends Component {
         header: null
     }
 
-    // componentWillMount(){
-    //   const initialOrientation = Orientation.getInitialOrientation();
-    //   if (initialOrientation == 'PORTRAIT'){
-    //     Orientation.lockToLandscape();
-    //   } else {
-    //     Orientation.lockToLandscape();
-    //   }
-    // }
-    
     componentDidMount(){
         StatusBar.setHidden(true);
-        // Orientation.lockToLandscape();
+        Orientation.lockToLandscape();
+    }
+
+    componentWillUnmount() {
+        Orientation.lockToPortrait();
+        Orientation.unlockAllOrientations();
+    }
+
+    stopTouch(toggle) {
+        this.setState({toggle: !toggle});
+    }
+
+    onPresetChange(change){
+        switch(change){
+            case "left":
+                if (this.state.currentPreset > 0){
+                    let newPreset = this.state.currentPreset - 1;
+                    this.setState({currentPreset: newPreset});
+                }
+                break;
+            case "right":
+                if (this.state.currentPreset < (MONITOR_PRESETS.length - 1)){
+                    let newPreset = this.state.currentPreset + 1;
+                    this.setState({currentPreset: newPreset});
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     render() {
-        const { goBack } = this.props.navigation;
+        let CurrentMonitor = MONITOR_PRESETS[this.state.currentPreset];
         return (
-    <View style={styles.column}>
-                <NetworkComp/>
-                <View style={styles.row}>
-                    <View style={styles.surfaceView} >
-                      <WaveformCanvas />
-                    </View>
-                    <View style={styles.column}>
-                        <View style = {styles.row}>
-                            <Text style = {styles.statusNumber}>
-                                <Text>HR</Text>
-                            </Text>
-                        </View>
-                        <View style = {styles.row}>
-                            <Text style = {styles.statusNumber}>
-                                <Text>{this.props.heartRate}</Text>
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.row}>
-                    <View style={styles.surfaceView} >
-                      <WaveformCanvas />
-                    </View>
-                    <View style={styles.column}>
-                        <View style = {styles.row}>
-                            <Text style = {styles.statusNumber}>
-                                <Text>BP</Text>
-                            </Text>
-                        </View>
-                        <View style = {styles.row}>
-                            <Text style = {styles.statusNumber}>
-                                <Text>{this.props.bloodPressure}</Text>
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.row}>
-                    <View style={styles.surfaceView} >
-                      <WaveformCanvas />
-                    </View>
-                    <View style={styles.column}>
-                        <View style = {styles.row}>
-                            <Text style = {styles.statusNumber}>
-                                <Text>O2Sat</Text>
-                            </Text>
-                        </View>
-                        <View style = {styles.row}>
-                            <Text style = {styles.statusNumber}>
-                                <Text>{this.props.O2Sat}{'%'}</Text>
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={{flex: 0, flexDirection: 'row'}}>
-                    <View style = {{flex: 1, marginRight:0}}/>
-                        <Button
-                            title='Exit'
-                            // onPress={()=>{goBack(), Orientation.lockToPortrait();}}
-                            onPress={() => { goBack()}}
-
-                        />
-                </View>
+            <View 
+                style={{flex: 1, flexDirection: 'row'}}
+                onResponderRelease={() => this.stopTouch(this.state.toggle)}
+                onStartShouldSetResponder={(e) => {return true}}>
+                <NetworkComp />
+                <CurrentMonitor
+                    heartRate = {this.props.heartRate}
+                    bloodPressure = {this.props.bloodPressure}
+                    O2Sat = {this.props.O2Sat}/>
+                <PresetChangerArrow
+                    show={this.state.toggle}
+                    arrow="chevron-left"
+                    style={{left: Dimensions.get('window').width*(1/15),
+                            top: Dimensions.get('window').height*(1/2.5)}}
+                    onClick={() => this.onPresetChange("left")}
+                />
+                <PresetChangerArrow
+                    show={this.state.toggle}
+                    arrow="chevron-right"
+                    style={{left: Dimensions.get('window').width*(14/15),
+                            top: Dimensions.get('window').height*(1/2.5)}}
+                    onClick={() => this.onPresetChange("right")}
+                />
             </View>
         );
     }
@@ -115,31 +94,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-module.exports = connect(mapStateToProps)(MonitorScreen);
-
-const styles = StyleSheet.create({
-    surface : {
-        width: '100%',
-        height: '100%'
-    },
-    surfaceView : {
-        width: '72%',
-        height: '92%',
-        marginBottom: '8%',
-        marginRight: '3%'
-    },
-    column: {
-        flex: 1,
-        flexDirection: 'column',
-        backgroundColor: '#1c2321'
-    },
-    row: {
-        flex: 1,
-        flexDirection: 'row'
-    },
-    statusNumber: {
-        fontFamily: 'Helvetica',
-        color: '#eef1ef',
-        fontSize: 45
-    }
-});
+export default connect(mapStateToProps)(MonitorScreen);

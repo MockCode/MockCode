@@ -20,7 +20,7 @@ export default class PhilipsMonitor extends React.PureComponent{
                     </View>
                     <View style={styles.nbpInfo}>
                         <View style={{flex: 0.8}}>
-                            <Text style={{fontSize: moderateScale(25), marginLeft: '2%', color: '#ffe6f3', fontWeight: 'bold'}}>NBP</Text>
+                            <Text style={bpInfoStyle.nbpLeftText}>NBP</Text>
                             <View>
                                 <Text style={bpInfoStyle.sysDiaMeanText}>Sys.</Text>
                                 <Text style={bpInfoStyle.sysDiaMeanText}>Dia.</Text>
@@ -35,8 +35,8 @@ export default class PhilipsMonitor extends React.PureComponent{
                             <Text style={bpInfoStyle.nbpValueLarge}>{this.props.bloodPressure}</Text>
                         </View>
                         <View style={{flex : 1.5, alignItems: 'center'}}>
-                            <Text style={{fontSize: moderateScale(25), color :'#ffe6f3', fontWeight: 'bold'}}>NBP</Text>
-                            <Text style={{fontSize: moderateScale(18), color :'#8A2BE2'}}>mmHg</Text>
+                            <Text style={bpInfoStyle.nbpRightText}>NBP</Text>
+                            <Text style={bpInfoStyle.mmHgText}>mmHg</Text>
                         </View>
                     </View>
                 </View>
@@ -58,7 +58,7 @@ export default class PhilipsMonitor extends React.PureComponent{
                         />
                     </View>
                     <View style={styles.nbpInfoExtra}>
-                        <Text style={{fontSize: moderateScale(25), color: '#ffe6f3'}}>{this.props.bloodPressure}</Text>
+                        <Text style={bpInfoStyle.nbpInfoExtraText}>{this.props.bloodPressure}</Text>
                     </View>
                 </View>
                 {/* View to contain the right side of monitor, where the pulse of
@@ -67,11 +67,11 @@ export default class PhilipsMonitor extends React.PureComponent{
                     <View style={{flex: 1.4, backgroundColor: 'black', justifyContent: 'center'}}>
                         <View style={{flexDirection: 'row', justifyContent: 'center'}}>
                             <View style={{flexDirection: 'column', margin: '5%'}}>
-                                <Text style={{color: 'white', fontSize: moderateScale(18)}}>Pulse</Text>
-                                <View style={{width: moderateScale(35), height: moderateScale(35), borderRadius: 5, backgroundColor: 'white'}}>
+                                <Text style={pulseStyle.pulseText}>Pulse</Text>
+                                <View style={pulseStyle.squareGraphic}>
                                 </View>
                             </View>
-                            <Text style={{fontSize: moderateScale(60), color: 'white'}}>{this.props.O2Sat}</Text>
+                            <Text style={pulseStyle.pulseValue}>{this.props.O2Sat}</Text>
                         </View>
                     </View>
                     <View style={{flex: 1, backgroundColor: 'black'}}>
@@ -95,15 +95,47 @@ const bpInfoStyle = StyleSheet.create({
         marginLeft: '2%',
         color: '#8A2BE2'
     },
+    nbpLeftText: {
+        fontSize: moderateScale(25),
+        marginLeft: '2%',
+        color: '#ffe6f3',
+        fontWeight: 'bold'
+    },
+    nbpRightText: {
+        fontSize: moderateScale(25),
+        color :'#ffe6f3',
+        fontWeight: 'bold'
+    },
+    mmHgText: {
+        fontSize: moderateScale(18),
+        color :'#8A2BE2'
+    },
     nbpValueLarge: {
         fontSize: moderateScale(80),
         color: '#ffe6f3',
         fontWeight: 'bold'
+    },
+    nbpInfoExtraText: {
+        fontSize: moderateScale(25),
+        color: '#ffe6f3'
     }
 })
 
 const pulseStyle = StyleSheet.create({
-    
+    squareGraphic: {
+        width: moderateScale(35),
+        height: moderateScale(35),
+        borderRadius: 5,
+        backgroundColor: 'white'
+    },
+    pulseText: {
+        color: 'white',
+        fontSize: moderateScale(18)
+    },
+    pulseValue: {
+        fontSize: moderateScale(60),
+        color: 'white'
+    }
 })
 
 const styles = StyleSheet.create({

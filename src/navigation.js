@@ -3,11 +3,10 @@ import MonitorScreen from './screens/MonitorScreen';
 import ControllerScreen from './screens/ControllerScreen';
 import SelectModeScreen from './screens/SelectModeScreen';
 import PatientScreen from './screens/PatientScreen';
-import TestMonitorScreen from './screens/TestMonitorScreen';
 
 const routes = {
   ControllerScreen: {screen: ControllerScreen},
-  MonitorScreen: {screen: TestMonitorScreen},
+  MonitorScreen: {screen: MonitorScreen},
   SelectModeScreen: {screen: SelectModeScreen},
   PatientScreen: {screen: PatientScreen}
 }

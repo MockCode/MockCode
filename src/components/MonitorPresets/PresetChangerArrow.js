@@ -31,7 +31,8 @@ PresetChangerArrow.propTypes = {
     style: PropTypes.shape({
         left: PropTypes.number.isRequired,
         top: PropTypes.number.isRequired
-    })
+    }),
+    onClick: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     presetChangerButton: {
         flex: 1,
         backgroundColor: 'white',
-        opacity: 0.4,
+        opacity: 0.7,
         justifyContent: 'center',
         borderRadius: 5
     }
