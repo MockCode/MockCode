@@ -3,6 +3,7 @@ import {TouchableOpacity, StyleSheet} from 'react-native'
 import FadeInView from 'react-native-fade-in-view';
 import {Icon} from 'native-base';
 import PropTypes from 'prop-types'
+import { moderateScale } from '../../utils/scaling';
 
 export default class PresetChangerArrow extends React.PureComponent {
     render(){
@@ -39,15 +40,15 @@ const styles = StyleSheet.create({
     presetChangers: {
         flex: 1,
         position: 'absolute',
-        width: 25,
-        height: 80,
-        zIndex: 100
+        width: '5%',
+        height: '25%',
+        zIndex: 100,
     },
     presetChangerButton: {
         flex: 1,
         backgroundColor: 'white',
-        opacity: 0.7,
+        opacity: 0.6,
         justifyContent: 'center',
-        borderRadius: 5
+        borderRadius: moderateScale(10)
     }
 });
