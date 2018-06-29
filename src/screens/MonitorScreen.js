@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import {View, StyleSheet, StatusBar, TouchableOpacity, Dimensions, Text, Button} from 'react-native';
-import {Icon} from 'native-base';
+import React from 'react';
+import {View, StatusBar, Dimensions} from 'react-native';
 import {connect} from "react-redux";
 import Orientation from "react-native-orientation";
 import { NetworkComp } from '../components/network';
 import PresetChangerArrow from '../components/MonitorPresets/PresetChangerArrow';
 import MONITOR_PRESETS from '../components/MonitorPresets';
 
-class MonitorScreen extends Component {
+class MonitorScreen extends React.Component {
     constructor(props) {
         super(props);
         this.stopTouch = this.stopTouch.bind(this);
