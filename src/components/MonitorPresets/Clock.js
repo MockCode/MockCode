@@ -28,7 +28,7 @@ export default class Clock extends React.Component {
 
     render() {
         return (
-            <Text style={{fontWeight: 'bold', fontSize: moderateScale(25)}}>{dateFormat(this.state.time,
+            <Text style={{fontWeight: 'bold', fontSize: moderateScale(33), color: 'white'}}>{dateFormat(this.state.time,
                 "HH:MM:ss")}</Text>
         );
     }

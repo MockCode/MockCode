@@ -9,7 +9,7 @@ export default class LikePakMonitor extends React.PureComponent {
         return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text>HR</Text>
+                <Text style={textStyle.hrText}>HR</Text>
                 <View style={{marginLeft: '42.5%'}}>
                     <Clock/>
                 </View>
@@ -21,8 +21,8 @@ export default class LikePakMonitor extends React.PureComponent {
                         type="FontAwesome"
                         name="bell"
                         style={{color: '#80ff80', fontSize: moderateScale(30), marginTop: '2%'}} />
-                    <Text style={{fontSize: moderateScale(100), fontWeight: 'bold', color: '#80ff80', marginTop: '-12.5%'}}>
-                        {69}
+                    <Text style={[textStyle.vitalValueText, {color: '#80ff80'}]}>
+                        {this.props.heartRate}
                     </Text>
                 </View>
 
@@ -34,22 +34,22 @@ export default class LikePakMonitor extends React.PureComponent {
             <View style={styles.o2SatSection}>
                 <View style={styles.o2SatData}>
                     <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'grey'}}>
-                        <Text>SpO2</Text>
-                        <Text>%</Text>
+                        <Text style={textStyle.o2SatText}>SpO2</Text>
+                        <Text style={[textStyle.o2SatText, {marginRight: '2%'}]}>%</Text>
                     </View>
                     <View style={{flex: 4, flexDirection: 'row', justifyContent: 'space-between'}}>
                         <Icon
                             type="FontAwesome"
                             name="bell"
                             style={{color: '#15f4ee', fontSize: moderateScale(30), marginTop: '2%'}} />
-                        <Text style={{fontSize: moderateScale(100), fontWeight: 'bold', marginTop: '-12.5%', color: '#15f4ee'}}>
-                        {95}
+                        <Text style={[textStyle.vitalValueText, {color: '#15f4ee'}]}>
+                        {this.props.O2Sat}
                         </Text>
                     </View>
                 </View>
 
                 <View style={styles.o2SatWave}>
-
+                {/* TODO: Place o2sat wave renderer here. */}
                 </View>
             </View>
 
@@ -59,7 +59,7 @@ export default class LikePakMonitor extends React.PureComponent {
                 </View>
 
                 <View style={styles.co2Wave}>
-
+                {/* TODO: Place co2 renderer here. */}
                 </View>
             </View>
         </View>
@@ -67,8 +67,24 @@ export default class LikePakMonitor extends React.PureComponent {
     }
 }
 
-const o2SatStyle = StyleSheet.create({
-
+const textStyle = StyleSheet.create({
+    hrText: {
+        fontSize: moderateScale(25),
+        fontWeight: 'bold',
+        color: '#80ff80',
+        marginLeft: '0.5%'
+    },
+    o2SatText: {
+        fontSize: moderateScale(25),
+        fontWeight: 'bold',
+        color: '#15f4ee',
+        marginLeft: '2.5%'
+    },
+    vitalValueText: {
+        fontSize: moderateScale(100),
+        fontWeight: 'bold',
+        marginTop: '-12.5%'
+    }
 })
 
 const styles = StyleSheet.create({

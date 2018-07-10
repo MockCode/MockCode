@@ -18,7 +18,7 @@ export default class PresetChangerArrow extends React.PureComponent {
                     <Icon
                         type='MaterialIcons'
                         name={this.props.arrow}
-                        style={{color: 'white'}}
+                        style={{color: 'white', alignSelf: 'center'}}
                     />
                 </TouchableOpacity>
             </FadeInView>
