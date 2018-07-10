@@ -29,6 +29,7 @@ class MonitorScreen extends React.Component {
     componentWillUnmount() {
         Orientation.lockToPortrait();
         Orientation.unlockAllOrientations();
+        StatusBar.setHidden(false);
     }
 
     stopTouch(toggle) {
