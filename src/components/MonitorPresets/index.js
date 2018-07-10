@@ -1,9 +1,9 @@
 import PhilipsMonitor from "./PhilipsMonitor";
-import TestMonitor from "./TestMonitor";
+import LifePakMonitor from './LifePakMonitor';
 
 const MONITOR_PRESETS = [
     PhilipsMonitor,
-    TestMonitor
+    LifePakMonitor
 ];
 
 export default MONITOR_PRESETS;
