@@ -76,7 +76,7 @@ class MonitorScreen extends React.Component {
                 <PresetChangerArrow
                     show={this.state.toggle}
                     arrow="chevron-right"
-                    style={{left: Dimensions.get('window').width*(14/15),
+                    style={{left: Dimensions.get('window').width*(13/15),
                             top: Dimensions.get('window').height*(1/2.5)}}
                     onClick={() => this.onPresetChange("right")}
                 />
