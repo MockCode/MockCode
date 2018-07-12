@@ -14,6 +14,6 @@ export const BLOOD_PRESSURE_LEVELS =
 export const NSR_VALUES = {
     HEART_RATE: 80,
     O2_SAT: 96,
-    BP: BLOOD_PRESSURE_LEVELS.indexOf("120/78"),
+    BP: "120/78",
     ET_CO2: 40
 };

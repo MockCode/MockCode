@@ -30,7 +30,7 @@ export class NetworkComp extends Component {
         // console.log(message, "psucess");
       });
       nearbyApi.onFound(message => {
-        // console.log(message);
+        console.log("GOTCHA!", message);
         store.dispatch(On_Message_Found(message));
       });
     }
