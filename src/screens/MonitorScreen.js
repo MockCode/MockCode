@@ -40,7 +40,7 @@ export default class MonitorScreen extends Component {
         const { goBack } = this.props.navigation;
         return (
     <View style={styles.column}>
-                <NetworkComp/>
+                {/* <NetworkComp/> */}
                 <View style={styles.row}>
                     <View style={styles.surfaceView} >
                       {/* <WaveformCanvas /> */}

@@ -7,8 +7,13 @@ import DeviceInfo from 'react-native-device-info'
 export class NetworkComp extends React.Component {
     constructor(){
         super();
+        let temp = {}
+        Object.keys(ACTIONS).forEach(function(key) {
+            temp[key]= new Date(0);
+        });
         this.state = {
-            appState: AppState.currentState
+            appState: AppState.currentState,
+            lastReceivPayload: temp
         }
     }
 
@@ -43,7 +48,8 @@ export class NetworkComp extends React.Component {
             nearbyApi.onSubscribeSuccess(() => {
                 let m = {
                     type:ACTIONS.HELLO_REQUEST,
-                    message: DeviceInfo.getDeviceName()
+                    message: DeviceInfo.getDeviceName(),
+                    timeStamp: new Date()
                 }
                 nearbyApi.publish(JSON.stringify(m));
                 // console.log(m)
@@ -58,7 +64,17 @@ export class NetworkComp extends React.Component {
 
             nearbyApi.onFound(message => {
                 console.log("GOTCHA!", message);
-                store.dispatch(On_Message_Found(message));
+                let m = JSON.parse(message);
+                let messageTimeStamp = new Date(m.timeStamp);
+                if (messageTimeStamp > this.state.lastReceivPayload[m.type]) {
+                    console.log("Updating: ", m.type, " with timestamp: ", m.timeStamp);
+                    store.dispatch(On_Message_Found(message));
+                    let temp = Object.assign({}, this.state.lastReceivPayload);
+                    temp[m.type]= new Date(m.timeStamp);
+                    this.setState({
+                        lastReceivPayload: temp
+                    });
+                }
             });
 
             nearbyApi.onLost(message => {

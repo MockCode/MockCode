@@ -17,7 +17,7 @@ export function Update_Store(slider, value) {
 
 export function Update_Value(type, value) {
   return (dispatch, getState) => {
-    let m = { message: value, type: type };
+    let m = { message: value, type: type, timeStamp: new Date() };
     getState().NearbyApi.nearbyApi.publish(JSON.stringify(m))
     return dispatch(Update_Store(type, value));
   }
@@ -29,7 +29,8 @@ export function On_Message_Found(message) {
 		if (m.type === ACTIONS.HELLO_REQUEST) {
 			let response_m = {
 				message: DeviceInfo.getDeviceName(),
-				type: ACTIONS.HELLO_RESPONSE
+				type: ACTIONS.HELLO_RESPONSE,
+				timeStamp: new Date()
 			}
 			getState().NearbyApi.nearbyApi.publish(JSON.stringify(response_m))
 			return dispatch(Update_Store(ACTIONS.HELLO_RESPONSE, m.message))

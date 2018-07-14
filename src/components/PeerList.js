@@ -41,6 +41,10 @@ class PeerList extends PureComponent {
     store.subscribe(this.checkDeviceChanges);
   }
 
+  componentWillUnmount(){
+    console.log("unmounting");
+  }
+
   _keyExtractor = (item, index) => item.id;
 
   _renderItem = ({item}) => (
@@ -83,7 +87,6 @@ class PeerList extends PureComponent {
     this.props.devices.forEach(i => data.push({ id: i }));
     return (
       <View style={styles.fill}>
-        <NetworkComp />
         <FlatList
           data={data}
           keyExtractor={this._keyExtractor}

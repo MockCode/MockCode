@@ -41,6 +41,7 @@ export default class SelectModeScreen extends Component {
     const {navigate} = this.props.navigation;
     return (
       <Container>
+          <NetworkComp />
           <Grid>
             <Col></Col>
             <Col size={7}>

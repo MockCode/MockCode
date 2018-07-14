@@ -57,7 +57,7 @@ export default class ControllerScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <NetworkComp/>
+        {/* <NetworkComp/> */}
         <View>
         {this._renderCompressionsInProgress()}
         </View>
