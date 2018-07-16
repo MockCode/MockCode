@@ -4,17 +4,11 @@ import {Button} from 'native-base';
 import { VitalSlider } from "../components/VitalSlider";
 import styles from "./styles/controllerScreenStyle"
 
-import { NearbyAPI } from "react-native-nearby-api";
-import {API_KEYS} from '../api'
-import {Update_Slider, Update_Value, ACTIONS} from '../redux/actions/nearbyActions'
+import {Update_Value, ACTIONS} from '../redux/actions/nearbyActions'
 import { NetworkComp } from '../components/network';
-import FaceButton from '../components/FaceButton';
 import FaceButtonList from '../components/FaceButtonList';
 import { moderateScale } from "../utils/scaling";
 import {BLOOD_PRESSURE_LEVELS, WAVE_FORMS} from '../utils/constants';
-
-const API_KEY = API_KEYS.nearby;
-
 
 export default class ControllerScreen extends Component {
   constructor() {
@@ -34,11 +28,11 @@ export default class ControllerScreen extends Component {
 
   _compressionsChange() {
     if(this.state.Waveform === "Compressions In-Progress"){
-      this.setState({Waveform: WAVE_FORMS[0]})
-      store.dispatch(Update_Value(ACTIONS.UPDATE_WAVEFORM, WAVE_FORMS[0]));
+      this.setState({Waveform: WAVE_FORMS.NSR})
+      store.dispatch(Update_Value(ACTIONS.UPDATE_WAVEFORM, WAVE_FORMS.NSR));
     } else {
-      this.setState({Waveform: WAVE_FORMS[4]});
-      store.dispatch(Update_Value(ACTIONS.UPDATE_WAVEFORM, WAVE_FORMS[4]));
+      this.setState({Waveform: WAVE_FORMS.CIP});
+      store.dispatch(Update_Value(ACTIONS.UPDATE_WAVEFORM, WAVE_FORMS.CIP));
     }
   }
 

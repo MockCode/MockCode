@@ -3,16 +3,14 @@ import PropTypes from 'prop-types';
 import style from "./style";
 import { Text, View, Switch, ScrollView } from "react-native";
 import { Update_Value, ACTIONS } from '../../redux/actions/nearbyActions';
-import { Icon, Button} from 'native-base';
-import Collapsible from 'react-native-collapsible';
-import { moderateScale } from "../../utils/scaling";
+import WaveFormCollapsible from './WaveFormCollapsible';
+import WaveFormSelector from './WaveFormSelector';
 import Slider from "react-native-slider"
 import {WAVE_FORMS, NSR_VALUES} from '../../utils/constants';
 
 export class VitalSlider extends Component {
   constructor(props) {
     super(props);
-    this._onSliderChange = this._onSliderChange.bind(this);
     this._onSliderChange = this._onSliderChange.bind(this);
     this._onWaveformChange = this._onWaveformChange.bind(this);
     this.state = {
@@ -66,7 +64,7 @@ export class VitalSlider extends Component {
     // VF, PEA/Asystole, and Compr. In-Prog allow only movement of 
     // sliders (parameter values).
     switch(value) {
-      case WAVE_FORMS[0]: // Normal Sinus Rhythm
+      case WAVE_FORMS.NSR: // Normal Sinus Rhythm
         this.setState({switchValue: true});
         if(this.props.sliderName.indexOf("Heart Rate") !== -1){
           this.setState({sliderValue: NSR_VALUES.HEART_RATE});
@@ -88,7 +86,7 @@ export class VitalSlider extends Component {
           store.dispatch(Update_Value(ACTIONS.UPDATE_ETCO2, NSR_VALUES.ET_CO2));
         }
         break;
-      case WAVE_FORMS[1]: // Ventricular Tachycardia
+      case WAVE_FORMS.VTC: // Ventricular Tachycardia
         if(this.props.sliderName.indexOf("Heart Rate") !== -1){
           this.setState({sliderValue: 184, switchValue: false});
           store.dispatch(Update_Value(this.props.actionType, 184));
@@ -96,9 +94,9 @@ export class VitalSlider extends Component {
           this.setState({switchValue: true});
         }
         break;
-      case WAVE_FORMS[2]: // Ventricular Fibrillation
-      case WAVE_FORMS[3]: // PEA/Asystole
-      case WAVE_FORMS[4]: // Compressions In-Progress
+      case WAVE_FORMS.VTF: // Ventricular Fibrillation
+      case WAVE_FORMS.PEA: // PEA/Asystole
+      case WAVE_FORMS.CIP: // Compressions In-Progress
         this.setState({switchValue: false});
         break;
       default:
@@ -109,7 +107,7 @@ export class VitalSlider extends Component {
 
   _renderSliderValue() {
     let sliderValue = ""
-    if(this.state.waveform === WAVE_FORMS[0] || this.state.waveform === WAVE_FORMS[1]){
+    if(this.state.waveform === WAVE_FORMS.NSR || this.state.waveform === WAVE_FORMS.VTC){
       if(this.props.sliderName.indexOf("Blood Pressure") !== -1){
         sliderValue = this.props.bpLevels[this.state.sliderValue];
       } else {
@@ -127,40 +125,11 @@ export class VitalSlider extends Component {
 
   _renderWaveformSelector() {
     if(this.props.sliderName.indexOf("Heart Rate") !== -1 && this.state.collapsed == true){
-      var inputProps = {
-        rounded: true,
-        small: true,
-        iconLeft: true,
-      }
-
-      switch(this.state.waveform){
-        case WAVE_FORMS[0]: // Normal Sinus Rhythm
-          inputProps.success = true;
-          break;
-        case WAVE_FORMS[1]: // Ventricular Tachycardia
-          inputProps.info = true;
-          break;
-        case WAVE_FORMS[2]: // Ventricular Fibrillation
-          inputProps.warning = true;
-          break;
-        case WAVE_FORMS[3]: // PEA/Asystole
-          inputProps.danger = true;
-          break;
-        case WAVE_FORMS[4]: // Compressions In-Progress
-          inputProps.disabled = true;
-          inputProps.light = true;
-          break;
-        default:
-          inputProps.light = true;
-          break;
-      }
-
       return(
-        <Button {...inputProps} onPress={this._toggleExpanded}
-          style={[style.waveFormSelect, inputProps.disabled ? {opacity : 0.1} : {}]}>
-          <Icon name='pulse' style={{}}/>
-          <Text style={style.waveFormSelectText}>{this.state.waveform}</Text>
-        </Button>
+        <WaveFormSelector
+          toggleCallback={this._toggleExpanded}
+          waveform={this.state.waveform}
+        />
       )
     }
   }
@@ -168,26 +137,10 @@ export class VitalSlider extends Component {
   _renderWaveFormCollapsible() {
     if(this.props.sliderName.indexOf("Heart Rate") !== -1){
       return(
-        <Collapsible collapsed={this.state.collapsed}>
-          <ScrollView horizontal contentContainerStyle={{flex: 1, justifyContent: 'space-around'}}>
-            <Button rounded small success style={style.waveFormButton}
-              onPress={() => this._onWaveformSelect(WAVE_FORMS[0])}>
-              <Text style={style.waveFormButtonText}>{WAVE_FORMS[0]}</Text>
-            </Button>
-            <Button rounded small info style={style.waveFormButton}
-              onPress={() => this._onWaveformSelect(WAVE_FORMS[1])}>
-              <Text style={style.waveFormButtonText}>{WAVE_FORMS[1]}</Text>
-            </Button>
-            <Button rounded small warning style={style.waveFormButton}
-              onPress={() => this._onWaveformSelect(WAVE_FORMS[2])}>
-              <Text style={style.waveFormButtonText}>{WAVE_FORMS[2]}</Text>
-            </Button>
-            <Button rounded small danger style={style.waveFormButton}
-              onPress={() => this._onWaveformSelect(WAVE_FORMS[3])}>
-              <Text style={style.waveFormButtonText}>{WAVE_FORMS[3]}</Text>
-            </Button>
-          </ScrollView>
-        </Collapsible>
+        <WaveFormCollapsible 
+          collapsed={this.state.collapsed}
+          onWaveformSelect={this._onWaveformSelect}
+        />
       )
     }
   }

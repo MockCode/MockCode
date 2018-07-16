@@ -28,6 +28,7 @@ project.xcworkspace
 
 # Android/IntelliJ
 #
+gradle.properties
 build/
 .idea
 .gradle

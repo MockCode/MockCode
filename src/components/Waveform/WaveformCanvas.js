@@ -1,14 +1,8 @@
 import React from "react";
 import { Animated, StyleSheet, View} from "react-native";
-// import Dimensions from 'Dimensions'
-// import Canvas from 'react-native-canvas'
 import Svg, {Polyline, Circle, Rect} from 'react-native-svg';
-// import { Surface } from "gl-react-native";
-// import { Shaders, Node, GLSL } from "gl-react";
 
 import { waveformData } from './WaveformData.js';
-
-// import Renderer from '../src/components/Waveform/WaveformRenderer.js';
 
 import Renderer from './WaveformRenderer'
 r = new Renderer('HR');

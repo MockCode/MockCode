@@ -9,8 +9,8 @@ export default StyleSheet.create({
     },
 
     screenNavButton: {
-        width: '50%',
-        alignSelf: 'center'
+        width: '60%',
+        alignSelf: 'center',
     },
 
     menuText: {

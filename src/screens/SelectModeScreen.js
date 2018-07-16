@@ -8,7 +8,7 @@ import {
   Platform,
   Dimensions
 } from 'react-native';
-import { Container, Content, Button, Text, Grid, Row, Col } from 'native-base';
+import { Container, Button, Text, Grid, Row, Col } from 'native-base';
 import PeerList from '../components/PeerList';
 import styles from "./styles/selectModeScreenStyle";
 import {scale, moderateScale} from "../utils/scaling"
@@ -29,6 +29,7 @@ export default class SelectModeScreen extends Component {
     this.state = store.getState()
     devices = this.state.NearbyApi.devices
   }
+
   componentDidMount(){
     StatusBar.setHidden(false);
   }
