@@ -18,7 +18,8 @@ export default class ControllerScreen extends Component {
   }
 
   static navigationOptions = {
-    title: "Controller"
+    title: "Controller",
+    header: null
   };
 
   waveformCallback = (value) => {

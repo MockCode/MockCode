@@ -1,5 +1,5 @@
 import React from 'react'
-import {Platform, AppState} from 'react-native'
+import {Platform, AppState, Alert, NetInfo} from 'react-native'
 import {API_KEYS} from '../api'
 import {On_Message_Found, ACTIONS} from '../redux/actions/nearbyActions'
 import DeviceInfo from 'react-native-device-info'
@@ -13,7 +13,7 @@ export class NetworkComp extends React.Component {
         });
         this.state = {
             appState: AppState.currentState,
-            lastReceivPayload: temp
+            lastReceivPayload: temp,
         }
     }
 
@@ -21,12 +21,25 @@ export class NetworkComp extends React.Component {
         let nearbyApi = store.getState().NearbyApi.nearbyApi;
         if(this.state.appState.match(/active/)
             && (nextAppState === 'inactive'|| nextAppState === 'background')) {
-            console.log("unsubscribing.");
+            // console.log("unsubscribing.");
             nearbyApi.unpublish();
             nearbyApi.unsubscribe();
         } else {
-            console.log("resubscribing.");
+            // console.log("resubscribing.");
             nearbyApi.subscribe();
+        }
+    }
+
+    _handleNetworkChange = (connectionInfo) => {
+        if(connectionInfo.type === "none"){
+            Alert.alert("No Internet Connection",
+                "Please reconnect to a network in order to communicate " +
+                "with other devices.",
+                [{text: 'Cancel'},
+                {text: 'OK'}
+                ],
+                {cancelable: false}
+            )
         }
     }
 
@@ -52,15 +65,14 @@ export class NetworkComp extends React.Component {
                     timeStamp: new Date()
                 }
                 nearbyApi.publish(JSON.stringify(m));
-                // console.log(m)
             })
             nearbyApi.onPublishSuccess(message => {
                 console.log(message, "psucess");
             });
 
-            nearbyApi.onPublishFailed(message => {
-                console.log("FAILED TO SEND PAYLOAD.");
-            });
+            // nearbyApi.onPublishFailed(message => {
+            //     this.queuedMessages.push(message);
+            // });
 
             nearbyApi.onFound(message => {
                 console.log("GOTCHA!", message);
@@ -68,7 +80,7 @@ export class NetworkComp extends React.Component {
                 let messageTimeStamp = new Date(m.timeStamp);
                 if (messageTimeStamp > this.state.lastReceivPayload[m.type]) {
                     console.log("Updating: ", m.type, " with timestamp: ", m.timeStamp);
-                    store.dispatch(On_Message_Found(message));
+                    store.dispatch(On_Message_Found(m));
                     let temp = Object.assign({}, this.state.lastReceivPayload);
                     temp[m.type]= new Date(m.timeStamp);
                     this.setState({
@@ -81,21 +93,25 @@ export class NetworkComp extends React.Component {
                 console.log("LOST PAYLOAD! RESEND PLS!", message);
             });
 
-            nearbyApi.onSubscribeFailed(() => {
-                console.log("SUBSCRIBE FAILED!");
-            });
+            // nearbyApi.onSubscribeFailed(() => {
+            //     console.log("SUBSCRIBE FAILED!");
+            // });
 
             nearbyApi.onDisconnected(message => {
                 console.log("NEARBY API DISCONNECTED.");
             });
         }
         AppState.addEventListener('change', this._handleAppStateChange);
+        NetInfo.addEventListener('connectionChange', this._handleNetworkChange);
     };
 
     componentWillUnmount() {
-        AppState.removeEventListener('change', this._handleAppStateChange);
+        AppState.removeEventListener('connectionChange', this._handleAppStateChange);
+        NetInfo.removeEventListener('connectionChange', this._handleNetworkChange);
+        nearbyApi.unpublish();
+        nearbyApi.unsubscribe();
+        nearbyApi.disconnect();
         console.log("network is about to be destroyed");
-        // TODO: unsubscribe and disconnect
     };
 
     render() {
