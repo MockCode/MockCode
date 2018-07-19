@@ -16,7 +16,7 @@ export default class PresetChangerArrow extends React.PureComponent {
                     onPress={() => this.props.onClick()}
                     style={styles.presetChangerButton}>
                     <Icon
-                        type='MaterialIcons'
+                        type='Ionicons'
                         name={this.props.arrow}
                         style={{color: 'white', alignSelf: 'center'}}
                     />
