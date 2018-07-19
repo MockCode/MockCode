@@ -11,7 +11,6 @@ export default class LikePakMonitor extends React.PureComponent {
             <View style={styles.header}>
                 <Text style={textStyle.hrText}>HR</Text>
                 <View style={{marginLeft: '42.5%'}}>
-                    <Clock/>
                 </View>
             </View>
 
