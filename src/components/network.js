@@ -89,17 +89,17 @@ export class NetworkComp extends React.Component {
                 }
             });
 
-            nearbyApi.onLost(message => {
-                console.log("LOST PAYLOAD! RESEND PLS!", message);
-            });
+            // nearbyApi.onLost(message => {
+            //     console.log("LOST PAYLOAD! RESEND PLS!", message);
+            // });
 
             // nearbyApi.onSubscribeFailed(() => {
             //     console.log("SUBSCRIBE FAILED!");
             // });
 
-            nearbyApi.onDisconnected(message => {
-                console.log("NEARBY API DISCONNECTED.");
-            });
+            // nearbyApi.onDisconnected(message => {
+            //     console.log("NEARBY API DISCONNECTED.");
+            // });
         }
         AppState.addEventListener('change', this._handleAppStateChange);
         NetInfo.addEventListener('connectionChange', this._handleNetworkChange);

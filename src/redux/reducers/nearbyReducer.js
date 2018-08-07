@@ -34,8 +34,10 @@ function NearbyApi(state = initialState, action) {
   case ACTIONS.MESSAGE_FOUND:
     return state;
   case ACTIONS.HELLO_RESPONSE:
-    state.devices.add(action.value);
-    return state
+    return {
+      ...state,
+      devices: new Set(state.devices.add(action.value))
+    }
   default:
     return state
   }
