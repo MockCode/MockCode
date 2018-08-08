@@ -1,4 +1,4 @@
-import { ACTIONS } from "../actions/nearbyActions"
+import { ACTIONS } from "./actions/nearbyActions"
 import { combineReducers } from 'redux'
 import { NearbyAPI } from "react-native-nearby-api";
 
@@ -26,8 +26,6 @@ const initialState = {
       value: 0
     }]
 }
-
-
 
 function NearbyApi(state = initialState, action) {
   switch (action.type) {
