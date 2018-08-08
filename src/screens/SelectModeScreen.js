@@ -4,7 +4,7 @@ import {Container, Button, Text, Grid, Row, Col} from 'native-base';
 import PeerList from '../components/PeerList/PeerList';
 import styles from "./styles/selectModeScreenStyle";
 import {moderateScale} from "../utils/scaling"
-import { NetworkComp } from '../components/network';
+import {NetworkComp} from '../components/network';
 import {connect} from 'react-redux';
 
 

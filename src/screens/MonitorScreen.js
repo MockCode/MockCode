@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Animated, Text, View, Dimensions, TextInput, StyleSheet, StatusBar, Alert, Button } from 'react-native';
 import {connect} from "react-redux";
 // import Orientation from "react-native-orientation";
-import { NetworkComp } from '../components/network';
 import WaveformCanvas from "../components/Waveform/WaveformCanvas";
 
 var {height, width} = Dimensions.get('window');
@@ -40,7 +39,6 @@ export default class MonitorScreen extends Component {
         const { goBack } = this.props.navigation;
         return (
     <View style={styles.column}>
-                {/* <NetworkComp/> */}
                 <View style={styles.row}>
                     <View style={styles.surfaceView} >
                       {/* <WaveformCanvas /> */}
