@@ -46,11 +46,11 @@ export default class SelectModeScreen extends Component {
             <Col></Col>
             <Col size={7}>
               <Row size={1} style={{alignSelf: 'center'}}>
-                <Text style={[{fontSize: moderateScale(50), marginTop: 10}, styles.menuText]}> Mock Code </Text>
+                <Text style={[{fontSize: moderateScale(40)}, styles.menuText]}> Mock Code </Text>
               </Row>
               <Row size={0.6}>
                 <Col>
-                <Text style={[{fontSize: moderateScale(30)}, styles.menuText]}> Choose Interface </Text>
+                <Text style={[{fontSize: moderateScale(20)}, styles.menuText]}> Choose Interface </Text>
                 <View style={styles.horizontalRuler}/>
                 </Col>
               </Row>
@@ -69,7 +69,7 @@ export default class SelectModeScreen extends Component {
               </Row>
               <Row size={0.6}>
                 <Col>
-                  <Text style={[{fontSize: moderateScale(30)}, styles.menuText]}> Nearby </Text>
+                  <Text style={[{fontSize: moderateScale(20)}, styles.menuText]}> Nearby </Text>
                   <View style={styles.horizontalRuler}/>                                         
                 </Col>
               </Row>

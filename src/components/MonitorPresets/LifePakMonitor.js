@@ -3,7 +3,6 @@ import {Text, View, StyleSheet} from 'react-native';
 import {Icon} from 'native-base';
 import {moderateScale} from '../../utils/scaling';
 import Clock from './Clock';
-import EStyleSheet from 'react-native-extended-stylesheet';
 
 export default class LikePakMonitor extends React.PureComponent {
     render() {
@@ -21,7 +20,7 @@ export default class LikePakMonitor extends React.PureComponent {
                         type="FontAwesome"
                         name="bell"
                         style={{color: '#80ff80', fontSize: moderateScale(30), marginTop: '2%'}} />
-                    <Text style={[textStyle.vitalValueText, testStyle.vitalText,{color: '#80ff80'}]}>
+                    <Text style={[textStyle.vitalValueText, {color: '#80ff80'}]}>
                         {this.props.heartRate}
                     </Text>
                 </View>
@@ -42,7 +41,7 @@ export default class LikePakMonitor extends React.PureComponent {
                             type="FontAwesome"
                             name="bell"
                             style={{color: '#15f4ee', fontSize: moderateScale(30), marginTop: '2%'}} />
-                        <Text style={[textStyle.vitalValueText, testStyle.vitalText, {color: '#15f4ee'}]}>
+                        <Text style={[textStyle.vitalValueText, {color: '#15f4ee'}]}>
                         {this.props.O2Sat}
                         </Text>
                     </View>
@@ -67,14 +66,6 @@ export default class LikePakMonitor extends React.PureComponent {
     }
 }
 
-const testStyle = EStyleSheet.create({
-    vitalText: {
-        fontSize: '6rem',
-        marginTop: '-1rem',
-        marginRight: '0.5rem'
-    }
-});
-
 const textStyle = StyleSheet.create({
     hrText: {
         fontSize: moderateScale(25),
@@ -90,6 +81,7 @@ const textStyle = StyleSheet.create({
     },
     vitalValueText: {
         fontWeight: 'bold',
+        fontSize: moderateScale(90)
     }
 })
 

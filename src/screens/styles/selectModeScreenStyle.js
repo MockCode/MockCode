@@ -14,7 +14,6 @@ export default StyleSheet.create({
     },
 
     menuText: {
-       color: '#5b5e63',
-   } 
+        color: '#5b5e63',
+    } 
 });
-  
