@@ -16,13 +16,17 @@ export default class LikePakMonitor extends React.PureComponent {
 
             <View style={styles.heartRateSection}>
                 <View style={styles.heartRateData}>
-                    <Icon
-                        type="FontAwesome"
-                        name="bell"
-                        style={{color: '#80ff80', fontSize: moderateScale(30), marginTop: '2%'}} />
-                    <Text style={[textStyle.vitalValueText, {color: '#80ff80'}]}>
-                        {this.props.heartRate}
-                    </Text>
+                    <View style = {{flex: 1}}>
+                        <Icon
+                            type="FontAwesome"
+                            name="bell"
+                            style={{color: '#80ff80', fontSize: moderateScale(20), marginTop: '5%'}} />
+                    </View>
+                    <View style={{flex: 4.5, justifyContent: 'flex-start', alignItems: 'flex-end'}}>
+                        <Text style={[textStyle.vitalValueText, {color: '#80ff80'}]}>
+                            {this.props.heartRate}
+                        </Text>
+                    </View>
                 </View>
 
                 <View style={styles.heartRateWave}>
@@ -37,13 +41,17 @@ export default class LikePakMonitor extends React.PureComponent {
                         <Text style={[textStyle.o2SatText, {marginRight: '2%'}]}>%</Text>
                     </View>
                     <View style={{flex: 4, flexDirection: 'row', justifyContent: 'space-between'}}>
-                        <Icon
-                            type="FontAwesome"
-                            name="bell"
-                            style={{color: '#15f4ee', fontSize: moderateScale(30), marginTop: '2%'}} />
-                        <Text style={[textStyle.vitalValueText, {color: '#15f4ee'}]}>
-                        {this.props.O2Sat}
-                        </Text>
+                        <View style={{flex: 1}}>
+                            <Icon
+                                type="FontAwesome"
+                                name="bell"
+                                style={{color: '#15f4ee', fontSize: moderateScale(20), marginTop: '2%'}} />
+                        </View>
+                        <View style={{flex: 4.5, justifyContent: 'flex-start', alignItems: 'flex-end'}}>
+                            <Text style={[textStyle.vitalValueText, {color: '#15f4ee'}]}>
+                            {this.props.O2Sat}
+                            </Text>
+                        </View>
                     </View>
                 </View>
 
@@ -68,20 +76,20 @@ export default class LikePakMonitor extends React.PureComponent {
 
 const textStyle = StyleSheet.create({
     hrText: {
-        fontSize: moderateScale(25),
+        fontSize: moderateScale(18),
         fontWeight: 'bold',
         color: '#80ff80',
         marginLeft: '0.5%'
     },
     o2SatText: {
-        fontSize: moderateScale(25),
+        fontSize: moderateScale(18),
         fontWeight: 'bold',
         color: '#15f4ee',
         marginLeft: '2.5%'
     },
     vitalValueText: {
         fontWeight: 'bold',
-        fontSize: moderateScale(90)
+        fontSize: moderateScale(60)
     }
 })
 

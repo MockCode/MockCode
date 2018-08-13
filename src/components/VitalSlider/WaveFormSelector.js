@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 class WaveFormSelector extends PureComponent{
   render() {
-    var inputProps = {
+    let inputProps = {
       rounded: true,
       small: true,
       iconLeft: true,
@@ -38,7 +38,7 @@ class WaveFormSelector extends PureComponent{
     return (
       <Button {...inputProps} onPress={this.props.toggleCallback}
         style={[style.waveFormSelect, inputProps.disabled ? {opacity : 0.1} : {}]}>
-        <Icon name='pulse'/>
+        {/* <Icon name='pulse' style={{fontSize: 12}}/> */}
         <Text style={style.waveFormSelectText}>{this.props.waveform}</Text>
       </Button>
     )
@@ -47,14 +47,14 @@ class WaveFormSelector extends PureComponent{
 
 const style = StyleSheet.create({
   waveFormSelect: {
-    height: moderateScale(40)
+    height: moderateScale(25)
   },
   waveFormSelectText: {
-    fontSize: moderateScale(15),
+    fontSize: moderateScale(10),
     fontWeight: 'bold',
     color: 'black',
-    paddingLeft: '1%',
-    paddingRight: '1%'
+    paddingLeft: '2%',
+    paddingRight: '2%'
   }
 })
 

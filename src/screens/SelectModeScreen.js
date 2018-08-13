@@ -1,35 +1,12 @@
 import React, { Component } from 'react';
-import {
-  View,
-  FlatList,
-  StyleSheet,
-  StatusBar,
-  Alert,
-  Platform,
-  Dimensions
-} from 'react-native';
+import {View, StyleSheet, StatusBar} from 'react-native';
 import { Container, Button, Text, Grid, Row, Col } from 'native-base';
 import PeerList from '../components/PeerList';
-import styles from "./styles/selectModeScreenStyle";
-import {scale, moderateScale} from "../utils/scaling"
+import {moderateScale} from "../utils/scaling"
 import { NetworkComp } from '../components/network';
 
 
 export default class SelectModeScreen extends Component {
-  // componentWillMount(){
-  //   const initialOrientation = Orientation.getInitialOrientation();
-  //   if (initialOrientation == 'PORTRAIT'){
-  //     Orientation.lockToPortrait();
-  //   } else {
-  //     Orientation.lockToPortrait();
-  //   }
-  // }
-  constructor(props) {
-    super(props);
-    this.state = store.getState()
-    devices = this.state.NearbyApi.devices
-  }
-
   componentDidMount(){
     StatusBar.setHidden(false);
   }
@@ -84,3 +61,19 @@ export default class SelectModeScreen extends Component {
     );
   };
 }
+
+const styles = StyleSheet.create({
+  horizontalRuler: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#c2c4c6',
+    width: '95%',
+    alignSelf: 'center'
+  },
+  screenNavButton: {
+      width: '60%',
+      alignSelf: 'center',
+  },
+  menuText: {
+      color: '#5b5e63',
+  } 
+});
