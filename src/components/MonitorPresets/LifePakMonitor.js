@@ -29,7 +29,7 @@ export default class LikePakMonitor extends React.PureComponent {
                     </View>
                 </View>
 
-                <View style={styles.heartRateWave}>
+                <View style={styles.waveSection}>
                 {/* TODO: Place heart wave renderer here. */}
                 </View>
             </View>
@@ -45,7 +45,7 @@ export default class LikePakMonitor extends React.PureComponent {
                             <Icon
                                 type="FontAwesome"
                                 name="bell"
-                                style={{color: '#15f4ee', fontSize: moderateScale(20), marginTop: '2%'}} />
+                                style={{color: '#15f4ee', fontSize: moderateScale(20), marginTop: '5%'}} />
                         </View>
                         <View style={{flex: 4.5, justifyContent: 'flex-start', alignItems: 'flex-end'}}>
                             <Text style={[textStyle.vitalValueText, {color: '#15f4ee'}]}>
@@ -55,7 +55,7 @@ export default class LikePakMonitor extends React.PureComponent {
                     </View>
                 </View>
 
-                <View style={styles.o2SatWave}>
+                <View style={styles.waveSection}>
                 {/* TODO: Place o2sat wave renderer here. */}
                 </View>
             </View>
@@ -65,7 +65,7 @@ export default class LikePakMonitor extends React.PureComponent {
 
                 </View>
 
-                <View style={styles.co2Wave}>
+                <View style={styles.waveSection}>
                 {/* TODO: Place co2 renderer here. */}
                 </View>
             </View>
@@ -124,24 +124,18 @@ const styles = StyleSheet.create({
         borderRightWidth: moderateScale(2.5),
         borderColor: 'grey'
     },
-    heartRateWave: {
-        flex: 4,
-    },
     o2SatData: {
         flex: 1,
         flexDirection: 'column',
         borderRightWidth: moderateScale(2.5),
         borderColor: 'grey'
     },
-    o2SatWave: {
-        flex: 4,
-    },
     co2Data: {
         flex: 1,
         borderRightWidth: moderateScale(2.5),
         borderColor: 'grey'
     },
-    co2Wave: {
-        flex: 4,
+    waveSection: {
+        flex: 4
     }
 })
