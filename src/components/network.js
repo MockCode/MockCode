@@ -21,11 +21,9 @@ export class NetworkComp extends React.Component {
         let nearbyApi = store.getState().NearbyApi.nearbyApi;
         if(this.state.appState.match(/active/)
             && (nextAppState === 'inactive'|| nextAppState === 'background')) {
-            // console.log("unsubscribing.");
             nearbyApi.unpublish();
             nearbyApi.unsubscribe();
         } else {
-            // console.log("resubscribing.");
             nearbyApi.subscribe();
         }
     }
@@ -43,6 +41,15 @@ export class NetworkComp extends React.Component {
         }
     }
 
+    updateTimeStamps = (type, timeStamp) => {
+        console.log("Updating: ", type, " with timestamp: ", timeStamp);
+        let temp = Object.assign({}, this.state.lastReceivPayload);
+        temp[type]= new Date(timeStamp);
+        this.setState({
+            lastReceivPayload: temp
+        });
+    }
+
     componentDidMount() {
         state = store.getState()
         var nearbyApi = state.NearbyApi.nearbyApi;
@@ -53,7 +60,6 @@ export class NetworkComp extends React.Component {
             }
 
             nearbyApi.onConnected(message => {
-                //TODO: dispatch successful connect action
                 console.log("Connected to Nearby.");
                 nearbyApi.subscribe();
             });
@@ -65,48 +71,27 @@ export class NetworkComp extends React.Component {
                     timeStamp: new Date()
                 }
                 nearbyApi.publish(JSON.stringify(m));
-            })
+            });
+
             nearbyApi.onPublishSuccess(message => {
                 console.log(message, "psucess");
             });
 
-            // nearbyApi.onPublishFailed(message => {
-            //     this.queuedMessages.push(message);
-            // });
-
             nearbyApi.onFound(message => {
-                console.log("GOTCHA!", message);
                 let m = JSON.parse(message);
                 let messageTimeStamp = new Date(m.timeStamp);
                 if (messageTimeStamp > this.state.lastReceivPayload[m.type]) {
-                    console.log("Updating: ", m.type, " with timestamp: ", m.timeStamp);
+                    this.updateTimeStamps(m.type, messageTimeStamp);
                     store.dispatch(On_Message_Found(m));
-                    let temp = Object.assign({}, this.state.lastReceivPayload);
-                    temp[m.type]= new Date(m.timeStamp);
-                    this.setState({
-                        lastReceivPayload: temp
-                    });
                 }
             });
-
-            // nearbyApi.onLost(message => {
-            //     console.log("LOST PAYLOAD! RESEND PLS!", message);
-            // });
-
-            // nearbyApi.onSubscribeFailed(() => {
-            //     console.log("SUBSCRIBE FAILED!");
-            // });
-
-            // nearbyApi.onDisconnected(message => {
-            //     console.log("NEARBY API DISCONNECTED.");
-            // });
         }
         AppState.addEventListener('change', this._handleAppStateChange);
         NetInfo.addEventListener('connectionChange', this._handleNetworkChange);
     };
 
     componentWillUnmount() {
-        AppState.removeEventListener('connectionChange', this._handleAppStateChange);
+        AppState.removeEventListener('change', this._handleAppStateChange);
         NetInfo.removeEventListener('connectionChange', this._handleNetworkChange);
         nearbyApi.unpublish();
         nearbyApi.unsubscribe();
