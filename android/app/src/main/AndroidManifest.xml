@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.mockcode"
-    android:versionCode="1"
+    android:versionCode="3"
     android:versionName="1.0">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -8,10 +9,11 @@
     <!-- Include if wish to use BLE -->
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove" />
 
     <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="22" />
+        android:minSdkVersion="22"
+        android:targetSdkVersion="26" />
 
     <application
       android:name=".MainApplication"

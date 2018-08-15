@@ -7,7 +7,6 @@ import {moderateScale} from "../utils/scaling"
 import {NetworkComp} from '../components/network';
 import {connect} from 'react-redux';
 
-
 class SelectModeScreen extends Component {
   componentDidMount(){
     StatusBar.setHidden(false);
