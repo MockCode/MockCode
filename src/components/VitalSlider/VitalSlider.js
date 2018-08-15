@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import style from "./style";
-import { Text, View, Switch, ScrollView } from "react-native";
+import { Text, View, Switch} from "react-native";
 import { Update_Value, ACTIONS } from '../../redux/actions/nearbyActions';
 import WaveFormCollapsible from './WaveFormCollapsible';
 import WaveFormSelector from './WaveFormSelector';
@@ -77,7 +77,7 @@ export class VitalSlider extends Component {
         }
 
         if(this.props.sliderName.indexOf("Blood Pressure") !== -1){
-          this.setState({sliderValue: NSR_VALUES.BP});
+          this.setState({sliderValue: this.props.bpLevels.indexOf(NSR_VALUES.BP)});
           store.dispatch(Update_Value(ACTIONS.UPDATE_BLOOD_PRESSURE, NSR_VALUES.BP));
         }
 

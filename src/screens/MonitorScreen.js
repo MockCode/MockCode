@@ -2,7 +2,6 @@ import React from 'react';
 import {View, StatusBar, Dimensions} from 'react-native';
 import {connect} from "react-redux";
 import Orientation from "react-native-orientation";
-import { NetworkComp } from '../components/network';
 import PresetChangerArrow from '../components/MonitorPresets/PresetChangerArrow';
 import MONITOR_PRESETS from '../components/MonitorPresets';
 
@@ -62,7 +61,6 @@ class MonitorScreen extends React.Component {
                 style={{flex: 1, flexDirection: 'row'}}
                 onResponderRelease={() => this.stopTouch(this.state.toggle)}
                 onStartShouldSetResponder={(e) => {return true}}>
-                <NetworkComp />
                 <CurrentMonitor
                     heartRate = {this.props.heartRate}
                     bloodPressure = {this.props.bloodPressure}

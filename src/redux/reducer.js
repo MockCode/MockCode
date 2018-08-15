@@ -1,4 +1,4 @@
-import { ACTIONS } from "../actions/nearbyActions"
+import { ACTIONS } from "./actions/nearbyActions"
 import { combineReducers } from 'redux'
 import { NearbyAPI } from "react-native-nearby-api";
 
@@ -27,15 +27,15 @@ const initialState = {
     }]
 }
 
-
-
 function NearbyApi(state = initialState, action) {
   switch (action.type) {
   case ACTIONS.MESSAGE_FOUND:
     return state;
   case ACTIONS.HELLO_RESPONSE:
-    state.devices.add(action.value);
-    return state
+    return {
+      ...state,
+      devices: new Set(state.devices.add(action.value))
+    }
   default:
     return state
   }

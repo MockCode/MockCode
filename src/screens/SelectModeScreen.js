@@ -1,40 +1,19 @@
-import React, { Component } from 'react';
-import {
-  View,
-  FlatList,
-  StyleSheet,
-  StatusBar,
-  Alert,
-  Platform,
-  Dimensions
-} from 'react-native';
-import { Container, Button, Text, Grid, Row, Col } from 'native-base';
-import PeerList from '../components/PeerList';
+import React, {Component} from 'react';
+import {View, StatusBar} from 'react-native';
+import {Container, Button, Text, Grid, Row, Col} from 'native-base';
+import PeerList from '../components/PeerList/PeerList';
 import styles from "./styles/selectModeScreenStyle";
-import {scale, moderateScale} from "../utils/scaling"
-import { NetworkComp } from '../components/network';
+import {moderateScale} from "../utils/scaling"
+import {NetworkComp} from '../components/network';
+import {connect} from 'react-redux';
 
-
-export default class SelectModeScreen extends Component {
-  // componentWillMount(){
-  //   const initialOrientation = Orientation.getInitialOrientation();
-  //   if (initialOrientation == 'PORTRAIT'){
-  //     Orientation.lockToPortrait();
-  //   } else {
-  //     Orientation.lockToPortrait();
-  //   }
-  // }
-  constructor(props) {
-    super(props);
-    this.state = store.getState()
-    devices = this.state.NearbyApi.devices
-  }
-
+class SelectModeScreen extends Component {
   componentDidMount(){
     StatusBar.setHidden(false);
   }
 
   static navigationOptions = {
+    title: 'SelectModeScreen',
     header: null
   };
 
@@ -42,6 +21,7 @@ export default class SelectModeScreen extends Component {
     const {navigate} = this.props.navigation;
     return (
       <Container>
+          <NetworkComp />
           <Grid>
             <Col></Col>
             <Col size={7}>
@@ -74,8 +54,7 @@ export default class SelectModeScreen extends Component {
                 </Col>
               </Row>
               <Row size={3} style={{alignSelf: 'center', paddingHorizontal: '10%'}}>
-                <PeerList/>
-                {/* <PeerList data={[{id: '1'}, {id: '2'}, {id: '3'}, {id: '4'}, {id: '5'}, {id: '6'}, {id: '7'}, {id: '8'}, {id: '9'}, {id: '10'}, {id: '11'}, {id: '12'} ]}/> */}
+                <PeerList devices={this.props.devices}/>
               </Row>
             </Col>
             <Col></Col>
@@ -84,3 +63,11 @@ export default class SelectModeScreen extends Component {
     );
   };
 }
+
+const mapStateToProps = (state) => {
+  return {
+    devices:state.NearbyApi.devices
+  }
+}
+
+export default connect(mapStateToProps)(SelectModeScreen);
