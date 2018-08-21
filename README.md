@@ -20,4 +20,7 @@ Note for fred : `node_modules/react-native-webgl/ios/``
 ```
 
 ### Android
-
+```
+npm install (or yarn install)
+react-native run-android (to run with connected android device using ADB)
+```
