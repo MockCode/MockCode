@@ -7,13 +7,15 @@ import DeviceInfo from 'react-native-device-info'
 export class NetworkComp extends React.Component {
     constructor(){
         super();
-        let temp = {}
+        let actionTimeStamps = {}
         Object.keys(ACTIONS).forEach(function(key) {
-            temp[key]= new Date(0);
+            actionTimeStamps[key]= new Date(0);
         });
         this.state = {
             appState: AppState.currentState,
-            lastReceivPayload: temp,
+            lastReceivPayload: actionTimeStamps,
+            deviceOnlineTimeStamps: {},
+            intervalId: null
         }
     }
 
@@ -41,8 +43,17 @@ export class NetworkComp extends React.Component {
         }
     }
 
+    sendDeviceOnlineUpdate() {
+        let nearbyApi = store.getState().NearbyApi.nearbyApi;
+        let message = {
+            type: "DEVICE_ONLINE",
+            message: DeviceInfo.getUniqueID(),
+            timeStamp: new Date()
+        }
+        nearbyApi.publish(JSON.stringify(message));
+    }
+
     updateTimeStamps = (type, timeStamp) => {
-        console.log("Updating: ", type, " with timestamp: ", timeStamp);
         let temp = Object.assign({}, this.state.lastReceivPayload);
         temp[type]= new Date(timeStamp);
         this.setState({
@@ -80,6 +91,15 @@ export class NetworkComp extends React.Component {
             nearbyApi.onFound(message => {
                 let m = JSON.parse(message);
                 let messageTimeStamp = new Date(m.timeStamp);
+                if (m.type === "DEVICE_ONLINE"){
+                    console.log("Device Id: ", m.message, ", Time: ", messageTimeStamp);
+                    let temp = Object.assign({}, this.state.deviceOnlineTimeStamps);
+                    temp[m.message] = messageTimeStamp;
+                    this.setState({
+                        deviceOnlineTimeStamps: temp
+                    });
+                    return;
+                }
                 if (messageTimeStamp > this.state.lastReceivPayload[m.type]) {
                     this.updateTimeStamps(m.type, messageTimeStamp);
                     store.dispatch(On_Message_Found(m));
@@ -88,15 +108,18 @@ export class NetworkComp extends React.Component {
         }
         AppState.addEventListener('change', this._handleAppStateChange);
         NetInfo.addEventListener('connectionChange', this._handleNetworkChange);
+        let intervalId = setInterval(this.sendDeviceOnlineUpdate, 1000*45);
+        this.setState({intervalId: intervalId});
+
     };
 
     componentWillUnmount() {
         AppState.removeEventListener('change', this._handleAppStateChange);
         NetInfo.removeEventListener('connectionChange', this._handleNetworkChange);
+        clearInterval(this.state.intervalId);
         nearbyApi.unpublish();
         nearbyApi.unsubscribe();
         nearbyApi.disconnect();
-        console.log("network is about to be destroyed");
     };
 
     render() {
