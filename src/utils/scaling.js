@@ -4,12 +4,16 @@
 import { Dimensions } from 'react-native';
 const {width, height} = Dimensions.get('window')
 
-// We will base our scale off
-const guidelineBaseWidth = 720;
-const guidelineBaseHeight = 1280;
 
-const scale = (size) => width / guidelineBaseWidth * size;
-const verticalScale = (size) => height / guidelineBaseHeight * size;
-const moderateScale = (size, factor = 0.75) => size + (scale(size) - size) * factor;
+// We will base our scale off
+const BASE_WIDTH = 600;
+const BASE_HEIGHT = 912;
+
+let currentWidth = width;
+let currentHeight = height;
+
+const scale = (size) => currentWidth / BASE_WIDTH * size;
+const verticalScale = (size) => currentHeight / BASE_HEIGHT * size;
+const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
 
 export {scale, verticalScale, moderateScale};

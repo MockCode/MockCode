@@ -16,9 +16,9 @@ export default class PresetChangerArrow extends React.PureComponent {
                     onPress={() => this.props.onClick()}
                     style={styles.presetChangerButton}>
                     <Icon
-                        type='MaterialIcons'
+                        type='Ionicons'
                         name={this.props.arrow}
-                        style={{color: 'white', alignSelf: 'center'}}
+                        style={{color: 'black', alignSelf: 'center'}}
                     />
                 </TouchableOpacity>
             </FadeInView>
@@ -46,8 +46,7 @@ const styles = StyleSheet.create({
     },
     presetChangerButton: {
         flex: 1,
-        backgroundColor: 'white',
-        opacity: 0.6,
+        backgroundColor: 'rgb(255,255,255)',
         justifyContent: 'center',
         borderRadius: moderateScale(10)
     }

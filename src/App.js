@@ -1,22 +1,17 @@
 import React, { Component} from 'react';
-import {connect, Provider } from "react-redux";
+import {Provider} from "react-redux";
 import { createStore, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk'
 import MockApp from './redux/reducers/nearbyReducer'
 import {API_KEYS} from './api'
 import RootNavigator from './navigation'
 import {Root} from 'native-base'
+import EStyleSheet from 'react-native-extended-stylesheet';
+import {Dimensions} from 'react-native';
 
 export const nearbyAPI_KEY = API_KEYS.nearby;
+const {height, width} = Dimensions.get('window')
 
-function mapStateToProps(state) {
-  return state;
-}
-
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators(Actions, dispatch);
-// }
-// module.exports = connect(mapStateToProps)(RootNavigator);
 store = createStore(MockApp, applyMiddleware(thunkMiddleware))
 
 export default class App extends Component {
@@ -25,6 +20,7 @@ export default class App extends Component {
   }
   
   render() {
+    console.log(width);
     return (
       <Provider store={store}>
         <Root>
@@ -34,3 +30,9 @@ export default class App extends Component {
     );
   }
 }
+
+
+
+EStyleSheet.build({
+  $rem:  (width / 50)
+});
