@@ -1,7 +1,7 @@
 import React from 'react'
 import {Platform, AppState, Alert, NetInfo} from 'react-native'
 import {API_KEYS} from '../api'
-import {On_Message_Found, ACTIONS} from '../redux/actions/nearbyActions'
+import {On_Message_Found, ACTIONS, Update_Store} from '../redux/actions/nearbyActions'
 import DeviceInfo from 'react-native-device-info'
 
 export class NetworkComp extends React.Component {
@@ -15,11 +15,13 @@ export class NetworkComp extends React.Component {
             appState: AppState.currentState,
             lastReceivPayload: actionTimeStamps,
             deviceOnlineTimeStamps: {},
-            intervalId: null
+            sendOnlineIntervalId: null,
+            checkOnlineIntervalId: null
         }
+        this.checkOnlineDevices = this.checkOnlineDevices.bind(this);
     }
 
-    _handleAppStateChange = (nextAppState) => {
+    handleAppStateChange = (nextAppState) => {
         let nearbyApi = store.getState().NearbyApi.nearbyApi;
         if(this.state.appState.match(/active/)
             && (nextAppState === 'inactive'|| nextAppState === 'background')) {
@@ -30,7 +32,7 @@ export class NetworkComp extends React.Component {
         }
     }
 
-    _handleNetworkChange = (connectionInfo) => {
+    handleNetworkChange = (connectionInfo) => {
         if(connectionInfo.type === "none"){
             Alert.alert("No Internet Connection",
                 "Please reconnect to a network in order to communicate " +
@@ -43,11 +45,29 @@ export class NetworkComp extends React.Component {
         }
     }
 
+    checkOnlineDevices(){
+        let currentTime = new Date();
+        let deviceTimeStamps = Object.assign({}, this.state.deviceOnlineTimeStamps);
+        Object.keys(deviceTimeStamps).forEach(
+            function(key) {
+                console.log("CHECKING ONLINE DEVICES!");
+                let diff = currentTime.getTime() - deviceTimeStamps[key].getTime();
+                let secondsBetweenDates = Math.abs(diff / 1000);
+                console.log("Time between last update and now: ", secondsBetweenDates);
+                if(secondsBetweenDates > 90.0){
+                    delete deviceTimeStamps[key];
+                    store.dispatch(Update_Store(ACTIONS.REMOVE_DEVICE, key));
+                }
+            }
+        );
+        this.setState({deviceOnlineTimeStamps: deviceTimeStamps});
+    }
+
     sendDeviceOnlineUpdate() {
         let nearbyApi = store.getState().NearbyApi.nearbyApi;
         let message = {
             type: "DEVICE_ONLINE",
-            message: DeviceInfo.getUniqueID(),
+            message: DeviceInfo.getDeviceName(),
             timeStamp: new Date()
         }
         nearbyApi.publish(JSON.stringify(message));
@@ -55,7 +75,7 @@ export class NetworkComp extends React.Component {
 
     updateTimeStamps = (type, timeStamp) => {
         let temp = Object.assign({}, this.state.lastReceivPayload);
-        temp[type]= new Date(timeStamp);
+        temp[type]= timeStamp;
         this.setState({
             lastReceivPayload: temp
         });
@@ -91,32 +111,39 @@ export class NetworkComp extends React.Component {
             nearbyApi.onFound(message => {
                 let m = JSON.parse(message);
                 let messageTimeStamp = new Date(m.timeStamp);
-                if (m.type === "DEVICE_ONLINE"){
-                    console.log("Device Id: ", m.message, ", Time: ", messageTimeStamp);
+                if (m.type === "DEVICE_ONLINE" ||
+                    m.type === "HELLO_REQUEST" ||
+                    m.type === "HELLO_RESPONSE")
+                {
                     let temp = Object.assign({}, this.state.deviceOnlineTimeStamps);
                     temp[m.message] = messageTimeStamp;
                     this.setState({
                         deviceOnlineTimeStamps: temp
                     });
-                    return;
                 }
-                if (messageTimeStamp > this.state.lastReceivPayload[m.type]) {
+                if (messageTimeStamp > this.state.lastReceivPayload[m.type] &&
+                    m.type !== "DEVICE_ONLINE")
+                {
                     this.updateTimeStamps(m.type, messageTimeStamp);
                     store.dispatch(On_Message_Found(m));
                 }
             });
         }
-        AppState.addEventListener('change', this._handleAppStateChange);
-        NetInfo.addEventListener('connectionChange', this._handleNetworkChange);
-        let intervalId = setInterval(this.sendDeviceOnlineUpdate, 1000*45);
-        this.setState({intervalId: intervalId});
+
+        AppState.addEventListener('change', this.handleAppStateChange);
+        NetInfo.addEventListener('connectionChange', this.handleNetworkChange);
+        let sendOnlineIntervalId = setInterval(this.sendDeviceOnlineUpdate, 1000*30);
+        let checkOnlineIntervalId = setInterval(this.checkOnlineDevices, 1000*90);
+        this.setState({sendOnlineIntervalId: sendOnlineIntervalId});
+        this.setState({checkOnlineIntervalId: checkOnlineIntervalId});
 
     };
 
     componentWillUnmount() {
-        AppState.removeEventListener('change', this._handleAppStateChange);
-        NetInfo.removeEventListener('connectionChange', this._handleNetworkChange);
-        clearInterval(this.state.intervalId);
+        AppState.removeEventListener('change', this.handleAppStateChange);
+        NetInfo.removeEventListener('connectionChange', this.handleNetworkChange);
+        clearInterval(this.state.sendOnlineIntervalId);
+        clearInterval(this.state.checkOnlineIntervalId);
         nearbyApi.unpublish();
         nearbyApi.unsubscribe();
         nearbyApi.disconnect();

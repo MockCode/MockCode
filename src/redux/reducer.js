@@ -2,42 +2,27 @@ import { ACTIONS } from "./actions/nearbyActions"
 import { combineReducers } from 'redux'
 import { NearbyAPI } from "react-native-nearby-api";
 
-const ControllerValues = {
-  HEART_RATE: "HEART_RATE"
-}
-
 const initialState = {
     nearbyApi: new NearbyAPI(true),
-    devices: new Set(),
-    controllerValues : [{
-        controllerValueType: ControllerValues.HEART_RATE,
-        value: 0
-    },{
-      controllerValueType: ControllerValues.BLOOD_PRESSURE,
-      value: 0
-    },{
-      controllerValueType: ControllerValues.O2Sat,
-      value: 0
-    },{
-      controllerValueType: ControllerValues.EtC02,
-      value: 0
-    },{
-      controllerValueType: ControllerValues.Waveform,
-      value: 0
-    }]
+    devices: new Set()
 }
 
 function NearbyApi(state = initialState, action) {
   switch (action.type) {
-  case ACTIONS.MESSAGE_FOUND:
-    return state;
-  case ACTIONS.HELLO_RESPONSE:
-    return {
-      ...state,
-      devices: new Set(state.devices.add(action.value))
-    }
-  default:
-    return state
+    case ACTIONS.HELLO_RESPONSE:
+      return {
+        ...state,
+        devices: new Set(state.devices.add(action.value))
+      }
+    case ACTIONS.REMOVE_DEVICE:
+      let newDevices = state.devices;
+      newDevices.delete(action.value);
+      return {
+        ...state,
+        devices: new Set(newDevices)
+      }
+    default:
+      return state
   }
 }
 
