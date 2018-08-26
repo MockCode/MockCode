@@ -50,10 +50,8 @@ export class NetworkComp extends React.Component {
         let deviceTimeStamps = Object.assign({}, this.state.deviceOnlineTimeStamps);
         Object.keys(deviceTimeStamps).forEach(
             function(key) {
-                console.log("CHECKING ONLINE DEVICES!");
                 let diff = currentTime.getTime() - deviceTimeStamps[key].getTime();
                 let secondsBetweenDates = Math.abs(diff / 1000);
-                console.log("Time between last update and now: ", secondsBetweenDates);
                 if(secondsBetweenDates > 90.0){
                     delete deviceTimeStamps[key];
                     store.dispatch(Update_Store(ACTIONS.REMOVE_DEVICE, key));
@@ -67,8 +65,7 @@ export class NetworkComp extends React.Component {
         let nearbyApi = store.getState().NearbyApi.nearbyApi;
         let message = {
             type: "DEVICE_ONLINE",
-            message: DeviceInfo.getDeviceName(),
-            timeStamp: new Date()
+            message: DeviceInfo.getDeviceName()
         }
         nearbyApi.publish(JSON.stringify(message));
     }
@@ -105,7 +102,7 @@ export class NetworkComp extends React.Component {
             });
 
             nearbyApi.onPublishSuccess(message => {
-                console.log(message, "psucess");
+                // console.log(message, "psucess");
             });
 
             nearbyApi.onFound(message => {
@@ -116,7 +113,7 @@ export class NetworkComp extends React.Component {
                     m.type === "HELLO_RESPONSE")
                 {
                     let temp = Object.assign({}, this.state.deviceOnlineTimeStamps);
-                    temp[m.message] = messageTimeStamp;
+                    temp[m.message] = new Date();
                     this.setState({
                         deviceOnlineTimeStamps: temp
                     });
