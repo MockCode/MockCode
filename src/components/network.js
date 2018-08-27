@@ -43,6 +43,11 @@ export class NetworkComp extends React.Component {
                 {cancelable: false}
             )
         }
+        // if (connectionInfo.type === "wifi" ||
+        //     connectionInfo.type === "cellular")
+        // {
+            
+        // }
     }
 
     checkOnlineDevices(){
@@ -65,7 +70,8 @@ export class NetworkComp extends React.Component {
         let nearbyApi = store.getState().NearbyApi.nearbyApi;
         let message = {
             type: "DEVICE_ONLINE",
-            message: DeviceInfo.getDeviceName()
+            message: DeviceInfo.getDeviceName(),
+            timeStamp: new Date()
         }
         nearbyApi.publish(JSON.stringify(message));
     }
@@ -102,12 +108,13 @@ export class NetworkComp extends React.Component {
             });
 
             nearbyApi.onPublishSuccess(message => {
-                // console.log(message, "psucess");
+                console.log(message, "psucess");
             });
 
             nearbyApi.onFound(message => {
                 let m = JSON.parse(message);
                 let messageTimeStamp = new Date(m.timeStamp);
+                console.log("Message: ", m.type);
                 if (m.type === "DEVICE_ONLINE" ||
                     m.type === "HELLO_REQUEST" ||
                     m.type === "HELLO_RESPONSE")
@@ -129,8 +136,8 @@ export class NetworkComp extends React.Component {
 
         AppState.addEventListener('change', this.handleAppStateChange);
         NetInfo.addEventListener('connectionChange', this.handleNetworkChange);
-        let sendOnlineIntervalId = setInterval(this.sendDeviceOnlineUpdate, 1000*30);
-        let checkOnlineIntervalId = setInterval(this.checkOnlineDevices, 1000*90);
+        let sendOnlineIntervalId = setInterval(this.sendDeviceOnlineUpdate, 1000*45);
+        let checkOnlineIntervalId = setInterval(this.checkOnlineDevices, 1000*135);
         this.setState({sendOnlineIntervalId: sendOnlineIntervalId});
         this.setState({checkOnlineIntervalId: checkOnlineIntervalId});
 
