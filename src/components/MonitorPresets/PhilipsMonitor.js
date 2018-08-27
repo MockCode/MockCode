@@ -121,17 +121,17 @@ const bpInfoStyle = StyleSheet.create({
 
 const pulseStyle = StyleSheet.create({
     squareGraphic: {
-        width: moderateScale(35),
-        height: moderateScale(35),
+        width: moderateScale(30),
+        height: moderateScale(30),
         borderRadius: moderateScale(5),
         backgroundColor: 'white'
     },
     pulseText: {
         color: 'white',
-        fontSize: moderateScale(18)
+        fontSize: moderateScale(15)
     },
     pulseValue: {
-        fontSize: moderateScale(60),
+        fontSize: moderateScale(50),
         color: 'white'
     }
 })
