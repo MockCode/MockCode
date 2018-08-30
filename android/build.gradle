@@ -15,10 +15,26 @@ buildscript {
 allprojects {
     repositories {
         mavenLocal()
+        maven {
+            url 'https://maven.google.com'
+        }
         jcenter()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
+        }
+    }
+}
+
+subprojects {
+    project.configurations.all {
+        afterEvaluate {project ->
+            if (project.hasProperty("android")) {
+                android {
+                    compileSdkVersion 26
+                    buildToolsVersion '26.0.1'
+                }
+            }
         }
     }
 }
