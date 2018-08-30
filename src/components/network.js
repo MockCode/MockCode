@@ -43,11 +43,6 @@ export class NetworkComp extends React.Component {
                 {cancelable: false}
             )
         }
-        // if (connectionInfo.type === "wifi" ||
-        //     connectionInfo.type === "cellular")
-        // {
-            
-        // }
     }
 
     checkOnlineDevices(){
@@ -94,7 +89,7 @@ export class NetworkComp extends React.Component {
             }
 
             nearbyApi.onConnected(message => {
-                console.log("Connected to Nearby.");
+                // console.log("Connected to Nearby.");
                 nearbyApi.subscribe();
             });
 
@@ -108,13 +103,12 @@ export class NetworkComp extends React.Component {
             });
 
             nearbyApi.onPublishSuccess(message => {
-                console.log(message, "psucess");
+                // console.log(message, "psucess");
             });
 
             nearbyApi.onFound(message => {
                 let m = JSON.parse(message);
                 let messageTimeStamp = new Date(m.timeStamp);
-                console.log("Message: ", m.type);
                 if (m.type === "DEVICE_ONLINE" ||
                     m.type === "HELLO_REQUEST" ||
                     m.type === "HELLO_RESPONSE")
