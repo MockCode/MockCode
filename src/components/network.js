@@ -80,8 +80,8 @@ export class NetworkComp extends React.Component {
     }
 
     componentDidMount() {
-        state = store.getState()
-        var nearbyApi = state.NearbyApi.nearbyApi;
+        let state = store.getState()
+        let nearbyApi = state.NearbyApi.nearbyApi;
         if (nearbyApi != undefined) {
 
             if (Platform.OS != 'Jest') {

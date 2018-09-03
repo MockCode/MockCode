@@ -16,4 +16,4 @@ const config = {
   headerMode: 'screen'
 }
 
-export default RootNavigator = StackNavigator(routes, config);
+export default StackNavigator(routes, config);

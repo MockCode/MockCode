@@ -8,7 +8,7 @@ import RootNavigator from './navigation'
 import {Root} from 'native-base'
 
 export const nearbyAPI_KEY = API_KEYS.nearby;
-store = createStore(MockApp, applyMiddleware(thunkMiddleware))
+const store = createStore(MockApp, applyMiddleware(thunkMiddleware))
 
 export default class App extends Component {
   render() {

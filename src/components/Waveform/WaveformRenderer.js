@@ -38,7 +38,7 @@ export default class Renderer {
       var slice = []
       // console.log(time_in_frame, first_point, num_points, this.maxPoints);
       // return slice;
-      for (i = 0; num_points >0; i++) {
+      for (let i = 0; num_points >0; i++) {
         // console.log(i)
         if (num_points > this.maxPoints - first_point) {
           // return 0;
@@ -64,7 +64,7 @@ export default class Renderer {
     }
 
     update() {
-      frame = this.getFrame(0, 200);
+      let frame = this.getFrame(0, 200);
       var x = 6;
       console.log(frame)
       // return;
@@ -84,7 +84,7 @@ export default class Renderer {
       this.wavePeriod = (1/f)*60000;
       this.maxPoints = this.wavePeriod / this.waveform.totalDuration * this.waveform.nPoints;
       if (this.maxPoints > this.waveform.nPoints) {
-        for (i = this.waveform.nPoints, s = this.waveform.dataPoints.slice(-1)[0]; i < this.maxPoints; i += 1) {
+        for (let i = this.waveform.nPoints, s = this.waveform.dataPoints.slice(-1)[0]; i < this.maxPoints; i += 1) {
           // console.log(s)
           this.waveform.dataPoints.push(s);
         }
