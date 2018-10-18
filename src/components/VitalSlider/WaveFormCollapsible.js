@@ -40,11 +40,11 @@ const style = StyleSheet.create({
     justifyContent: 'space-around'
   },
   waveFormButton: {
-    height:moderateScale(40),
-    margin: '0.5%'
+    height:moderateScale(20),
+    marginBottom: '0.5%'
   },
   waveFormButtonText: {
-    fontSize: moderateScale(15, 0.9),
+    fontSize: moderateScale(8),
     paddingLeft: '1%',
     paddingRight: '1%',
     color: 'black'

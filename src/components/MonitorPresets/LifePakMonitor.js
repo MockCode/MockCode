@@ -18,13 +18,17 @@ export default class LikePakMonitor extends React.PureComponent {
 
             <View style={styles.heartRateSection}>
                 <View style={styles.heartRateData}>
-                    <Icon
-                        type="FontAwesome"
-                        name="bell"
-                        style={{color: '#80ff80', fontSize: moderateScale(30), marginTop: '2%'}} />
-                    <Text style={[textStyle.vitalValueText, testStyle.vitalText,{color: '#80ff80'}]}>
-                        {this.props.heartRate}
-                    </Text>
+                    <View style = {{flex: 1}}>
+                        <Icon
+                            type="FontAwesome"
+                            name="bell"
+                            style={{color: '#80ff80', fontSize: moderateScale(20), marginTop: '5%'}} />
+                    </View>
+                    <View style={{flex: 4.5, justifyContent: 'flex-start', alignItems: 'flex-end'}}>
+                        <Text style={[textStyle.vitalValueText, {color: '#80ff80'}]}>
+                            {this.props.heartRate}
+                        </Text>
+                    </View>
                 </View>
 
                 <View style={styles.heartRateWave}>
@@ -39,17 +43,21 @@ export default class LikePakMonitor extends React.PureComponent {
                         <Text style={[textStyle.o2SatText, {marginRight: '2%'}]}>%</Text>
                     </View>
                     <View style={{flex: 4, flexDirection: 'row', justifyContent: 'space-between'}}>
-                        <Icon
-                            type="FontAwesome"
-                            name="bell"
-                            style={{color: '#15f4ee', fontSize: moderateScale(30), marginTop: '2%'}} />
-                        <Text style={[textStyle.vitalValueText, testStyle.vitalText, {color: '#15f4ee'}]}>
-                        {this.props.O2Sat}
-                        </Text>
+                        <View style={{flex: 1}}>
+                            <Icon
+                                type="FontAwesome"
+                                name="bell"
+                                style={{color: '#15f4ee', fontSize: moderateScale(20), marginTop: '5%'}} />
+                        </View>
+                        <View style={{flex: 4.5, justifyContent: 'flex-start', alignItems: 'flex-end'}}>
+                            <Text style={[textStyle.vitalValueText, {color: '#15f4ee'}]}>
+                            {this.props.O2Sat}
+                            </Text>
+                        </View>
                     </View>
                 </View>
 
-                <View style={styles.o2SatWave}>
+                <View style={styles.waveSection}>
                 {/* TODO: Place o2sat wave renderer here. */}
                 </View>
             </View>
@@ -59,7 +67,7 @@ export default class LikePakMonitor extends React.PureComponent {
 
                 </View>
 
-                <View style={styles.co2Wave}>
+                <View style={styles.waveSection}>
                 {/* TODO: Place co2 renderer here. */}
                 </View>
             </View>
@@ -68,29 +76,22 @@ export default class LikePakMonitor extends React.PureComponent {
     }
 }
 
-const testStyle = EStyleSheet.create({
-    vitalText: {
-        fontSize: '6rem',
-        marginTop: '-1rem',
-        marginRight: '0.5rem'
-    }
-});
-
 const textStyle = StyleSheet.create({
     hrText: {
-        fontSize: moderateScale(25),
+        fontSize: moderateScale(18),
         fontWeight: 'bold',
         color: '#80ff80',
         marginLeft: '0.5%'
     },
     o2SatText: {
-        fontSize: moderateScale(25),
+        fontSize: moderateScale(18),
         fontWeight: 'bold',
         color: '#15f4ee',
         marginLeft: '2.5%'
     },
     vitalValueText: {
         fontWeight: 'bold',
+        fontSize: moderateScale(60)
     }
 })
 
@@ -125,24 +126,18 @@ const styles = StyleSheet.create({
         borderRightWidth: moderateScale(2.5),
         borderColor: 'grey'
     },
-    heartRateWave: {
-        flex: 4,
-    },
     o2SatData: {
         flex: 1,
         flexDirection: 'column',
         borderRightWidth: moderateScale(2.5),
         borderColor: 'grey'
     },
-    o2SatWave: {
-        flex: 4,
-    },
     co2Data: {
         flex: 1,
         borderRightWidth: moderateScale(2.5),
         borderColor: 'grey'
     },
-    co2Wave: {
-        flex: 4,
+    waveSection: {
+        flex: 4
     }
 })

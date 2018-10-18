@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 import React, {Component} from "react";
 import {Text, View} from "react-native";
 import {Button} from 'native-base';
 import {VitalSlider} from "../components/VitalSlider";
 import styles from "./styles/controllerScreenStyle"
 
+=======
+import React, { Component } from "react";
+import {Text, View, StyleSheet} from "react-native";
+import {Button} from 'native-base';
+import { VitalSlider } from "../components/VitalSlider";
+>>>>>>> 516147b64b6687c10eb6d6d37c6b59a6d7187215
 import {Update_Value, ACTIONS} from '../redux/actions/nearbyActions'
 import FaceButtonList from '../components/FaceButtonList';
 import {moderateScale} from "../utils/scaling";
@@ -98,7 +105,7 @@ export default class ControllerScreen extends Component {
             sliderName="EtCO2 (mmHg):"
             actionType={ACTIONS.UPDATE_ETCO2}
             style={styles.slider}
-            step = {1} />
+            step={1} />
         </View>
         <View style={styles.patientFaceControls}>
           <FaceButtonList />
@@ -107,3 +114,17 @@ export default class ControllerScreen extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  },
+  sliders: {
+    flex: 2
+  },
+  patientFaceControls: {
+    flex: 1
+  }
+});

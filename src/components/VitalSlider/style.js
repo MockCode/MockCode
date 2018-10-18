@@ -15,16 +15,16 @@ export default StyleSheet.create({
     sliderTitle: {
         color: 'black',
         fontWeight: 'bold',
-        fontSize: moderateScale(25)
+        fontSize: moderateScale(15)
     },
     sliderValueText: {
         marginLeft: '2%',
-        fontSize: moderateScale(25),
+        fontSize: moderateScale(15),
         fontWeight: 'bold',
     },
     thumbStyleEnabled: {
-        width: moderateScale(30),
-        height: moderateScale(30),
+        width: moderateScale(20),
+        height: moderateScale(20),
         borderRadius: moderateScale(30 / 2),
         backgroundColor: 'white',
         shadowColor: 'black',
