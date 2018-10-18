@@ -67,14 +67,14 @@ class MonitorScreen extends React.Component {
                     O2Sat = {this.props.O2Sat}/>
                 <PresetChangerArrow
                     show={this.state.toggle}
-                    arrow="chevron-left"
+                    arrow="ios-arrow-back"
                     style={{left: Dimensions.get('window').width*(1/15),
                             top: Dimensions.get('window').height*(1/2.5)}}
                     onClick={() => this.onPresetChange("left")}
                 />
                 <PresetChangerArrow
                     show={this.state.toggle}
-                    arrow="chevron-right"
+                    arrow="ios-arrow-forward"
                     style={{left: Dimensions.get('window').width*(13/15),
                             top: Dimensions.get('window').height*(1/2.5)}}
                     onClick={() => this.onPresetChange("right")}
@@ -88,7 +88,8 @@ const mapStateToProps = (state) => {
     return {
         heartRate: state.HeartRate,
         bloodPressure: state.bloodPressure,
-        O2Sat: state.O2Sat
+        O2Sat: state.O2Sat,
+        Waveform: state.Waveform
     }
 }
 

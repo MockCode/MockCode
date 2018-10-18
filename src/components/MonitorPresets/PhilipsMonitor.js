@@ -13,7 +13,7 @@ export default class PhilipsMonitor extends React.PureComponent{
                     for certain vital signs (e.g., heart rate). */}
                 <View style={styles.waveformSection}>
                     <View style={styles.heartRateWave}>
-                    {/* TODO: PLACE HEART WAVE RENDERER HERE */}
+                      <WaveformCanvas wavetype="HR" colour="green" f={this.props.heartRate}/>
                     </View>
                     <View style={styles.oSatWave}>
                     {/* TODO: PLACE O2SAT RENDERER HERE */}

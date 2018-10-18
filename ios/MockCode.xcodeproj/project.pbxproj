@@ -35,6 +35,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* MockCodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MockCodeTests.m */; };
 		40089F69CD154E30999F9D56 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD43360DCD004E2891A8B73A /* Roboto.ttf */; };
 		5CBC9A688F4B45C5BFB251DC /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63F22974B50A4F5F82D9F4A1 /* MaterialIcons.ttf */; };
+		7AB81A4420FD2EFA0088E3AA /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB81A2320FD2EE80088E3AA /* libRCTOrientation.a */; };
 		7AC3BB852055F53400A79E7A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8ABFD23449BF488F819C7B96 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F2E6D43B0944AB4A7EC909F /* Foundation.ttf */; };
@@ -262,6 +263,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTLinking;
 		};
+		7AB81A2220FD2EE80088E3AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AB81A0F20FD2EE80088E3AA /* RCTOrientation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTOrientation;
+		};
 		7AC3BB822055F48400A79E7A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7AC3BB542055F48400A79E7A /* RNWebGL.xcodeproj */;
@@ -445,6 +453,7 @@
 		6F2E6D43B0944AB4A7EC909F /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		71A1855E2CDC3EE340172709 /* libPods-MockCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MockCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7AB81A0F20FD2EE80088E3AA /* RCTOrientation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTOrientation.xcodeproj; path = "../node_modules/react-native-orientation/iOS/RCTOrientation.xcodeproj"; sourceTree = "<group>"; };
 		7AC3BB542055F48400A79E7A /* RNWebGL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNWebGL.xcodeproj; path = "../node_modules/react-native-webgl/ios/RNWebGL.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		857068AB394F4D89B6F951AE /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
@@ -482,6 +491,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AB81A4420FD2EFA0088E3AA /* libRCTOrientation.a in Frameworks */,
 				9CA32C26206AE3E50082CAD8 /* libRNSVG.a in Frameworks */,
 				7AC3BB852055F53400A79E7A /* libReact.a in Frameworks */,
 				9CC49EF1205AF6AF00901693 /* libRNDeviceInfo.a in Frameworks */,
@@ -649,6 +659,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7AB81A0F20FD2EE80088E3AA /* RCTOrientation.xcodeproj */,
 				9CA32BEF206AE3DB0082CAD8 /* RNSVG.xcodeproj */,
 				7AC3BB542055F48400A79E7A /* RNWebGL.xcodeproj */,
 				9CC49EBD205AF6A200901693 /* RNDeviceInfo.xcodeproj */,
@@ -675,6 +686,14 @@
 			children = (
 				78C398B91ACF4ADC00677621 /* libRCTLinking.a */,
 				3DAD3E881DF850E9000B6D8A /* libRCTLinking-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7AB81A1020FD2EE80088E3AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7AB81A2320FD2EE80088E3AA /* libRCTOrientation.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -943,11 +962,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = KNRKAZW3E7;
+						DevelopmentTeam = 693D9897FY;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = KNRKAZW3E7;
+						DevelopmentTeam = 693D9897FY;
 						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -1012,6 +1031,10 @@
 				{
 					ProductGroup = 00C302D41ABCB9D200DB3ED1 /* Products */;
 					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
+				},
+				{
+					ProductGroup = 7AB81A1020FD2EE80088E3AA /* Products */;
+					ProjectRef = 7AB81A0F20FD2EE80088E3AA /* RCTOrientation.xcodeproj */;
 				},
 				{
 					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
@@ -1252,6 +1275,13 @@
 			fileType = archive.ar;
 			path = libRCTLinking.a;
 			remoteRef = 78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7AB81A2320FD2EE80088E3AA /* libRCTOrientation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTOrientation.a;
+			remoteRef = 7AB81A2220FD2EE80088E3AA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		7AC3BB832055F48400A79E7A /* libRNWebGL.a */ = {
@@ -1602,7 +1632,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = KNRKAZW3E7;
+				DEVELOPMENT_TEAM = 693D9897FY;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1636,7 +1666,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = KNRKAZW3E7;
+				DEVELOPMENT_TEAM = 693D9897FY;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
@@ -1670,7 +1700,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = KNRKAZW3E7;
+				DEVELOPMENT_TEAM = 693D9897FY;
 				GCC_NO_COMMON_BLOCKS = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1707,7 +1737,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KNRKAZW3E7;
+				DEVELOPMENT_TEAM = 693D9897FY;
 				GCC_NO_COMMON_BLOCKS = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
