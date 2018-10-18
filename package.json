@@ -8,13 +8,13 @@
     "test": "jest"
   },
   "dependencies": {
-    "appcenter": "^1.4.0",
-    "appcenter-analytics": "^1.4.0",
-    "appcenter-crashes": "^1.4.0",
-    "native-base": "^2.3.10",
+    "appcenter": "^1.8.1",
+    "appcenter-analytics": "^1.8.1",
+    "appcenter-crashes": "^1.8.1",
+    "native-base": "^2.8.1",
     "prop-types": "^15.6.1",
     "react": "16.2.0",
-    "react-native": "^0.52.1",
+    "react-native": "^0.57.3",
     "react-native-canvas": "^0.1.20",
     "react-native-collapsible": "^0.10.0",
     "react-native-device-info": "^0.17.4",
@@ -43,6 +43,11 @@
     "preset": "react-native",
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-navigation|native-base-shoutem-theme)"
+    ],
+    "setupFiles": [
+      "<rootDir>/node_modules/appcenter/test/AppCenterMock.js",
+      "<rootDir>/node_modules/appcenter-analytics/test/AppCenterAnalyticsMock.js",
+      "<rootDir>/node_modules/appcenter-crashes/test/AppCenterCrashesMock.js"
     ]
   }
 }
