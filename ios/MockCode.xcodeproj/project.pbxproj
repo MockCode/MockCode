@@ -57,6 +57,8 @@
 		E3551D12F357470ABB801AF1 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D41923F360846DD906B7428 /* SimpleLineIcons.ttf */; };
 		E3EB83B364764EE0967A6A8A /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 103A2AFAA0C64BAF9303F27D /* FontAwesome.ttf */; };
 		F76B66A42A7B1D9960641B48 /* libPods-MockCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A1855E2CDC3EE340172709 /* libPods-MockCode.a */; };
+		51B7A1E9E22C40A7849A43C1 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE6D11BF08724B748CB31E83 /* Feather.ttf */; };
+		6DD43C94FFA54AD483302C68 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C335BD4DF4C4E28B82C0891 /* MaterialCommunityIcons.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -476,6 +478,8 @@
 		DBD38492FDED1C995EAD84DB /* Pods-MockCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockCode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MockCode/Pods-MockCode.debug.xcconfig"; sourceTree = "<group>"; };
 		F6F706A396E24B26A4782757 /* AppCenterReactNativeCrashes.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNativeCrashes.xcodeproj; path = "../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes.xcodeproj"; sourceTree = "<group>"; };
 		FD43360DCD004E2891A8B73A /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
+		DE6D11BF08724B748CB31E83 /* Feather.ttf */ = {isa = PBXFileReference; name = "Feather.ttf"; path = "../node_modules/native-base/Fonts/Feather.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1C335BD4DF4C4E28B82C0891 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; name = "MaterialCommunityIcons.ttf"; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -860,6 +864,8 @@
 				857068AB394F4D89B6F951AE /* rubicon-icon-font.ttf */,
 				9D41923F360846DD906B7428 /* SimpleLineIcons.ttf */,
 				B9AAC50D18D44C93A5DD006A /* Zocial.ttf */,
+				DE6D11BF08724B748CB31E83 /* Feather.ttf */,
+				1C335BD4DF4C4E28B82C0891 /* MaterialCommunityIcons.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1459,6 +1465,8 @@
 				DA9CDC6F7E0345DD85C8DCDD /* rubicon-icon-font.ttf in Resources */,
 				E3551D12F357470ABB801AF1 /* SimpleLineIcons.ttf in Resources */,
 				9897DF028121401AB472EC2F /* Zocial.ttf in Resources */,
+				51B7A1E9E22C40A7849A43C1 /* Feather.ttf in Resources */,
+				6DD43C94FFA54AD483302C68 /* MaterialCommunityIcons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

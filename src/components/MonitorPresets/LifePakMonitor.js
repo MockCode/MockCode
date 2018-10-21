@@ -2,7 +2,6 @@ import React from 'react'
 import {Text, View, StyleSheet} from 'react-native';
 import {Icon} from 'native-base';
 import {moderateScale} from '../../utils/scaling';
-import Clock from './Clock';
 import WaveformCanvas from "../Waveform/WaveformCanvas";
 import EStyleSheet from 'react-native-extended-stylesheet';
 
